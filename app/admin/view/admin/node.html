@@ -1,0 +1,92 @@
+{extend name="layout/base" /}
+{block name="main"}
+  <div class="layui-fluid">
+	<div class="layui-row layui-col-sm10 layui-col-md-offset0" style="margin-bottom:20px;">
+		<div class="layui-col-md9"><a href="{:url('admin/node_add')}" class="layui-btn layui-btn-danger">添加节点</a></div>
+	</div>
+	<div class="layui-col-sm10 layui-col-md-offset1">
+		{foreach $node as $value}
+		<div class="rbac">
+			<div class="title">
+				<strong>{$value.title} - {$value.sort}</strong>
+				<a href="javascript:edit({$value.id}, 0);" class="layui-btn layui-btn-xs">编辑</a>
+				<a href="javascript:del({$value.id}, {$value.pid})" class="layui-btn layui-btn-xs layui-bg-black">删除</a>
+				<a href="{:url('admin/node_add', ['pid' => $value.id])}" class="layui-btn layui-btn-xs layui-btn-normal">增加子节点</a>
+			</div>
+			<ul class="rabc-ul">
+				{notempty name="value.child"}
+				{foreach $value.child as $val}
+				<li>
+					{$val.title}-{$val.sort} 
+					<a href="javascript:edit({$val.id}, {$value.id});" class="layui-btn layui-btn-xs">编辑</a>
+					<a href="javascript:del({$val.id}, {$val.pid})" class="layui-btn layui-btn-xs layui-bg-black">删除</a>
+				</li>
+				{/foreach}
+				{/notempty}
+			<ul>
+		</div>
+		{/foreach}
+	</div>
+	
+  </div>
+
+  {js href="/static/admin/layuiadmin/layui/layui.js" /} 
+  <script>
+	layui.use(['jquery', 'layer', 'table', 'flow', 'form', 'laypage'], function(){
+		var table = layui.table
+		,$ = layui.$
+		,layer = layui.layer
+		,flow = layui.flow
+		,form = layui.form
+		,laypage = layui.laypage
+		
+		//执行一个laypage实例
+		laypage.render({
+			elem: 'page' //注意，这里的 test1 是 ID，不用加 # 号
+			,count: 50 //数据总数，从服务端得到
+		});
+		
+		//监听提交
+		form.on('submit(formdemo)', function(data){
+			layer.msg(json.stringify(data.field));
+			return false;
+		});
+	});
+	
+	function edit(id, pid)
+	{
+		//修改信息
+		layer.open({
+		  id:'1',
+		  type: 2,
+		  title: '节点ID:' + id,
+		  shadeClose: true,
+		  shade: [0.8, '#000000'],
+		  area: ['800px', '600px'],
+		  content: "{:url('node_edit')}?id=" + id + '&pid=' + pid,
+		});
+	}
+	
+	function del(id)
+	{
+		layer.confirm('确定要删除此节点吗', function(index){
+			window.location.href = "{:url('node_del')}?id=" + id;
+			layer.close(index);
+		});    	
+	}
+  </script>
+{/block}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

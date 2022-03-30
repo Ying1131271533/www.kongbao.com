@@ -1,0 +1,39 @@
+{extend name="layout/userbase"/}
+{block name="title"}资金明细{/block}
+{block name="load"}
+{/block}
+{block name="main"}
+<div class="user">
+	<div class="user_index">
+        {include file="layout/top" /}
+		{include file="layout/left" /}
+        <div class="user_right">
+        	<div class="user_title">资金明细</div>
+			<div class="user_mingxi">
+				<ul class="mz">
+					<li class="m1">操作时间</li>
+					<li class="m2">操作ip</li>
+					<li class="m3">金额</li>
+					<li class="m4">操作类型</li>
+					<li class="m5">可以余额</li>
+
+				</ul>
+				{volist name="list" id="vo"}
+				<ul>
+				   <li class="m1">{$vo.create_time}</li>
+					<li class="m2">{$vo.ip}</li>
+					<li class="m3">{$vo.type}</li>
+					<li class="m4">{if condition="$vo.status eq 1 "}<font color="#cc0000">-{$vo.money}元</font>{else/}<font color="#006600">+{$vo.money}元</font>{/if}</li>
+					<li class="m5">{$vo.zmoney}元</li>
+			   </ul>
+			   {/volist}
+			</div>
+			
+			<div class="text-center"><ul class="pagination">{$page|raw}</ul></div>
+			<div class="clear"></div>
+		</div>
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+{/block}

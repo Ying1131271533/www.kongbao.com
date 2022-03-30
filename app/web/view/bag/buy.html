@@ -1,0 +1,281 @@
+{extend name="layout/userbase" /}
+{block name="title"}购买空包{/block}
+
+{block name="load"}
+<script type="text/javascript">
+
+var dclick = 1;
+
+function save(){
+
+	var kdid = $('#kdid').val();
+	var aid = $('#aid').val();
+	var sname = $('#sname').val();
+	var sphone = $('#sphone').val();
+	
+	var saddress = $('#saddress').val();
+	var goods = $('#goods').val();
+	var kg = $('#kg').val();
+
+
+
+	if(kdid==''){
+		alert('请选择您需要的快递');
+		return;
+	}
+	
+	if(aid==null){
+		alert('请选择发货人地址');
+		return;
+	}
+	
+	
+	if(sname==''){
+		alert('请填写收货人姓名');
+		return;
+	}
+	
+	
+	if(saddress==''){
+		alert('请填写收货人地址');
+		return;
+	}else{
+		
+		 var regs = /^[\u4E00-\u9FA5]{2,7}[\ ][\u4E00-\u9FA5]{2,12}[\ ][\u4E00-\u9FA5]{2,12}[\ ][A-Za-z0-9\u4E00-\u9FA5\,-\，\#\:\：\[\]//(){}（）\ ]{2,50}$/;
+		 if (!regs.test(saddress)) {
+			  alert("收货地址格式不正确,省市区后面用空格分割,地址中尽量不要有特殊符号。\n\n正确格式：广东省 广州市 白云区 岭南大道阳光小区5栋3单元108号\n");
+			  return;
+		 }
+		 
+	}
+	
+	if(sphone==''){
+		alert('请填写收货人电话');
+		return;
+	}else{
+		
+		 var reg = /^(0?1[0-9][0-9]\d{8}|0[1-9][0-9]{1,2}[\-1-9][\d]{6,8})$/;
+		 if (!reg.test(sphone)) {
+			  alert("收货人电话号码格式不正确");
+			  return;
+		 }
+	}
+
+
+	
+	if(dclick == 0){
+		return;
+	}
+	dclick = 0;
+	
+	//加载loading
+	var ii = layer.load(2);
+
+	$.post("{:url()}", {kd_id:kdid,address_id:aid,sname:sname,sphone:sphone,saddress:saddress,goods_name:goods,kg:kg}, function(data){
+		if(data.code != 0){
+			
+			//取消loading
+			layer.close(ii);
+			
+			alert(data.msg);
+			dclick = 1;
+			return false;
+		}
+		
+		// 取消loading
+		layer.close(ii);
+		alert(data.msg);
+		window.location="{:url('index')}";
+	}, 'json');
+}
+
+function kd(){
+	var kdid = $('#kdid').val();
+	if(! kdid)
+	{
+		$('#zj').html(0);
+		$('#l1').html(0);
+		$('#l2').html(0);
+		$('#l3').html(0);
+		$('#l4').html(0);
+		$('#comm').html('请选择您需要的快递');
+		return false;
+	}
+	
+	$.ajax({
+		url: "{:url('buy_kd')}",
+		type: 'POST',
+		data:{id:kdid},
+		dataType: 'json',
+		success: function(data){
+			if(data){
+				//alert(data.info);
+				//window.location="{:url('User/buy_record')}";
+				$('#l1').html(data.level1);
+				$('#l2').html(data.level2);
+				$('#l3').html(data.level3);
+				$('#l4').html(data.level4);
+				$('#comm').html(data.explain);
+				var level = "{$user.level}";
+				if(level==4){
+					$('#zj').html(data.level4);
+				}else if(level==3){
+					$('#zj').html(data.level3);
+				}else if(level==2){
+					$('#zj').html(data.level2);
+				}else if(level==1){
+					$('#zj').html(data.level1);
+				}
+			}
+		}
+	});
+}
+
+
+</script>
+
+<script type="text/javascript">
+function trim(v){
+v=v.replace(/(^\s*)|(\s*$)/g,"");
+document.all.saddress.value=v
+}
+</script>
+{/block}
+
+
+{block name="main"}
+<div class="user">
+	<div class="user_index">
+    	{include file="layout/top" /}
+		{include file="layout/left" /}
+        <div class="user_right">
+
+        	<div class="user_title">单个下单购买空包</div>
+
+            <div class="user_ts">
+                <p>下单须知</p>
+                <p class="red">在当日18点之前下单的，快递空包将在当日晚上发出，一般第二天就有物流信息。</p>
+                <p class="red">在当日18点之后下单的，快递空包将在第二天晚上发出，一般第三天的才有物流信息。</p>
+                <p class="red">请使用您对应的平台购买单号，您是用在淘宝平台就购买淘宝的单号，请不要跨平台使用单号，拿到单号后请第一时间填到您使用的平台中。</p>
+               
+                <p class="red">快递的物流信息，请在快递官网或者您使用的淘宝天猫、京东、拼多多中查询。</p>
+                <p class="red">快递单号只能用来发货使用，请不要用于发退货单，不支持发退货物流。</p>
+                <p class="red">申通快递(淘宝天猫)请在淘宝后台请选择"申通快递"，不要直接选择申通。</p>
+            </div>
+
+            	<div class="user_buy">
+
+                    
+                    <div class="clear" style="height:20px;"></div>
+                    
+                    <dl>
+                    	<dt>下单类型：</dt>
+                        <dd><a href="{:url('buy_pl')}" class="buyoff">批量购买</a> <a class="buyon">单个购买</a></dd>
+                    </dl>
+                    
+                    <dl>
+                    	<dt>选择快递：</dt>
+                        <dd>
+							<p class="red" style="background:#FCF8E2;">商家后台需要点发货，否则物流是不会显示的</p>
+                        	<p>
+                            <select id="kdid" class="select" onchange="kd()">
+                            <option value="">请选择您需要的快递</option>
+                            {foreach $kd as $value}
+                            <option value="{$value.id}">{$value.name}</option>
+                            {/foreach}
+                            </select> 请使用您对应的平台购买单号，您是用在淘宝平台就购买淘宝的单号。
+                            </p>
+                            
+                            <div class="lm">
+                                <p>
+                                	<span class="buyvips">您是{$user.level|vip="2"} > 下单价格：<span id="zj">0</span> 元 / 单</span>
+                                	{if condition="$user.level neq 4 "}<a href="{:url('User/vip')}">升级会员</a>{/if}
+                                </p>
+                                {if condition="$user.level neq 4 "}
+                                <p>
+                                    <span class="buyvip">普通会员：<span id="l1">0</span> 元/单</span>
+                                    <span class="buyvip">黄金会员：<span id="l2">0</span> 元/单</span>
+                                    <span class="buyvip">铂金会员：<span id="l3">0</span> 元/单</span>
+                                    <span class="buyvip">钻石会员：<span id="l4">0</span> 元/单</span>
+                                </p>
+                                {/if}
+                                <p><span class="buyvip">温馨提醒：<font id="comm">请选择您需要的快递</font></span></p>
+                            </div>
+                            
+                        </dd>
+                    </dl>
+					
+					
+                    <dl>
+                        <dt>发货地址：</dt>
+    					<dd>
+                            <select id="aid" class="select" style="width:724px;">
+                            (notempty name="address"}
+							{volist name="address" id="vo"}
+                            <option value="{$vo.id}" {eq name="$vo.default" value="1"}selected="selected"{/eq}>{$vo.addresser}，{$vo.phone}，{$vo.province} {$vo.city} {$vo.county} {$vo.address|msubstr=0,15,'utf-8',true}</option>
+                            {/volist}
+							{/notempty}
+                            </select> <a class="faddress" href="{:url('User/address')}">添加发货地址</a>
+                        </dd>
+                    </dl>
+
+                    <dl>
+                    	<dt>收货人姓名：</dt>
+                        <dd><input id="sname" class="val" value="" /> <i>*</i> <em>格式：张三</em></dd>
+                    </dl>
+                    
+
+                    
+                    <dl>
+                    	<dt>收货人地址：</dt>
+                        <dd>
+                        	<p><input id="saddress" class="val" type="text" style="width:824px;" value="" onBlur="trim(this.value)"/></p>
+							<p><i>*</i> <em>地址格式：广东省 广州市 白云区 岭南大道321号 （省/市/区后面需要空格，用空格分割省市区的，尽量不要使用特殊字符）</em></p>
+                        </dd>
+                    </dl>
+                    
+
+                    
+                    <dl>
+                    	<dt>收货人电话：</dt>
+                        <dd><input id="sphone" class="val" type="text" value="" /> <i>*</i> <em>格式：13866668888 或 020-8378888</em></dd>
+                    </dl>
+
+
+                    <dl>
+						<dt>商品名称：</dt>
+						<dd><input id="goods" type="text" class="val" value="物品" /> <i>*</i> <em>发货人的真实商品名称 （注：如果不填当前所下订单默认为"物品"）</em></dd>
+                    </dl>
+    
+                    
+                    <dl>
+                        <dt>商品重量：</dt>
+                        <dd>
+                        	<p><input id="kg" type="text" class="val" value="1" /> <i>*</i> <em>KG 发货人的真实商品重量 （注：如果不填当前所下订单默认为"1KG"）</em></p>
+                            <p>
+								<a class="qr" href="javascript:save()">立即购买</a>
+								<span class="red" style="background:#FCF8E2;">淘宝发货时，发货方式需要选择“自己联系”！</span>
+								<!-- <span class="red" style="background:#FCF8E2;">单号不支持退货使用，如果您是退货物流的话，请不要下单</span> -->
+							</p>
+                        </dd>
+                    </dl>
+                    
+                     
+
+					<div class="clear"></div>
+                    
+                    
+                    
+                    
+                    
+            	</div>
+                
+                <div class="clear"></div>
+           
+
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+{/block}

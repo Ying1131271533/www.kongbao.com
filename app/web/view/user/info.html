@@ -1,0 +1,66 @@
+{extend name="layout/userbase" /}
+{block name="title"}会员信息{/block}
+
+{block name="load"}
+<script type="text/javascript">
+function save(){
+	var phone = $('#phone').val();
+	var qq = $('#qq').val();
+	var email = $('#email').val();
+	$.ajax({
+		url: "{:url()}",
+		type: 'POST',
+		data:{phone:phone,qq:qq,email:email},
+		dataType: 'json',
+		success: function(data){
+			if(data.code == 1)
+			{
+				layer.msg(data.msg, {icon:2});
+			}else if(data.code == 0)
+			{
+				layer.msg(data.msg, {icon:1});
+			}
+		}
+	});
+}
+</script>
+{/block}
+
+{block name="main"}
+<div class="user">
+	<div class="user_index">
+    	{include file="layout/top" /}
+		{include file="layout/left" /}
+        <div class="user_right">
+        
+        	<div class="user_title">修改资料</div>
+            <div class="user_text">
+            	<dl>
+                	<dt>用户登录名：</dt>
+                    <dt>电子邮件：</dt>
+                    <dt>联系电话：</dt>
+                    <dt>联系QQ：</dt>
+                    <dt></dt>
+                </dl>
+                
+                <dl>
+                	<dd>{$user.username}</dd>
+                    <dd>{empty name="user.email"}<input id="email" type="text" value="" />{else /}<input name="email" disabled="disabled" type="text" value="{$user.email}" />{/empty}</dd>
+                    <dd><input id="phone" name="phone" type="text" class="val" value="{$user.phone}" /></dd>
+                    <dd><input id="qq" name="qq" type="text" class="val" value="{$user.qq == 0 ? '' : $user.qq}" /></dd>
+                    <dd><a class="qr" href="javascript:save()">确认保存</a></dd>
+                </dl>
+                <div class="clear"></div>
+            </div>
+            
+            <div class="user_ts">
+            	<p>温馨提示</p>
+                <p class="red">如果还未填写邮箱的请尽快填写，为了您的账户安全，邮箱提交后不可再修改，如需修改邮箱请联系客服说明情况。</p>
+            </div>
+        
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+{/block}

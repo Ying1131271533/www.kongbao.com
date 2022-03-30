@@ -1,0 +1,68 @@
+{extend name="layout/userbase" /}
+{block name="title"}我的奖励明细{/block}
+{block name="load"}
+{/block}
+
+{block name="main"}
+<div class="user">
+	<div class="user_index">
+        {include file="layout/top" /}
+		{include file="layout/left" /}
+        <div class="user_right">
+        
+        	<div class="user_title">我的奖励明细</div>
+
+				<div class="user_reward_ts">
+                        <p class="red">获奖须知</p>
+                        <p>好友一次性充值100元以上，奖励6元；</p>
+                    	<p>好友一次性充值300元以上，奖励20元；</p>
+                    	<p>好友一次性充值500元以上，奖励40元；</p>
+                        <p>好友一次性充值1000元以上，奖励100元。</p>
+                        <p class="red">注：好友充值满后您的冻结账户会增加相应的金额，当好友成功累计消费以后冻结的金额将会转入您的可用余额。</p>
+                        <p class="red">如果冻结金额不足将只转入剩余的冻结金额至可用余额账户。</p>
+                    </div>
+                    
+                <div class="user_reward">
+
+                	<ul class="cz">
+                		<li class="c1">充值时间</li>
+                        <li class="c2">邀请好友账户</li>
+                        <li class="c3">充值金额</li>
+                        <li class="c4">奖励金额</li>
+                        <li class="c5">奖励状态</li>
+                    </ul>
+                    
+                    {volist name="list" id="vo"}
+                        <ul>
+                		<li class="c1">{$vo.create_time}</li>
+                        <li class="c2">{$vo.username}</li>
+                        <li class="c3">{$vo.consume_money}元</li>
+                        <li class="c4"><font color="#cc0000">{$vo.jd_money}元</font></li>
+                        <li class="c5">
+                            {if condition="$vo.status eq 1 "}
+                                <font color="#ff0000">已发放</font>
+                           {elseif condition="$vo.status eq 2 "/}
+                                <font color="#009933">未发放</font>
+                          
+                           {/if}</li>
+                    	</ul>
+                    {/volist}
+                    
+                    
+                </div>
+                
+                <div class="text-center"><ul class="pagination"></ul></div>
+
+
+  
+                <div class="clear"></div>
+           
+            
+
+        
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+{/block}

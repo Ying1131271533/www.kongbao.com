@@ -1,0 +1,59 @@
+{extend name="layout/base" /}
+{block name="main"}
+  <div class="layui-fluid">
+	<div class="layui-form">
+		<form action="{:url('role_add')}" method="post" name="example">
+			<table class="layui-table" lay-size="lg" lay-skin="line">
+			  <thead>
+				<tr>
+				  <th colspan="2">角色添加</th>
+				</tr> 
+			  </thead>
+			  <tbody>
+				<tr>
+				  <td width="150" align="right"><strong>角色名称：</strong></td>
+				  <td>
+					<div class="layui-input-inline">
+					  <input class="layui-input" type="text" name="name" placeholder="角色名称">
+					</div> 例如：用户管理员
+				  </td>
+				</tr>
+				<tr>
+				  <td width="150" align="right"><strong>角色说明：</strong></td>
+				  <td>
+					<div class="layui-input-inline">
+					  <input class="layui-input" type="text" name="explain" placeholder="角色说明">
+					</div> 例如：拥有管理用户权限
+				  </td>
+				</tr>
+				<tr>
+				  <td align="right"></td>
+				  <td>
+					<div class="layui-input-inline">
+					  <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+					</div>
+				  </td>
+				</tr>
+			  </tbody>
+			</table>
+		</form>	
+    </div>
+  </div>
+
+  {js href="/static/admin/layuiadmin/layui/layui.js" /} 
+  <script>
+	layui.use(['jquery', 'layer','table','flow','form'], function(){
+		var table = layui.table
+		,$ = layui.$
+		,layer = layui.layer
+		,flow = layui.flow
+		,form = layui.form
+		
+		//监听提交
+		form.on('submit(formdemo)', function(data){
+			layer.msg(json.stringify(data.field));
+			return false;
+		});
+	});
+  </script>
+{/block}

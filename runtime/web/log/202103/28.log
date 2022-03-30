@@ -1,0 +1,196 @@
+---------------------------------------------------------------
+[2021-03-28T19:15:55+08:00] 127.0.0.1 GET www.tp6.com/
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000943s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `article` [ RunTime:0.001639s ]
+[ sql ] [ SQL ] SELECT * FROM `article` WHERE  `status` = 1  AND `type_id` = 3 ORDER BY `create_time` DESC LIMIT 6 [ RunTime:0.000314s ]
+[ sql ] [ SQL ] SELECT * FROM `article` WHERE  `status` = 1  AND `type_id` = 1 ORDER BY `create_time` DESC LIMIT 7 [ RunTime:0.000272s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `link` [ RunTime:0.001406s ]
+[ sql ] [ SQL ] SELECT * FROM `link` ORDER BY `weight` DESC [ RunTime:0.000193s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\web\view\home\index.html [ array (
+  0 => 'gd',
+  1 => 'link',
+  2 => 'article',
+  3 => 'gg',
+) ]
+---------------------------------------------------------------
+[2021-03-28T19:16:57+08:00] 127.0.0.1 GET www.tp6.com/
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000567s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `article` [ RunTime:0.001686s ]
+[ sql ] [ SQL ] SELECT * FROM `article` WHERE  `status` = 1  AND `type_id` = 3 ORDER BY `create_time` DESC LIMIT 6 [ RunTime:0.000315s ]
+[ sql ] [ SQL ] SELECT * FROM `article` WHERE  `status` = 1  AND `type_id` = 1 ORDER BY `create_time` DESC LIMIT 7 [ RunTime:0.000259s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `link` [ RunTime:0.001728s ]
+[ sql ] [ SQL ] SELECT * FROM `link` ORDER BY `weight` DESC [ RunTime:0.000866s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\web\view\home\index.html [ array (
+  0 => 'gd',
+  1 => 'link',
+  2 => 'article',
+  3 => 'gg',
+) ]
+---------------------------------------------------------------
+[2021-03-28T19:16:58+08:00] 127.0.0.1 GET www.tp6.com/
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000636s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `article` [ RunTime:0.001394s ]
+[ sql ] [ SQL ] SELECT * FROM `article` WHERE  `status` = 1  AND `type_id` = 3 ORDER BY `create_time` DESC LIMIT 6 [ RunTime:0.000275s ]
+[ sql ] [ SQL ] SELECT * FROM `article` WHERE  `status` = 1  AND `type_id` = 1 ORDER BY `create_time` DESC LIMIT 7 [ RunTime:0.000239s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `link` [ RunTime:0.001116s ]
+[ sql ] [ SQL ] SELECT * FROM `link` ORDER BY `weight` DESC [ RunTime:0.000175s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\web\view\home\index.html [ array (
+  0 => 'gd',
+  1 => 'link',
+  2 => 'article',
+  3 => 'gg',
+) ]
+---------------------------------------------------------------
+[2021-03-28T19:16:58+08:00] 127.0.0.1 GET www.tp6.com/
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000630s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `article` [ RunTime:0.001745s ]
+[ sql ] [ SQL ] SELECT * FROM `article` WHERE  `status` = 1  AND `type_id` = 3 ORDER BY `create_time` DESC LIMIT 6 [ RunTime:0.000319s ]
+[ sql ] [ SQL ] SELECT * FROM `article` WHERE  `status` = 1  AND `type_id` = 1 ORDER BY `create_time` DESC LIMIT 7 [ RunTime:0.000493s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `link` [ RunTime:0.002033s ]
+[ sql ] [ SQL ] SELECT * FROM `link` ORDER BY `weight` DESC [ RunTime:0.000230s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\web\view\home\index.html [ array (
+  0 => 'gd',
+  1 => 'link',
+  2 => 'article',
+  3 => 'gg',
+) ]
+---------------------------------------------------------------
+[2021-03-28T19:16:58+08:00] 127.0.0.1 GET www.tp6.com/
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000666s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `article` [ RunTime:0.001405s ]
+[ sql ] [ SQL ] SELECT * FROM `article` WHERE  `status` = 1  AND `type_id` = 3 ORDER BY `create_time` DESC LIMIT 6 [ RunTime:0.000326s ]
+[ sql ] [ SQL ] SELECT * FROM `article` WHERE  `status` = 1  AND `type_id` = 1 ORDER BY `create_time` DESC LIMIT 7 [ RunTime:0.000263s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `link` [ RunTime:0.001246s ]
+[ sql ] [ SQL ] SELECT * FROM `link` ORDER BY `weight` DESC [ RunTime:0.000172s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\web\view\home\index.html [ array (
+  0 => 'gd',
+  1 => 'link',
+  2 => 'article',
+  3 => 'gg',
+) ]
+---------------------------------------------------------------
+[2021-03-28T19:16:58+08:00] 127.0.0.1 GET www.tp6.com/
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001425s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `article` [ RunTime:0.002503s ]
+[ sql ] [ SQL ] SELECT * FROM `article` WHERE  `status` = 1  AND `type_id` = 3 ORDER BY `create_time` DESC LIMIT 6 [ RunTime:0.000338s ]
+[ sql ] [ SQL ] SELECT * FROM `article` WHERE  `status` = 1  AND `type_id` = 1 ORDER BY `create_time` DESC LIMIT 7 [ RunTime:0.000264s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `link` [ RunTime:0.001202s ]
+[ sql ] [ SQL ] SELECT * FROM `link` ORDER BY `weight` DESC [ RunTime:0.000178s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\web\view\home\index.html [ array (
+  0 => 'gd',
+  1 => 'link',
+  2 => 'article',
+  3 => 'gg',
+) ]
+---------------------------------------------------------------
+[2021-03-28T19:16:59+08:00] 127.0.0.1 GET www.tp6.com/
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001632s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `article` [ RunTime:0.001472s ]
+[ sql ] [ SQL ] SELECT * FROM `article` WHERE  `status` = 1  AND `type_id` = 3 ORDER BY `create_time` DESC LIMIT 6 [ RunTime:0.000407s ]
+[ sql ] [ SQL ] SELECT * FROM `article` WHERE  `status` = 1  AND `type_id` = 1 ORDER BY `create_time` DESC LIMIT 7 [ RunTime:0.000327s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `link` [ RunTime:0.001625s ]
+[ sql ] [ SQL ] SELECT * FROM `link` ORDER BY `weight` DESC [ RunTime:0.000220s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\web\view\home\index.html [ array (
+  0 => 'gd',
+  1 => 'link',
+  2 => 'article',
+  3 => 'gg',
+) ]
+---------------------------------------------------------------
+[2021-03-28T19:17:00+08:00] 127.0.0.1 GET www.tp6.com/
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000694s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `article` [ RunTime:0.001387s ]
+[ sql ] [ SQL ] SELECT * FROM `article` WHERE  `status` = 1  AND `type_id` = 3 ORDER BY `create_time` DESC LIMIT 6 [ RunTime:0.000274s ]
+[ sql ] [ SQL ] SELECT * FROM `article` WHERE  `status` = 1  AND `type_id` = 1 ORDER BY `create_time` DESC LIMIT 7 [ RunTime:0.000241s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `link` [ RunTime:0.001133s ]
+[ sql ] [ SQL ] SELECT * FROM `link` ORDER BY `weight` DESC [ RunTime:0.000172s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\web\view\home\index.html [ array (
+  0 => 'gd',
+  1 => 'link',
+  2 => 'article',
+  3 => 'gg',
+) ]
+---------------------------------------------------------------
+[2021-03-28T19:17:00+08:00] 127.0.0.1 GET www.tp6.com/
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001151s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `article` [ RunTime:0.001884s ]
+[ sql ] [ SQL ] SELECT * FROM `article` WHERE  `status` = 1  AND `type_id` = 3 ORDER BY `create_time` DESC LIMIT 6 [ RunTime:0.000449s ]
+[ sql ] [ SQL ] SELECT * FROM `article` WHERE  `status` = 1  AND `type_id` = 1 ORDER BY `create_time` DESC LIMIT 7 [ RunTime:0.000419s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `link` [ RunTime:0.001429s ]
+[ sql ] [ SQL ] SELECT * FROM `link` ORDER BY `weight` DESC [ RunTime:0.000190s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\web\view\home\index.html [ array (
+  0 => 'gd',
+  1 => 'link',
+  2 => 'article',
+  3 => 'gg',
+) ]
+---------------------------------------------------------------
+[2021-03-28T19:17:01+08:00] 127.0.0.1 GET www.tp6.com/
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000886s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `article` [ RunTime:0.001953s ]
+[ sql ] [ SQL ] SELECT * FROM `article` WHERE  `status` = 1  AND `type_id` = 3 ORDER BY `create_time` DESC LIMIT 6 [ RunTime:0.000482s ]
+[ sql ] [ SQL ] SELECT * FROM `article` WHERE  `status` = 1  AND `type_id` = 1 ORDER BY `create_time` DESC LIMIT 7 [ RunTime:0.000279s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `link` [ RunTime:0.001288s ]
+[ sql ] [ SQL ] SELECT * FROM `link` ORDER BY `weight` DESC [ RunTime:0.000187s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\web\view\home\index.html [ array (
+  0 => 'gd',
+  1 => 'link',
+  2 => 'article',
+  3 => 'gg',
+) ]
+---------------------------------------------------------------
+[2021-03-28T19:17:01+08:00] 127.0.0.1 GET www.tp6.com/
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000655s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `article` [ RunTime:0.002320s ]
+[ sql ] [ SQL ] SELECT * FROM `article` WHERE  `status` = 1  AND `type_id` = 3 ORDER BY `create_time` DESC LIMIT 6 [ RunTime:0.000642s ]
+[ sql ] [ SQL ] SELECT * FROM `article` WHERE  `status` = 1  AND `type_id` = 1 ORDER BY `create_time` DESC LIMIT 7 [ RunTime:0.000358s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `link` [ RunTime:0.001427s ]
+[ sql ] [ SQL ] SELECT * FROM `link` ORDER BY `weight` DESC [ RunTime:0.000200s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\web\view\home\index.html [ array (
+  0 => 'gd',
+  1 => 'link',
+  2 => 'article',
+  3 => 'gg',
+) ]
+---------------------------------------------------------------
+[2021-03-28T19:17:01+08:00] 127.0.0.1 GET www.tp6.com/
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000775s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `article` [ RunTime:0.001781s ]
+[ sql ] [ SQL ] SELECT * FROM `article` WHERE  `status` = 1  AND `type_id` = 3 ORDER BY `create_time` DESC LIMIT 6 [ RunTime:0.000328s ]
+[ sql ] [ SQL ] SELECT * FROM `article` WHERE  `status` = 1  AND `type_id` = 1 ORDER BY `create_time` DESC LIMIT 7 [ RunTime:0.000254s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `link` [ RunTime:0.001102s ]
+[ sql ] [ SQL ] SELECT * FROM `link` ORDER BY `weight` DESC [ RunTime:0.000167s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\web\view\home\index.html [ array (
+  0 => 'gd',
+  1 => 'link',
+  2 => 'article',
+  3 => 'gg',
+) ]
+---------------------------------------------------------------
+[2021-03-28T19:17:01+08:00] 127.0.0.1 GET www.tp6.com/
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000707s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `article` [ RunTime:0.001535s ]
+[ sql ] [ SQL ] SELECT * FROM `article` WHERE  `status` = 1  AND `type_id` = 3 ORDER BY `create_time` DESC LIMIT 6 [ RunTime:0.000310s ]
+[ sql ] [ SQL ] SELECT * FROM `article` WHERE  `status` = 1  AND `type_id` = 1 ORDER BY `create_time` DESC LIMIT 7 [ RunTime:0.000253s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `link` [ RunTime:0.001199s ]
+[ sql ] [ SQL ] SELECT * FROM `link` ORDER BY `weight` DESC [ RunTime:0.000176s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\web\view\home\index.html [ array (
+  0 => 'gd',
+  1 => 'link',
+  2 => 'article',
+  3 => 'gg',
+) ]
+---------------------------------------------------------------
+[2021-03-28T19:17:02+08:00] 127.0.0.1 GET www.tp6.com/
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000975s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `article` [ RunTime:0.003415s ]
+[ sql ] [ SQL ] SELECT * FROM `article` WHERE  `status` = 1  AND `type_id` = 3 ORDER BY `create_time` DESC LIMIT 6 [ RunTime:0.000961s ]
+[ sql ] [ SQL ] SELECT * FROM `article` WHERE  `status` = 1  AND `type_id` = 1 ORDER BY `create_time` DESC LIMIT 7 [ RunTime:0.000336s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `link` [ RunTime:0.001504s ]
+[ sql ] [ SQL ] SELECT * FROM `link` ORDER BY `weight` DESC [ RunTime:0.000204s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\web\view\home\index.html [ array (
+  0 => 'gd',
+  1 => 'link',
+  2 => 'article',
+  3 => 'gg',
+) ]

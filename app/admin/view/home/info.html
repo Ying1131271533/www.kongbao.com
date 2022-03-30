@@ -1,0 +1,93 @@
+{extend name="layout/base" /}
+{block name="main"}
+  <div class="layui-fluid">
+	<div class="layui-form">
+		<table class="layui-table" lay-size="lg" lay-skin="line">
+		  <thead>
+			<tr>
+			  <th colspan="2">管理员信息</th>
+			</tr> 
+		  </thead>
+		  <tbody>
+			<tr>
+			  <td width="150" align="right"><strong>管理员名称：</strong></td>
+			  <td>{$admin.name}</td>
+			</tr>
+			<tr>
+			  <td align="right" class="ruiwen"><strong>角色：</strong></td>
+			  <td>
+				{foreach $adminRole as $value}
+				{$value}、
+				{/foreach}
+			  </td>
+			</tr>
+			<tr>
+			  <td width="150" align="right"><strong>真实名字：</strong></td>
+			  <td>{$admin.real_name}</td>
+			</tr>
+			
+			<tr>
+			  <td width="150" align="right"><strong>QQ：</strong></td>
+			  <td>{$admin.qq}</td>
+			</tr>
+			
+			<tr>
+			  <td width="150" align="right"><strong>登录次数：</strong></td>
+			  <td>{$admin.login_num|default=0}</td>
+			</tr>
+			<tr>
+			  <td width="150" align="right"><strong>上次登录时间：</strong></td>
+			  <td>{:date("Y-m-d H:i:s", $admin.last_login_time)}</td>
+			</tr>
+			<tr>
+			  <td width="150" align="right"><strong>上次登录IP：</strong></td>
+			  <td>{$admin.login_ip|default=0}</td>
+			</tr>
+			<tr>
+			  <td width="150" align="right"><strong>注册时间：</strong></td>
+			  <td>{:date("Y-m-d H:i:s", $admin.create_time)}</td>
+			</tr>
+			<tr>
+			  <td align="right"><strong>登录状态：</strong></td>
+			  <td>{$admin.status == 1 ? '正常' : '禁止'} </td>
+			</tr>
+		  </tbody>
+		</table>
+    </div>
+	<!-- <textarea id="demo" style="display: none;"></textarea> -->
+
+  </div>
+
+  {js href="/static/admin/layuiadmin/layui/layui.js" /} 
+  <script>
+	layui.use(['jquery', 'layer','table','flow','form'], function(){
+		var table = layui.table
+		,$ = layui.$
+		,layer = layui.layer
+		,flow = layui.flow
+		,form = layui.form
+		
+		//监听提交
+		form.on('submit(formdemo)', function(data){
+			layer.msg(json.stringify(data.field));
+			return false;
+		});
+		
+	});
+	
+  </script>
+  <script>
+
+layui.use('layedit', function(){
+  var layedit = layui.layedit;
+  
+    layedit.set({
+	  uploadImage: {
+		url: "{:url('upload/upload_layui')}" //接口url
+	  }
+	});
+  
+  layedit.build('demo'); //建立编辑器
+});
+</script>
+{/block}

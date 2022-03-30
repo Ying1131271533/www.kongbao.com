@@ -1,0 +1,81 @@
+{extend name="layout/userbase" /}
+{block name="title"}绑定提现帐号{/block}
+{block name="load"}
+{css href="/static/web/css/user.css" /}
+<script type="text/javascript">
+function save(){
+	var alipay = $('#alipay').val();
+	var name = $('#name').val();
+	
+	if(!name && !alipay){
+		alert('请填写收款帐号和姓名，提交过收款信息将无法再进行修改');
+		return;
+	}
+	
+	$.ajax({
+		url: "{:url('')}",
+		type: 'POST',
+		data:{alipay:alipay, name:name},
+		dataType: 'json',
+		success: function(data){
+			if(data.code != 0)
+			{
+				layer.alert(data.msg, {icon:2});
+				return false;
+			}
+			
+			window.location = "{:url('')}";
+		}
+	});
+}
+</script>
+{/block}
+
+
+{block name="main"}
+<div class="user">
+	<div class="user_index">
+    	{include file="layout/top" /}
+		{include file="layout/left" /}
+        <div class="user_right">
+        	<div class="user_title">绑定提现帐号</div>
+            <div class="user_text">
+            	<dl>
+                	<dt>用户登录名：</dt>
+                    <dt>账号类型：</dt>
+                    <dt>提现账号：</dt>
+                    <dt>账户姓名：</dt>
+                    <dt></dt>
+                </dl>
+                <dl>
+                	<dd>{$user.username}</dd>
+                    <dd><select name="type" class="ec_linkSelect"><option value="1">支付宝</option></select></dd>
+                    <dd>
+						{empty name="user.alipay"}
+						<input id="alipay" name="alipay" type="text" value="" />
+						{else /}
+						<input disabled="disabled" type="text" value="{$user.alipay}" />
+						{/empty}
+					</dd>
+                    <dd>
+						{empty name="user.name"}
+						<input id="name" name="name" type="text" value="" />
+						{else /}
+						<input disabled="disabled" type="text" value="{$user.name}" />
+						{/empty}
+					</dd>
+                    <dd><a class="qr" href="javascript:save()">确认保存</a></dd>
+                </dl>
+                <div class="clear"></div>
+            </div>
+            <div class="user_ts">
+            	<p>温馨提示</p>
+                <p class="red">注:请正确填写收款账户信息，账户信息提交后不能修改!</p>
+            </div>
+        
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+{/block}

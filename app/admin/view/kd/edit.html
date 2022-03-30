@@ -1,0 +1,212 @@
+{extend name="layout/base" /}
+{block name="main"}
+  <div class="layui-fluid">
+	<div class="layui-form">
+		<form action="" method="post" enctype="multipart/form-data" name="example">
+			<table class="layui-table" lay-size="lg" lay-skin="line">
+			  <thead>
+				<tr>
+				  <th colspan="2">快递修改</th>
+				</tr> 
+			  </thead>
+			  <tbody>
+				<tr>
+						
+				  <td width="150" align="right"><strong>快递名：</strong></td>
+				  <td>
+					<div class="layui-input-inline">
+					  <input class="layui-input" type="text" name="name" placeholder="{$express['name']}" value ="{$express['name']}">
+					</div>
+				  </td>
+				</tr>
+				<tr>
+				  <td align="right"><strong>快递描述：</strong></td>
+				  <td>
+					<div class="layui-input-inline">
+					  <input class="layui-input" type="test" name="explain" placeholder="{$express['explain']}" value ="{$express['explain']}">
+					</div>
+				  </td>
+				</tr>
+				<tr>
+				  <td align="right"><strong>快递log:</strong></td>
+				  <td>
+					<div class="layui-upload">
+					  <button type="button" class="layui-btn" id="test1">上传图片</button>
+					  <div class="layui-upload-list">
+						<img src="{$express['image']}" class="layui-upload-img" id="demo1">
+						<p id="demoText"></p>
+						<input type="hidden" name="image" value="{$express['image']}">
+					  </div>
+					</div>
+				  </td>
+				</tr>
+
+				<tr>
+				  <td align="right"><strong>购买状态：</strong></td>
+				  <td>
+					<div class="layui-input-inline">
+					
+						{if condition="$express['type'] == 1"}
+						<div class="layui-input-inline">
+							<input class="layui-input" type="radio" name="type"  value ="1" title="可以" checked />
+							<input class="layui-input" type="radio" name="type"  value ="0" title="不可以" />
+						</div>
+						{else/}
+						<input class="layui-input" type="radio" name="type"  value ="1" title="正常" />
+						<input class="layui-input" type="radio" name="type"  value ="0" title="禁用" checked />
+						{/if}
+						
+					</div>
+				  </td>
+				</tr>
+
+				<tr>
+				  <td align="right"><strong>状态：</strong></td>
+				  <td>
+					<div class="layui-input-inline">
+					
+						{if condition="$express['status'] == 1"}
+						<input class="layui-input" type="radio" name="status"  value ="1" title="正常" checked />
+						<input class="layui-input" type="radio" name="status"  value ="0" title="禁用" />
+						{else/}
+						<input class="layui-input" type="radio" name="status"  value ="1" title="正常" />
+						<input class="layui-input" type="radio" name="status"  value ="0" title="禁用" checked />
+						{/if}
+						
+					</div>
+				  </td>
+				</tr>
+				
+				<tr>
+				  <td align="right"><strong>下单类型：</strong></td>
+				  <td>
+					<div class="layui-input-inline">
+						<input class="layui-input" type="radio" name="ms"  value ="1" title="单个" {$express.ms == 1 ? 'checked' : ''} />
+						<input class="layui-input" type="radio" name="ms"  value ="2" title="多个" {$express.ms == 2 ? 'checked' : ''} />
+						<input class="layui-input" type="radio" name="ms"  value ="3" title="都可以" {$express.ms == 3 ? 'checked' : ''} />
+					</div>
+				  </td>
+				</tr>
+				<tr>
+					<td align="right"><strong>接口标识：</strong></td>
+					<td>
+					<div class="layui-input-inline">
+						<input class="layui-input" type="test" name="apitype" placeholder="{$express['apitype']}" value ="{$express['apitype']}" />
+					</div>
+					</td>
+				</tr>
+				<tr>
+				  <td align="right"><strong>排序：</strong></td>
+				  <td>
+					<div class="layui-input-inline">
+					  <input class="layui-input" type="test" name="sort_order" placeholder="{$express['sort_order']}" value ="{$express['sort_order']}" />
+					</div>
+				  </td>
+				</tr>
+
+				<tr>
+				  <td align="right"><strong>普通会员价格：</strong></td>
+				  <td>
+					<div class="layui-input-inline">
+					  <input class="layui-input" type="test" name="level1" placeholder="{$express['level1']}" value ="{$express['level1']}">
+					</div>
+				  </td>
+				</tr>
+				<tr>
+				  <td align="right"><strong>黄金会员价格：</strong></td>
+				  <td>
+					<div class="layui-input-inline">
+					  <input class="layui-input" type="test" name="level2" placeholder="{$express['level2']}" value ="{$express['level2']}">
+					</div>
+				  </td>
+				</tr>
+				<tr>
+				  <td align="right"><strong>铂金会员价格：</strong></td>
+				  <td>
+					<div class="layui-input-inline">
+					  <input class="layui-input" type="test" name="level3" placeholder="{$express['level3']}" value ="{$express['level3']}">
+					</div>
+				  </td>
+				</tr>
+				<tr>
+				  <td align="right"><strong>钻石会员价格：</strong></td>
+				  <td>
+					<div class="layui-input-inline">
+					  <input class="layui-input" type="test" name="level4" placeholder="{$express['level4']}" value ="{$express['level4']}">
+					</div>
+				  </td>
+				</tr>
+
+				<tr>
+				  <td align="right"><strong>成本价格:</strong></td>
+				  <td>
+					<div class="layui-input-inline">
+					  <input class="layui-input" type="test" name="cost_price" placeholder="{$express['cost_price']}" value ="{$express['cost_price']}">
+					</div>
+				  </td>
+				</tr>
+				<input type="hidden" name="id" value ="{$express['id']}">
+				
+				<tr>
+					
+				  <td align="right"></td>
+				  <td>
+					<div class="layui-input-inline">
+						<input type="submit"class="layui-btn" lay-submit lay-filter="formDemo" value="立即提交" >
+					</div>
+				  </td>
+				</tr>
+			  </tbody>
+			</table>
+		</form>	
+    </div>
+  </div>
+
+  {js href="/static/admin/layuiadmin/layui/layui.js" /} 
+  <script>
+	layui.use(['jquery', 'layer','table','flow','form','upload'], function(){
+		var table = layui.table
+		,$ = layui.$
+		,layer = layui.layer
+		,flow = layui.flow
+		,form = layui.form
+		,upload = layui.upload
+		
+		//监听提交
+		form.on('submit(formdemo)', function(data){
+			layer.msg(json.stringify(data.field));
+			return false;
+		});
+		
+		//普通图片上传
+		var uploadInst = upload.render({
+			elem: '#test1'
+			,url: "{:url('upload/upload_img')}"
+			,before: function(obj){
+			  //预读本地文件示例，不支持ie8
+			  obj.preview(function(index, file, result){
+				$('#demo1').attr('src', result); //图片链接（base64）
+			  });
+			}
+			,done: function(res){
+			  //如果上传失败
+			  if(res.code > 0){
+				return layer.msg(res.msg, {icon:2});
+			  }
+			  //上传成功
+			  $('input[name="image"]').val(res.image);
+			  return layer.msg(res.msg, {icon:1});
+			}
+			,error: function(){
+			  //演示失败状态，并实现重传
+			  var demoText = $('#demoText');
+			  demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+			  demoText.find('.demo-reload').on('click', function(){
+				uploadInst.upload();
+			  });
+			}
+		});
+	});
+
+  </script>
+{/block}

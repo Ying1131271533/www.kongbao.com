@@ -1,0 +1,129 @@
+{extend name="layout/base" /}
+{block name="main"}
+  <div class="layui-fluid">
+	<div class="layui-form">
+		<form action="" method="post" name="example">
+			<table class="layui-table" lay-size="lg" lay-skin="line">
+			  <thead>
+				<tr>
+					<th colspan="2">文章修改</th>
+				</tr> 
+			  </thead>
+			  <tbody>
+				<tr>
+				  <td width="150" align="right"><strong>文章标题：</strong></td>
+				  <td>
+					<div class="layui-input-inline">
+					  <input class="layui-input" type="text" name="title" value="{$article.title}" placeholder="文章标题">
+					</div>
+				  </td>
+				</tr>
+				
+				
+				<tr>
+				  <td align="right" class="ruiwen"><strong>文章分类：</strong></td>
+				  <td>
+					<div class="akali" style="margin-bottom:10px;">
+						<div class="layui-input-inline">
+						  <select name="type_id">
+							{foreach $type as $value}
+							<option value="{$value.id}">{$value.name}</option>
+							{/foreach}
+						  </select>
+						</div>
+					</div>
+				  </td>
+				</tr>
+				
+				
+				<tr>
+				  <td width="150" align="right"><strong>内容：</strong></td>
+				  <td>
+					<div class="layui-input-inline">
+						<textarea id="demo" style="display: none;" name="content">{:html_dcode($article.content)}</textarea>
+					</div>
+				  </td>
+				</tr>
+				
+				
+				<tr>
+				  <td width="150" align="right"><strong>来源名称：</strong></td>
+				  <td>
+					<div class="layui-input-inline">
+					  <input class="layui-input" type="text" name="sourec_title" value="{$article.sourec_title}" placeholder="来源名称" >
+					</div>
+				  </td>
+				</tr>
+				
+				<tr>
+				  <td width="150" align="right"><strong>来源地址：</strong></td>
+				  <td>
+					<div class="layui-input-inline">
+					  <input class="layui-input" type="text" name="sourec_url" value="{$article.sourec_url}" placeholder="地址" >
+					</div>
+				  </td>
+				</tr>
+				
+				<tr>
+				  <td width="150" align="right"><strong>管理员ID：</strong></td>
+				  <td>
+					<div class="layui-input-inline">{$article.admin_id}</div>
+				  </td>
+				</tr>
+				
+				
+				<tr>
+				  <td align="right"><strong>审核状态：</strong></td>
+				  <td>
+					<div class="layui-input-inline">
+					  <input type="radio" name="status" value="1" title="正常" {$article.status == 1 ? 'checked' : ''}>
+					  <input type="radio" name="status" value="2" title="禁止" {$article.status == 2 ? 'checked' : ''}>
+					</div>
+				  </td>
+				</tr>
+				
+				<tr>
+				  <td align="right"></td>
+				  <td>
+					<div class="layui-input-inline">
+					  <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+					</div>
+				  </td>
+				</tr>
+			  </tbody>
+			</table>
+		</form>	
+    </div>
+  </div>
+
+  {js href="/static/admin/layuiadmin/layui/layui.js" /} 
+  <script>
+	layui.use(['jquery', 'layer','table','flow','form'], function(){
+		var table = layui.table
+		,$ = layui.$
+		,layer = layui.layer
+		,flow = layui.flow
+		,form = layui.form
+		
+		//监听提交
+		form.on('submit(formdemo)', function(data){
+			layer.msg(json.stringify(data.field));
+			return false;
+		});
+		
+	});
+	
+	layui.use('layedit', function(){
+	  var layedit = layui.layedit;
+	  
+		layedit.set({
+		  uploadImage: {
+			url: "{:url('upload/upload_layui')}" //接口url
+			,type: 'post' //默认post
+		  }
+		});
+	  
+	  layedit.build('demo'); //建立编辑器
+	});
+  </script>
+{/block}

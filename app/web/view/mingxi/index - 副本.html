@@ -1,0 +1,181 @@
+<extend name="Public/userbase" />
+<block name="title">申请底单</block>
+<block name="keywords"></block>
+<block name="description"></block>
+<block name="load">
+<script type="text/javascript">
+function getid(){
+	var number = $('#number').val();
+	$.ajax({
+		url: "{:U('order/index_get')}",
+		type: 'POST',
+		data:{numbers:number},
+		dataType: 'json',
+		success: function(data){
+			if(data.status==1){
+				$('#kdname').val(data.name);
+				$('#fname').val(data.fname);
+				$('#fphone').val(data.fphone);
+				$('#faddress').val(data.fsheng+data.fshi+data.fqu+data.faddress);
+				$('#sname').val(data.sname);
+				$('#sphone').val(data.sphone);
+				$('#saddress').val(data.saddress);
+				$('#ftime').val(data.time);
+				$('#goods').val(data.goods);
+				$('#kg').val(data.kg);
+				
+				alert('获取成功');
+			}else{
+				
+				alert('单号有误或者您没有购买这个单号。');
+			}
+		}
+	});
+}
+
+function chek(form){
+    
+
+	if(form.kdname.value==''){
+		alert('请选择快递类型！');
+		form.kdname.focus();
+		return false;
+	}
+	
+	if(form.number.value==''){
+		alert('快递单号不能为空！');
+		form.number.focus();
+		return false;
+	}
+	
+	if(form.img.value==''){
+		alert('请上传降权截图！');
+		form.number.focus();
+		return false;
+	}
+	
+	if(form.fname.value==''){
+		alert('发货人姓名不能为空！');
+		return false;
+	}
+	
+	if(form.fphone.value==''){
+		alert('发货人电话不能为空！');
+		return false;
+	}
+	
+	if(form.faddress.value==''){
+		alert('发货人地址不能为空！');
+		return false;
+	}
+	
+	if(form.sname.value==''){
+		alert('收货人姓名不能为空！');
+		return false;
+	}
+	
+	if(form.sphone.value==''){
+		alert('收货人电话不能为空！');
+		return false;
+	}
+	
+	if(form.saddress.value==''){
+		alert('收货人地址不能为空！');
+		return false;
+	}
+	
+	if(form.ftime.value==''){
+		alert('发货时间不能为空！');
+		return false;
+	}
+	
+	if(form.goods.value==''){
+		alert('商品名称不能为空！');
+		return false;
+	}
+	
+	if(form.kg.value==''){
+		alert('商品重量不能为空！');
+		return false;
+	}
+	
+	
+	return true;
+
+}
+</script>
+</block>
+
+<block name="main">
+<div class="user">
+	<div class="user_index">
+    	<include file="User/top" />
+        <include file="User/left" />
+        <div class="user_right">
+        
+        	<div class="user_title">申请底单</div>
+            
+           
+            	<div class="user_ts" style="margin:20px 10px;">
+                    <p>申请底单须知：</p>
+                    <p class="red">申请之前请检查下淘宝降权单号是否有变，确认后再申请底单。</p>
+                    <p class="red">提交申请后，客服将在24小时内为您处理，请正确上传降权截图，否则一律不处理。 <a href="{:U('Article/view','id=458')}" target="_blank">什么是降权截图？</a></p>
+                    
+                    <p>
+                    ( 注释:只要不刷得太明显都能通过。比如代付刷、红包刷、自己登陆小号购买刷、无假聊等等是肯定过不了的，所以自己对刷法有信心的来申请，<br />要不然申请了底单可能也是徒劳。)</p>
+                    
+                </div>
+                
+                <div class="vipmoney">
+                	<span>普通会员：<em>0.5</em> 元/单</span>
+                    <span>黄金会员：<em>0</em> 元/单</span>
+                    <span>铂金会员：<em>0</em> 元/单</span>
+                    <span>钻石会员：<em>0</em> 元/单</span>
+                </div>
+                
+                <form action="{:U('order/index_save')}" method="post" enctype="multipart/form-data" onsubmit="return chek(this)">
+                <div class="user_order">
+                    <ul>
+                    
+                    
+                    <li>
+                	　快递单号：<input id="number" name="number" type="text" class="val" value="" /> <a href="javascript:getid()" class="getid">获取单号信息</a> <em>输入快递单号，点击获取单号信息即可获得以下所有信息</em>
+                	</li>
+                    
+                    <li>　快递类型：<input id="kdname" name="kdname" type="text"  class="val" valvalue="" /></li>
+                    <li>发货人姓名：<input id="fname" name="fname" type="text"  class="val" valvalue="" /></li>
+                    <li>发货人手机：<input id="fphone" name="fphone" type="text" class="val" value="" /></li>
+                    <li>发货人地址：<input id="faddress" name="faddress" type="text" class="val" value="" style="width:500px" /></li>
+                    <li>收货人姓名：<input id="sname" name="sname" type="text" class="val" value="" /></li>
+                    <li>收货人手机：<input id="sphone" name="sphone" type="text" class="val" value="" /></li>
+                    <li>收货人地址：<input id="saddress" name="saddress" type="text" class="val" value=""  style="width:500px" /></li>
+                    <li>　发货日期：<input id="ftime" name="ftime" type="text" class="val" value="" /> <em>格式：2015-08-11</em></li>
+                    <li>　商品名称：<input id="goods" name="goods" type="text" class="val" value="" /></li>
+                    <li>　商品重量：<input id="kg" name="kg" type="text" class="val" value="" /></li>
+                    
+                    
+                    
+                    
+                    <li>
+                    　降权截图：<input name="img" type="file"/> <em>【<a href="{:U('Article/view','id=458')}" target="_blank" style="color:#F00; font-weight:bold;">降权截图样式</a>】 请正确上传截图，否则不予通过，图片允许后缀：.jpg .gif .png .jpeg </em>
+                    </li>
+
+                    
+                    <li><input type="submit" class="qr" value="提交申请"  /></li>
+                    </ul>
+                </div>
+				</form>
+
+
+  
+                <div class="clear"></div>
+           
+            
+
+        
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+</block>

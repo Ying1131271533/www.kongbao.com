@@ -1,0 +1,64 @@
+{extend name="layout/userbase" /}
+{block name="title"}我的好友{/block}
+{block name="load"}
+{block name="keywords"}
+{block name="description"}
+{/block}
+
+
+{block name="main"}
+<div class="user">
+	<div class="user_index">
+            {include file="layout/top" /}
+            {include file="layout/left" /}
+        <div class="user_right">
+        
+        	<div class="user_title">我的好友</div>
+
+                <div class="user_friends">
+                	
+                	<ul class="cz">
+                		<li class="c1">注册时间</li>
+                        <li class="c2">好友账户</li>
+                        <li class="c3">好友等级</li>
+                        <li class="c4">登录次数</li>
+                        <li class="c5">消费金额</li>
+                    </ul>
+                    
+                    {volist name="list" id="vo"}
+                        <ul>
+                		<li class="c1">{$vo.create_time |date="Y-m-d H:i:s"}</li>
+                        <li class="c2">***{$vo.username}</li>
+                        <li class="c3">
+                            {if condition="$vo.level eq 1"}
+                            普通会员
+                            {elseif condition="$vo.level eq 2"/}
+                            黄金会员
+                            {elseif condition="$vo.level eq 3"/}
+                            铂金会员
+                            {elseif condition="$vo.level eq 4"/}
+                            钻石会员
+                            {/if}
+                        </li>
+                        <li class="c4">{$vo.login_counts}</li>
+                        <li class="c5">{$vo.expense_money}</li>
+                    	</ul>
+                    {/volist}
+                    
+                </div>
+                
+                <div class="text-center"><ul class="pagination"></ul></div>
+
+
+  
+                <div class="clear"></div>
+           
+            
+
+        
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+{/block}

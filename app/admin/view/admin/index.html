@@ -1,0 +1,112 @@
+{extend name="layout/base" /}
+{block name="main"}
+	<div class="layui-fluid">
+		<div class="layui-row layui-col-md-offset0" style="margin-bottom:20px;">
+			<div class="layui-col-md9">
+				<a href="{:url('admin/admin_add')}" class="layui-btn layui-btn-danger">添加管理员</a>
+			</div>
+		</div>
+		<form class="layui-form" action="" method="post">
+			<table class="layui-table">
+			  <thead>
+				<tr>
+				  <th>ID</th>
+				  <th>管理员名称</th>
+				  <th>真实姓名</th>
+				  <th>角色</th>
+				  <th>QQ</th>
+				  <th>状态</th>
+				  <th>操作</th>
+				</tr>
+			  </thead>
+			  <tbody>
+				{foreach $adminList as $value}
+				<tr>
+				  <td>{$value.id}</td>
+				  <td>{$value.name}</td>
+				  <td>{$value.real_name}</td>
+				  <td>
+					{foreach $value.roles as $k => $val}
+					{neq name="$k" value="0"} 、 {/neq}{$val.name}
+					{/foreach}
+				  </td>
+				  <td>{$value.qq}</td>
+				  <td>
+					<a onclick="ajax_status(this)" data-id="{$value.id}" data-url="{:url('ajax/status', ['id' => $value.id, 'value' => $value.status, 'field' => 'status', 'db' => 'admin'])}" class="layui-btn layui-btn-sm {$value.status == 1 ?: 'layui-btn-danger'}">{$value.status == 1 ? '开启' : '关闭'}</a>
+				  </td>
+				  <td>
+					<a href="javascript:edit({$value.id});" class="layui-btn">
+					  <i class="layui-icon">&#xe642;</i> 修改
+					</a>
+					<a class="layui-btn layui-bg-black" href="javascript:del({$value.id});">
+					  <i class="layui-icon">&#xe640;</i> 删除
+					</a>
+					<!-- <a class="layui-btn layui-bg-blue" href="{:url('role_auth', ['id' => $value.id])}">
+					  <i class="layui-icon">&#xe66e;</i> 权限
+					</a> -->
+				  </td>
+				</tr>
+				{/foreach}
+			  </tbody>
+			</table>
+		</form>
+	</div>
+
+  {js href="/static/admin/layuiadmin/layui/layui.js" /} 
+  <script>
+	layui.use(['jquery', 'layer', 'table', 'flow', 'form', 'laypage'], function(){
+		var table = layui.table
+		,$ = layui.$
+		,layer = layui.layer
+		,flow = layui.flow
+		,form = layui.form
+		,laypage = layui.laypage
+		
+		
+		//监听提交
+		form.on('submit(formdemo)', function(data){
+			layer.msg(json.stringify(data.field));
+			return false;
+		});
+		
+		
+	});
+	
+	
+	function edit(id)
+	{
+		//修改信息
+		layer.open({
+		  id:'1',
+		  type: 2,
+		  title: '角色ID:' + id,
+		  shadeClose: true,
+		  shade: [0.8, '#000000'],
+		  area: ['1000px', '600px'],
+		  content: "{:url('admin_edit')}?id=" + id,
+		});
+	}
+	
+	function del(id)
+	{
+		layer.confirm('确定要删除管理员吗', function(index){
+			window.location.href = "{:url('admin_del')}?id=" + id;
+			layer.close(index);
+		});
+	}
+  </script>
+{/block}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

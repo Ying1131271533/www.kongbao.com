@@ -1,0 +1,50 @@
+<div class="header">
+	<ul>
+        <div class="head-l">
+            <a href="/" title="空包网">51空包网</a>
+        </div>
+
+        {empty name=":session('userid')"}
+        <div class="head-r">
+            <a href="{:url('register/index')}">注册会员</a><span>|</span>
+            <a href="{:url('login/index')}">会员登录</a><span>|</span>
+            <a href="{:url('oauth/call', ['type' => 'qq'])}">
+				<img src="/static/web/images/login/qq_2.gif" />
+			</a>
+			<span>|</span>
+            <a href="{:url('friends/invitation')}">邀请好友拿奖励</a>
+        </div>
+        {else/}
+        <div class="head-r">
+            <a href="{:url('user/index')}" style="color:#F60">{:session('username')}</a><span>|</span>
+            <a href="{:url('friends/invitation')}">邀请好友拿奖励</a><span>|</span>
+            <a href="{:url('login/logout')}">退出</a>
+        </div>
+        {/empty}
+	
+        <div class="bdsharebuttonbox" style="float:right; margin-left:10px; margin-top:2px;">
+        <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a><a href="#" class="bds_more" data-cmd="more"></a>
+        </div>
+<script>
+window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+    </ul>
+</div>
+
+<div class="top">
+    <div class="navbar-header">
+    <a class="logo" href="/"></a>
+    </div>
+    
+    <div class='nav'>
+        <ul>
+            <li class="selected"><a href="/">首页</a></li>
+            <li><a href="http://www.51liuliangshenqi.com/" target="_blank" style="color:#F00;">刷流量</a></li>
+            <li><a href="{:url('bag/buy_pl')}">快递下单</a></li>
+            <li><a href="{:url('pay/index')}">在线充值</a></li>
+            <li><a href="{:url('user/vip')}">会员升级</a></li>
+            <li><a href="{:url('order/index')}"><font color="#FF0000">底单申诉</font></a></li>
+            <li><a href="{:url('help/index')}">帮助中心</a></li>
+        </ul>
+	</div>
+</div>

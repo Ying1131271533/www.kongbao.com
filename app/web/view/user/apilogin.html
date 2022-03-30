@@ -1,0 +1,49 @@
+<extend name="Public/userbase" />
+<block name="title">绑定第三方帐号</block>
+<block name="keywords"></block>
+<block name="description"></block>
+<block name="load">
+<link href="__CSS__/user.css?20161125" rel="stylesheet">
+</block>
+
+<block name="main">
+<div class="user">
+	<div class="user_index">
+    	<include file="User/top" />
+        <include file="User/left" />
+        <div class="user_right">
+        
+        	<div class="user_title">绑定第三方帐号</div>
+            
+           
+            	<div id="setting_form" class="account_bind">
+                    <h3>绑定帐号享受为您带来的多种登陆方式。</h3>
+                    <ul class="bind_logo">
+                        <li>
+                            <img alt="QQ账户登录" src="/static/web/images/login/qq_3.png">
+                            <div class="bind_web">
+                            <notempty name="list.webid">
+                                <span class="unbind">您已绑定QQ账号</span><br/>
+                                <a style="color:#F00" href="{:U('User/apilogin','kill=qq')}" onclick='return confirm("确定解除?")'>解除绑定</a>
+                            <else />
+                                <span class="unbind">你还未绑定QQ账号</span><br>
+                                <a href="{:U('Oauth/call','type=qq')}">绑定账号</a>
+                            </notempty>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+
+  
+                <div class="clear"></div>
+           
+            
+
+        
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+</block>

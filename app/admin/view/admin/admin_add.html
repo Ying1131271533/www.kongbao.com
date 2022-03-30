@@ -1,0 +1,152 @@
+{extend name="layout/base" /}
+{block name="main"}
+  <div class="layui-fluid">
+	<div class="layui-form">
+		<form action="{:url('admin_add')}" method="post" name="example">
+			<table class="layui-table" lay-size="lg" lay-skin="line">
+			  <thead>
+				<tr>
+				  <th colspan="2">管理员添加</th>
+				</tr> 
+			  </thead>
+			  <tbody>
+				<tr>
+				  <td width="150" align="right"><strong>管理员名称：</strong></td>
+				  <td>
+					<div class="layui-input-inline">
+					  <input class="layui-input" type="text" name="name" placeholder="用户名">
+					</div>
+				  </td>
+				</tr>
+				<tr>
+				  <td width="150" align="right"><strong>真实名字：</strong></td>
+				  <td>
+					<div class="layui-input-inline">
+					  <input class="layui-input" type="text" name="real_name" placeholder="真实名字">
+					</div>
+				  </td>
+				</tr>
+				<tr>
+				  <td width="150" align="right"><strong>qq：</strong></td>
+				  <td>
+					<div class="layui-input-inline">
+					  <input class="layui-input" type="text" name="qq" placeholder="qq">
+					</div>
+				  </td>
+				</tr>
+				<tr>
+				  <td align="right"><strong>密码：</strong></td>
+				  <td>
+					<div class="layui-input-inline">
+					  <input class="layui-input" type="password" name="password" placeholder="密码" >
+					</div>
+				  </td>
+				</tr>
+				<tr>
+				  <td align="right"><strong>确认密码：</strong></td>
+				  <td>
+					<div class="layui-input-inline">
+					  <input class="layui-input" type="password" name="password2" placeholder="确认密码" >
+					</div>
+				  </td>
+				</tr>
+				
+				<tr>
+					<td align="right" class="ruiwen"><strong>角色：</strong></td>
+					<td>
+						<div class="akali" style="margin-bottom:10px;">
+							<div class="layui-input-inline">
+							  <select name="role[]">
+								<option value="">请选择</option>
+								{foreach $role as $value}
+								<option value="{$value.id}">{$value.name}</option>
+								{/foreach}
+							  </select>
+							</div>
+							<a href="javascript:;" class="layui-btn layui-btn-sm" onclick="add(this)">
+							  <i class="layui-icon">&#xe654;</i> 增加
+							</a>
+							<a href="javascript:;" class="layui-btn layui-bg-black layui-btn-sm" onclick="del(this)">
+							  <i class="layui-icon">&#xe640;</i> 删除
+							</a>
+						</div>
+						<div class="jinx" style="display:hidden;"></div>
+					</td>
+				</tr>
+				
+				<tr>
+				  <td align="right"><strong>登录状态：</strong></td>
+				  <td>
+					<div class="layui-input-inline">
+					  <input type="radio" name="status" value="1" title="正常" checked>
+					  <input type="radio" name="status" value="2" title="禁止">
+					</div>
+				  </td>
+				</tr>
+				<tr>
+				  <td align="right"></td>
+				  <td>
+					<div class="layui-input-inline">
+					  <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+					</div>
+				  </td>
+				</tr>
+			  </tbody>
+			</table>
+		</form>	
+    </div>
+  </div>
+
+  {js href="/static/admin/layuiadmin/layui/layui.js" /} 
+  <script>
+	layui.use(['jquery', 'layer','table','flow','form'], function(){
+		var table = layui.table
+		,$ = layui.$
+		,layer = layui.layer
+		,flow = layui.flow
+		,form = layui.form
+		
+		//监听提交
+		form.on('submit(formdemo)', function(data){
+			layer.msg(json.stringify(data.field));
+			return false;
+		});
+		
+	});
+		
+	function add(obj)
+	{
+		layui.use(['jquery', 'layer'], function(){
+			var layer = layui.layer
+			,$ = layui.$
+			,form = layui.form
+			
+			var html = $(obj).parents('.akali').clone();
+			$('.jinx').before(html);
+			
+			form.render();
+		});
+		
+	}
+	
+	function del(obj)
+	{
+		layui.use(['jquery', 'layer'], function(){
+			var layer = layui.layer
+			,$ = layui.$
+			,form = layui.form
+			
+			var len = $('.akali').length;
+			if(len <= 1)
+			{
+				return false;
+			}
+			
+			$(obj).parents('.akali').remove();
+			
+			form.render();
+		});
+		
+	}
+  </script>
+{/block}

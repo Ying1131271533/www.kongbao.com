@@ -1,0 +1,85 @@
+{extend name="layout/base" /}
+{block name="main"}
+	<div class="layui-fluid">
+		<div class="layui-form">
+			<form action="{:url('link_add')}" method="post" name="example">
+				<table class="layui-table">
+					<colgroup>
+						<col width="100">
+						<col width="300">
+						<col width="550">
+						<col width="210">
+						<col width="300">
+					</colgroup>
+					<thead>	
+						<div style = "text-align:right;">
+							<button type="button" class="layui-btn layui-btn-normal" onclick="location.href='/index.php/link/link_add'" >新增链接</button>                
+						</div>
+						<button class="layui-btn layui-btn-radius layui-btn-primary" style="margin-top:-50px;">共{$count}条数据</button>
+
+						<tr>
+							<th>id</th>
+							<th>账号</th>
+							<th>密码</th>
+							<th>状态</th>
+							<th>创建时间</th>
+							<th>操作</th>
+						</tr> 
+					</thead>
+					<tbody>
+					{foreach name='link_result' item='vo'}
+					<tr>
+					<td>{$vo.id}</td>
+					<td>{$vo.name}</td>
+					<td>{$vo.password}</td>
+					<td>
+							{if condition="$vo.status eq 1"}
+							<button class="layui-btn layui-btn-xs">正常</button>
+							{else/}
+							<button class="layui-btn layui-btn-xs">禁用</button>
+							{/if}
+					</td>
+					<td>{$vo.create_time}</td>
+					<td>
+					<button type="button" class="layui-btn layui-btn-sm layui-btn-danger" onclick="location.href='/index.php/link/link_update_view/id/{$vo.id}'">修改</button>
+					<button type="button" class="layui-btn layui-btn-sm" onclick="location.href='/index.php/link/link_del/id/{$vo.id}'">删除</button></td>
+					</tr>
+					{/foreach}
+					</tbody>
+				</table>
+			</form>	
+		</div>
+	</div>
+	
+  {js href="/static/admin/layuiadmin/layui/layui.js" /} 
+  <script>
+	layui.use(['jquery', 'layer','table','flow','form'], function(){
+		var table = layui.table
+		,$ = layui.$
+		,layer = layui.layer
+		,flow = layui.flow
+		,form = layui.form
+		
+		//监听提交
+		form.on('submit(formdemo)', function(data){
+			layer.msg(json.stringify(data.field));
+			return false;
+		});
+	});
+
+  </script>
+{/block}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

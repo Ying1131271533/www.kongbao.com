@@ -1,0 +1,73 @@
+{extend name="layout/userbase" /}
+{block name="title"}会员中心{/block}
+
+{block name="load"}
+<script type="text/javascript">
+function save(){
+	var passworda = $('#passworda').val();
+	var passwordb = $('#passwordb').val();
+	var passwordc = $('#passwordc').val();
+	$.ajax({
+		url: "{:url()}",
+		type: 'POST',
+		data:{passworda:passworda,passwordb:passwordb,passwordc:passwordc},
+		dataType: 'json',
+		success: function(data){
+			if(data.code == 1)
+			{
+				layer.msg(data.msg, {icon:2});
+			}else if(data.code == 0)
+			{
+				layer.msg(data.msg, {icon:1});
+				setTimeout(function(){
+					window.location = "{:url()}";
+				}, 500);
+			}
+		}
+	});
+}
+</script>
+{/block}
+
+{block name="main"}
+<div class="user">
+	<div class="user_index">
+    	{include file="layout/top" /}
+		{include file="layout/left"/}
+        <div class="user_right">
+        
+        	<div class="user_title">修改密码</div>
+            <div class="user_text">
+            	<dl>
+                	<dt>用户登录名：</dt>
+                    <dt>原密码：</dt>
+                    <dt>新密码：</dt>
+                    <dt>确认新密码：</dt>
+                    <dt></dt>
+                </dl>
+                
+                <dl>
+                	<dd>{$user.username}</dd>
+                    <dd><input id="passworda" name="passworda" type="password" class="val" value="" /></dd>
+                    <dd><input id="passwordb" name="passwordb" type="password" class="val" value="" /></dd>
+                    <dd><input id="passwordc" name="passwordc" type="password" class="val" value="" /></dd>
+                    <dd><a class="qr" href="javascript:save()">确认修改</a></dd>
+                </dl>
+                <div class="clear"></div>
+                
+                	
+                    
+            </div>
+            
+            <div class="user_ts">
+                <p>修改密码须知</p>
+                <p class="red">如果您是用第三方帐号登录的，系统会自动为您创建一个原密码。<br />原密码会在输入栏的右边显示出来，请您尽快修改密码。<br />如果是非第三方帐号注册的，原密码将不显示出来，使用您现在的登录密码即可。</p>
+            </div>
+
+        
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+{/block}

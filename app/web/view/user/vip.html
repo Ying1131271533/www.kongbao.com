@@ -1,0 +1,110 @@
+{extend name="layout/userbase" /}
+{block name="title"}会员升级{/block}
+
+{block name="load"}
+<script type="text/javascript">
+function urlp(s){
+	$.ajax({
+		url: "{:url()}",
+		type: 'POST',
+		data:{type:s},
+		dataType: 'json',
+		success: function(data){
+			if(data.code == 1){
+				layer.msg(data.msg, {icon:2});
+			}else if(data.code == 0){
+				alert(data.msg);
+				window.location="{:url('user/index')}";
+			}
+		}
+	});
+
+}
+</script>
+{/block}
+
+{block name="main"}
+<div class="user">
+	<div class="user_index">
+    	{include file="layout/top" /}
+		{include file="layout/left" /}
+        <div class="user_right">
+        	<div class="user_title">会员升级</div>
+				
+                <div class="dqdj">您当前的会员级别：{:vip($user.level)}</div>
+                <p style="margin:0 0 20px 10px; color:#ff0000;">请注意这里是花钱自助升级的，请不要操作错误了，充值赠送的会员等级是自动为您升级的，不需要您再来操作!!!</p>
+                
+                <div class="user_vip">
+                	
+                	<ul class="vt">
+                		<li class="v1">级别名称</li>
+                        <li class="v2">会员优惠</li>
+                        <li class="v3">升级价格</li>
+                        <li class="v4">操作</li>
+                    </ul>
+                    
+                    <ul>
+                		<li class="v1"><span class="level2">黄金会员</span></li>
+                        <li class="v2">购买所有单号享受优惠，优惠详情请看下表；免费申请底单</li>
+                        <li class="v3"><font color="#CC0000">{$vip.level2}</font>元/永久</li>
+                        <li class="v4">{if condition="$user.level lt 2 "}<a href="javascript:urlp(2)">确认升级</a>{else /}无需升级{/if}</li>
+                    </ul>
+                    
+                    <ul>
+                		<li class="v1"><span class="level3">铂金会员</span></li>
+                        <li class="v2">购买所有单号享受优惠，优惠详情请看下表；免费申请底单</li>
+                        <li class="v3"><font color="#CC0000">{$vip.level3}</font>元/永久</li>
+                        <li class="v4">{if condition="$user.level lt 3 "}<a href="javascript:urlp(3)">确认升级</a>{else /}无需升级{/if}</li>
+                    </ul>
+                    
+                    <ul>
+                		<li class="v1"><span class="level4">钻石会员</span></li>
+                        <li class="v2">购买所有单号享受优惠，优惠详情请看下表；免费申请底单</li>
+                        <li class="v3"><font color="#CC0000">{$vip.level4}</font>元/永久</li>
+                        <li class="v4">{if condition="$user.level lt 4 "}<a href="javascript:urlp(4)">确认升级</a>{else /}无需升级{/if}</li>
+                    </ul>
+                    <div class="clear"></div>
+                    
+                </div>
+				
+				
+                <div class="user_kdjg">
+                	
+                <ul class="mz">
+                    <li class="m1">快递类型</li>
+
+                    <li class="m2">{$user.level == 1 ? '<span>普通会员</span>' : '普通会员'}</li>
+                    <li class="m3">{$user.level == 2 ? '<span>黄金会员</span>' : '黄金会员'}</li>
+                    <li class="m4">{$user.level == 3 ? '<span>铂金会员</span>' : '铂金会员'}</li>
+                    <li class="m5">{$user.level == 4 ? '<span>钻石会员</span>' : '钻石会员'}</li>
+                </ul>
+                
+                {volist name="list" id="vo"}
+                    <ul>
+                    <li class="m1">{$vo.name}</li>
+
+					<li class="m2">{if condition="$user.level eq 1"}<span>{$vo.level1}元</span>{else /}{$vo.level1}元{/if}</li>
+                    <li class="m3">{if condition="$user.level eq 2"}<span>{$vo.level2}元</span>{else /}{$vo.level2}元{/if}</li>
+                    <li class="m4">{if condition="$user.level eq 3"}<span>{$vo.level3}元</span>{else /}{$vo.level3}元{/if}</li>
+                    <li class="m5">{if condition="$user.level eq 4"}<span>{$vo.level4}元</span>{else /}{$vo.level4}元{/if}</li>
+                    </ul>
+                    <ul>
+                    	<li class="m8">{$vo.explain}</li>
+                    </ul>
+                {/volist}
+				
+            </div>
+
+
+  
+                <div class="clear"></div>
+           
+            
+
+        
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+{/block}

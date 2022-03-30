@@ -1,0 +1,186 @@
+{extend name="layout/base" /}
+{block name="main"}
+	<div class="layui-fluid">
+		<div class="layui-form">
+			<div class="layui-input-inline layui-col-space5">
+				<input class="layui-input" type="text" name="order" value="" placeholder="快递名称" id="nameReload">
+			</div>
+			<div class="layui-input-inline" style="float:right;">
+				<a href="{:url('add')}" class="layui-btn  layui-btn-danger akali" data-type="reload">添加快递<a>
+			</div>
+			<div class="layui-input-inline">
+				<button class="layui-btn akali" data-type="reload">搜索<button>
+			</div>
+		</div>
+		
+		
+		  <div class="layui-card-body layui-col-space5">
+			<div class="layui-input-inline">
+				<a class="{$ms == '' ?  'layui-btn' : 'layui-btn layui-btn-primary'} layui-btn-sm" href="{:url('')}">全部<a>
+			</div>
+			<div class="layui-input-inline">
+				<a class="{$ms == 1 ?  'layui-btn' : 'layui-btn layui-btn-primary'} layui-btn-sm" href="{:url('', ['ms' => '1'])}">单个<a>
+			</div>
+			<div class="layui-input-inline">
+				<a class="{$ms == 2 ?  'layui-btn' : 'layui-btn layui-btn-primary'} layui-btn-sm" href="{:url('', ['ms' => '2'])}">多个<a>
+			</div>
+			<div class="layui-input-inline">
+				<a class="{$ms == 3 ?  'layui-btn' : 'layui-btn layui-btn-primary'} layui-btn-sm" href="{:url('', ['ms' => '3'])}">单个/多个<a>
+			</div>
+		  </div>
+		
+		
+		<table id="layui_user" lay-filter="user"></table>
+	</div>
+	
+	{js href="/static/admin/layuiadmin/layui/layui.js" /}
+	
+	<script type="text/html" id="typeTpl">
+		{{# if(d.type == 1){ }}
+		<span class="layui-badge layui-bg-green">可以</span>
+		{{# }else { }}
+		<span class="layui-badge layui-bg-red">不可以</span>
+		{{# }}}
+	</script>
+	
+	<script type="text/html" id="statusTpl">
+		{{# if(d.status == 1){ }}
+		<span class="layui-badge layui-bg-green">正常</span>
+		{{# }else { }}
+		<span class="layui-badge layui-bg-red">暂停</span>
+		{{# }}}
+	</script>
+	
+	<script type="text/html" id="msTpl">
+		{{# if(d.ms == 1){ }}
+		单个
+		{{# }else if(d.ms == 2){ }}
+		多个
+		{{# }else if(d.ms == 3){ }}
+		单个 / 多个
+		{{# }}}
+	</script>
+	
+	<script type="text/html" id="editTpl">
+		<button class="layui-btn layui-btn-xs" lay-event="edit"><i class="layui-icon">&#xe642;</i> 修改</button>
+		<button class="layui-btn layui-btn-xs layui-bg-black" lay-event="del"><i class="layui-icon">&#xe640;</i> 删除</button>
+	</script>
+	
+	<script>
+	layui.use(['jquery', 'layer','table','flow','form','laypage'], function(){
+		var table = layui.table
+		,$ = layui.$
+		,layer = layui.layer
+		,flow = layui.flow
+		,form = layui.form
+		,laypage = layui.laypage
+		
+		
+		// 第一个实例
+		table.render({
+			elem: '#layui_user'
+			,url: "{:url('index', ['ms' => $ms])}" //数据接口
+			,page: true //开启分页
+			,id: 'user' 
+			,limit: 20
+			,limits: [20, 100, 200, 500]
+			,size: 'sm'
+			,cols: [[ //表头
+				{field: 'id', title: 'ID', width:100, sort: true, fixed: 'left'}
+				,{field: 'name', title: '快递名称', width:200} 
+				,{field: 'explain', title: '描述', width:375} 
+				,{field: 'sort_order', title: '排序', width:80, sort: true}
+				,{field: 'level1', title: '普通会员', width:80}
+				,{field: 'level2', title: '黄金会员', width:80}
+				,{field: 'level3', title: '铂金会员', width:80}
+				,{field: 'level4', title: '钻石会员', width:80}
+				,{field: 'cost_price', title: '成本价格', width: 100}
+				,{field: 'type', title: '是否可购买', width: 90, templet: '#typeTpl'}
+				,{field: 'status', title: '状态', width: 70, templet: '#statusTpl'}
+				,{field: 'ms', title: '下单类型', width: 100, templet: '#msTpl'}
+				,{field: 'apitype', title: '接口标识', width: 100, templet: '#apitypeTpl'}
+				,{field: 'edit', title: '操作', width: 155, templet: '#editTpl', fixed: 'right'}
+			]]
+		});
+		
+		//监听排序事件 
+		table.on('sort(user)', function(obj){
+			console.log(obj.field);
+			console.log(obj.type);
+			console.log(this);
+			
+			table.reload('user', {
+				initSort: obj
+				,where: {
+					field: obj.field
+					,order: obj.type
+				}
+			});
+			
+		});
+		
+		var $ = layui.$, active = {
+			reload: function(){
+				var nameReload = $('#nameReload');
+				
+				//执行重载
+				table.reload('user', {
+					where: {
+						name:nameReload.val(),
+					}
+				});
+			}
+		};
+		
+		//点击事件
+		$('.akali').on('click', function(){
+			var type = $(this).data('type');
+			active[type] ? active[type].call(this) : '';
+		});
+		
+		
+		//监听工具条
+		table.on('tool(user)', function(obj){
+			var data = obj.data; //获得当前行数据
+			var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
+
+			if(layEvent === 'edit')
+			{ 
+				// window.location.href = "{:url('edit')}?id=" + data.id;
+				layer.open({
+					type: 2,
+					title: '快递修改',
+					content: '{:url("edit")}?id=' + data.id,
+					shadeClose: true,
+					shade: [0.8, '#000000'],
+					area: ['1000px', '600px'],
+				});
+			}else if(layEvent === 'del')
+			{ 
+				layer.confirm('确定要删除此快递吗', function(index){
+					window.location.href = "{:url('del')}?id=" + data.id;
+					layer.close(index);
+				});
+			}
+		
+		});
+		
+	
+	});
+	
+	</script>
+{/block}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

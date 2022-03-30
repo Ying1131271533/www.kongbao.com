@@ -1,0 +1,81 @@
+---------------------------------------------------------------
+[2021-04-03T18:05:41+08:00] 127.0.0.1 GET www.tp6.com/
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000552s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `article` [ RunTime:0.001758s ]
+[ sql ] [ SQL ] SELECT * FROM `article` WHERE  `status` = 1  AND `type_id` = 3 ORDER BY `create_time` DESC LIMIT 6 [ RunTime:0.013073s ]
+[ sql ] [ SQL ] SELECT * FROM `article` WHERE  `status` = 1  AND `type_id` = 1 ORDER BY `create_time` DESC LIMIT 7 [ RunTime:0.000369s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `link` [ RunTime:0.034289s ]
+[ sql ] [ SQL ] SELECT * FROM `link` ORDER BY `weight` DESC [ RunTime:0.000335s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\web\view\home\index.html [ array (
+  0 => 'gd',
+  1 => 'link',
+  2 => 'article',
+  3 => 'gg',
+) ]
+---------------------------------------------------------------
+[2021-04-03T18:05:46+08:00] 127.0.0.1 POST www.tp6.com/login/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000612s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `user` [ RunTime:0.001039s ]
+[ sql ] [ SQL ] SELECT `id` FROM `user` WHERE  `username` = '神织知更' LIMIT 1 [ RunTime:0.000390s ]
+[ sql ] [ SQL ] SELECT * FROM `user` WHERE  `username` = '神织知更' LIMIT 1 [ RunTime:0.000454s ]
+---------------------------------------------------------------
+[2021-04-03T18:06:00+08:00] 127.0.0.1 POST www.tp6.com/login/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000707s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `user` [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT `id` FROM `user` WHERE  `username` = '艾丝缇布兰雪' LIMIT 1 [ RunTime:0.000386s ]
+[ sql ] [ SQL ] SELECT * FROM `user` WHERE  `username` = '艾丝缇布兰雪' LIMIT 1 [ RunTime:0.000240s ]
+---------------------------------------------------------------
+[2021-04-03T18:36:10+08:00] 127.0.0.1 POST www.tp6.com/login/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000917s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `user` [ RunTime:0.001893s ]
+[ sql ] [ SQL ] SELECT `id` FROM `user` WHERE  `username` = '艾丝缇布兰雪' LIMIT 1 [ RunTime:0.000308s ]
+[ sql ] [ SQL ] SELECT * FROM `user` WHERE  `username` = '艾丝缇布兰雪' LIMIT 1 [ RunTime:0.000329s ]
+---------------------------------------------------------------
+[2021-04-03T18:37:37+08:00] 127.0.0.1 POST www.tp6.com/login/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000636s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `user` [ RunTime:0.001519s ]
+[ sql ] [ SQL ] SELECT `id` FROM `user` WHERE  `username` = '艾丝缇布兰雪' LIMIT 1 [ RunTime:0.000361s ]
+[ sql ] [ SQL ] SELECT * FROM `user` WHERE  `username` = '艾丝缇布兰雪' LIMIT 1 [ RunTime:0.000346s ]
+---------------------------------------------------------------
+[2021-04-03T18:38:38+08:00] 127.0.0.1 POST www.tp6.com/login/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000543s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `user` [ RunTime:0.001525s ]
+[ sql ] [ SQL ] SELECT `id` FROM `user` WHERE  `username` = '艾丝缇布兰雪' LIMIT 1 [ RunTime:0.000214s ]
+[ sql ] [ SQL ] SELECT * FROM `user` WHERE  `username` = '艾丝缇布兰雪' LIMIT 1 [ RunTime:0.000276s ]
+---------------------------------------------------------------
+[2021-04-03T18:46:57+08:00] 127.0.0.1 POST www.tp6.com/login/index.html
+[ error ] [0]语法错误: unexpected end of file, expecting function (T_FUNCTION) or const (T_CONST)[D:\Web\www.tp6.com\app\common\controller\ViewController.php:328]
+---------------------------------------------------------------
+[2021-04-03T18:47:07+08:00] 127.0.0.1 POST www.tp6.com/login/index.html
+[ error ] [0]语法错误: unexpected end of file, expecting function (T_FUNCTION) or const (T_CONST)[D:\Web\www.tp6.com\app\common\controller\ViewController.php:328]
+---------------------------------------------------------------
+[2021-04-03T18:48:14+08:00] 127.0.0.1 POST www.tp6.com/login/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000678s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `user` [ RunTime:0.000823s ]
+[ sql ] [ SQL ] SELECT `id` FROM `user` WHERE  `username` = '艾丝缇布兰雪' LIMIT 1 [ RunTime:0.000233s ]
+[ sql ] [ SQL ] SELECT * FROM `user` WHERE  `username` = '艾丝缇布兰雪' LIMIT 1 [ RunTime:0.000749s ]
+[ sql ] [ SQL ] UPDATE `user`  SET `last_login_time` = 1617446893 , `login_counts` = 64  WHERE  `id` = 74 [ RunTime:0.000543s ]
+---------------------------------------------------------------
+[2021-04-03T18:48:14+08:00] 127.0.0.1 GET www.tp6.com/user/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000739s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `user` [ RunTime:0.001713s ]
+[ sql ] [ SQL ] SELECT * FROM `user` WHERE  `id` = 74 LIMIT 1 [ RunTime:0.000319s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `kd` [ RunTime:0.000670s ]
+[ sql ] [ SQL ] SELECT * FROM `kd` WHERE  `status` = 1  AND `ms` IN (1,2,3)  AND `type` = 1 ORDER BY `sort_order` ASC [ RunTime:0.000425s ]
+[ sql ] [ SQL ] SELECT * FROM `user` WHERE  `id` = 74 LIMIT 1 [ RunTime:0.000227s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `address` [ RunTime:0.001488s ]
+[ sql ] [ SQL ] SELECT * FROM `address` WHERE  `user_id` = 74 [ RunTime:0.000283s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\web\view\user\index.html [ array (
+  0 => 'user',
+  1 => 'list',
+  2 => 'check',
+  3 => 'address',
+) ]
+---------------------------------------------------------------
+[2021-04-03T18:48:24+08:00] 127.0.0.1 GET www.tp6.com/order/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000718s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `user` [ RunTime:0.002317s ]
+[ sql ] [ SQL ] SELECT * FROM `user` WHERE  `id` = 74 LIMIT 1 [ RunTime:0.000508s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\web\view\order\index.html [ array (
+  0 => 'user',
+) ]

@@ -1,0 +1,73 @@
+{extend name="layout/base" /}
+{block name="main"}
+  <div class="layui-fluid">
+	<div class="layui-form">
+		<form action="{:url('link_adds')}" method="post" name="example">
+			<table class="layui-table" lay-size="lg" lay-skin="line">
+			  <thead>
+				<tr>
+				  <th colspan="2">友情链接添加</th>
+				</tr> 
+			  </thead>
+			  <tbody>
+				<tr>
+						
+				  <td width="150" align="right"><strong>网站：</strong></td>
+				  <td>
+					<div class="layui-input-inline">
+					  <input class="layui-input" type="text" name="title" placeholder="请输入网站名" value ="">
+					</div>
+				  </td>
+				</tr>
+				<tr>
+				  <td align="right"><strong>地址：</strong></td>
+				  <td>
+					<div class="layui-input-inline">
+					  <input class="layui-input" type="test" name="url" placeholder="www.某某某.com" value ="">
+					</div>
+				  </td>
+				</tr>
+				<tr>
+				  <td align="right"><strong>权重：</strong></td>
+				  <td>
+					<div class="layui-input-inline">
+						
+						<input class="layui-input" type="test" name="weight" placeholder="数字排序" value="">
+					</div>
+				  </td>
+				</tr>
+				  </td>
+				</tr>
+				<tr>
+					
+				  <td align="right"></td>
+				  <td>
+					<div class="layui-input-inline">
+						<input type="submit"class="layui-btn" lay-submit lay-filter="formDemo" value="添加" >
+					</div>
+				  </td>
+				</tr>
+			  </tbody>
+			</table>
+		</form>	
+    </div>
+  </div>
+
+  {js href="/static/admin/layuiadmin/layui/layui.js" /} 
+  <script>
+	layui.use(['jquery', 'layer','table','flow','form'], function(){
+		var table = layui.table
+		,$ = layui.$
+		,layer = layui.layer
+		,flow = layui.flow
+		,form = layui.form
+		
+		//监听提交
+		form.on('submit(formdemo)', function(data){
+			layer.msg(json.stringify(data.field));
+			return false;
+		});
+	});
+
+  </script>
+{/block}

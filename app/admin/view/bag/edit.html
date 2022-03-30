@@ -1,0 +1,91 @@
+{extend name="layout/base" /}
+{block name="main"}
+	<div class="layui-fluid">
+		<div class="layui-form">
+			<form action="" method="post" name="example">
+				<table class="layui-table" lay-size="lg" lay-skin="line">
+				  <thead>
+					<tr>
+						<th colspan="2">修改收货地址</th>
+					</tr>
+				  </thead>
+				  <tbody>
+					<tr>
+					  <td width="150" align="right"><strong>收货人</strong></td>
+					  <td>
+						<div class="layui-input-inline">
+						  <input class="layui-input" type="text" name="sname" value="{$bag.sname}" placeholder="收货人">
+						</div>
+					  </td>
+					</tr>
+					<tr>
+					  <td width="150" align="right"><strong>收货人电话</strong></td>
+					  <td>
+						<div class="layui-input-inline">
+						  <input class="layui-input" type="text" name="sphone" value="{$bag.sphone}" placeholder="收货人电话">
+						</div>
+					  </td>
+					</tr>
+					<tr>
+					  <td width="150" align="right"><strong>省份</strong></td>
+					  <td>
+						<div class="layui-input-inline">
+						  <input class="layui-input" type="text" name="sprovince" value="{$bag.sprovince}" placeholder="省份">
+						</div>
+					  </td>
+					</tr>
+					<tr>
+					  <td width="150" align="right"><strong>城市</strong></td>
+					  <td>
+						<div class="layui-input-inline">
+						  <input class="layui-input" type="text" name="scity" value="{$bag.scity}" placeholder="城市">
+						</div>
+					  </td>
+					</tr>
+					<tr>
+					  <td width="150" align="right"><strong>区</strong></td>
+					  <td>
+						<div class="layui-input-inline">
+						  <input class="layui-input" type="text" name="scounty" value="{$bag.scounty}" placeholder="区">
+						</div>
+					  </td>
+					<tr>
+					  <td width="150" align="right"><strong>详细地址</strong></td>
+					  <td>
+						<div class="layui-input-inline">
+						  <input class="layui-input" type="text" name="saddress" value="{$bag.saddress}" placeholder="详细地址">
+						</div>
+					  </td>
+					</tr>
+					<tr>
+					  <td align="right"></td>
+					  <td>
+						<div class="layui-input-inline">
+						  <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+						</div>
+					  </td>
+					</tr>
+				  </tbody>
+				</table>
+			</form>
+		</div>
+	</div>
+
+  {js href="/static/admin/layuiadmin/layui/layui.js" /} 
+  <script>
+	layui.use(['jquery', 'layer','table','flow','form'], function(){
+		var table = layui.table
+		,$ = layui.$
+		,layer = layui.layer
+		,flow = layui.flow
+		,form = layui.form
+		
+		//监听提交
+		form.on('submit(formdemo)', function(data){
+			layer.msg(json.stringify(data.field));
+			return false;
+		});
+		
+	});
+  </script>
+{/block}

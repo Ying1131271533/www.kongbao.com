@@ -1,0 +1,182 @@
+{extend name="layout/userbase" /}
+{block name="title"}邀请好友拿奖励{/block}
+{block name="load"}
+{css href="/static/web/css/friends.css" /}
+{js href="/static/web/js/zclip.js" /}
+{/block}
+{block name="main"}
+<div class="friends">
+	<div class="friends_banner"></div>
+	<div class="center">
+		<div class="friends_step"></div>
+	</div>   
+    
+    <div class="friends_bg">
+    
+    	<div class="center">
+        
+        	<!-- 复制链接 -->
+        	<div id="panel_u" class="panel">
+                <div class="plink" id="URLs">我注册了51空包网，邀请好友使用每次都可获得最高100元现金奖励，一次邀请永久收益。{$url}</div>
+                <a class="inv-btn clip-hf" id="b_clip_button" onclick="copyToClipboard();">复制链接</a>
+                <p style="margin-top:20px;">
+                        {if condition="!$id"}
+                        <a href="{:url('Login/index')}">您还未登录，请登录后再获取邀请链接。</a>
+					    {/if}
+                </p>
+            </div>
+            
+            <!-- 分享 -->
+            <div class="inv-share">
+            <h3></h3>
+            <div class="inv-share-all clearfix bdsharebuttonbox">
+                <a data-cmd="sqq" class="sqq"></a><a data-cmd="qzone" class="qzone"></a><a data-cmd="tqq" class="tqq"></a><a data-cmd="tsina" class="tsina"></a>
+            </div>
+            <script>
+                window._bd_share_config = {
+                    common: {
+                        bdSnsKey: {},
+                        bdText: $("#URLs").html(),
+                        bdDesc: $("#URLs").html(),
+                        bdStyle: "0",
+                        bdPic:'http://www.51kongbaoo.com/Public/Home/images/topbanner3.jpg',
+						bdSize:'24'
+                    },
+                    share: {}
+                };
+                with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=86835285.js?cdnversion=' + ~(-new Date() / 36e5)];
+            </script>
+            </div>
+            <div id="inv_award_show">
+            </div>
+        
+        	<!-- 活动说明 -->
+        	<div class="friends_sm">
+            	<div class="friends_sm_l">
+                    <h3>邀请好友活动规则</h3>
+                    <p>好友一次性充值100元以上，奖励6元；</p>
+                    <p>好友一次性充值300元以上，奖励20元；</p>
+                    <p>好友一次性充值500元以上，奖励40元；</p>
+                    <p>好友一次性充值1000元以上，奖励100元。</p>
+                    <p class="red">注：好友充值满后您的冻结账户会增加相应的金额，当好友成功累计消费以后冻结的金额将会转入您的可用余额。如果冻结金额不足将只转入剩余的冻结金额至可用余额账户。</p>
+                    <p>&nbsp;</p>
+                    <p><a href="{:url('friends/index')}">查看我邀请的好友</a> <a href="{:url('User/reward')}">查看我的奖励明细</a></p>
+                </div>
+                
+                <div class="friends_sm_r">
+                	<dl>
+                    	<dt class="sm_r1">排名</dt>
+                        <dt class="sm_r2">用户名称</dt>
+                        <dt class="sm_r3">获得的奖励金额</dt>
+                    </dl>
+                    
+                    <dl>
+                    	<dd class="sm_r1"><i>1</i></dd>
+                        <dd class="sm_r2">***688</dd>
+                        <dd  class="sm_r3">2528元</dd>
+                    </dl>
+                    
+                     <dl>
+                    	<dd class="sm_r1"><i>2</i></dd>
+                        <dd class="sm_r2">***五非子</dd>
+                        <dd  class="sm_r3">1816元</dd>
+                    </dl>
+                     <dl>
+                    	<dd class="sm_r1"><i>3</i></dd>
+                        <dd class="sm_r2">***487</dd>
+                        <dd  class="sm_r3">1254元</dd>
+                    </dl>
+                     <dl>
+                    	<dd class="sm_r1"><i>4</i></dd>
+                        <dd class="sm_r2">***871</dd>
+                        <dd  class="sm_r3">1186元</dd>
+                    </dl>
+                     <dl>
+                    	<dd class="sm_r1"><i>5</i></dd>
+                        <dd class="sm_r2">***653</dd>
+                        <dd  class="sm_r3">1034元</dd>
+                    </dl>
+                     <dl>
+                    	<dd class="sm_r1"><i>6</i></dd>
+                        <dd class="sm_r2">***qiy</dd>
+                        <dd  class="sm_r3">982元</dd>
+                    </dl>
+                     <dl>
+                    	<dd class="sm_r1"><i>7</i></dd>
+                        <dd class="sm_r2">***w88</dd>
+                        <dd  class="sm_r3">868元</dd>
+                    </dl>
+                     <dl>
+                    	<dd class="sm_r1"><i>8</i></dd>
+                        <dd class="sm_r2">***sow</dd>
+                        <dd  class="sm_r3">778元</dd>
+                    </dl>
+                    
+                    
+                </div>
+                
+            </div>
+            
+            
+        </div>
+    
+    </div>
+         
+</div>
+<script type="text/javascript">
+    function copyToClipboard() {
+
+        var txt = $("#URLs").text();
+        //新建对象
+        var clip = new ZeroClipboard.Client();
+        //设置指向光标为手型
+        clip.setHandCursor(true);
+        //通过传入的参数设置剪贴板内容
+        clip.setText(txt);
+        //添加监听器，完成点击复制后弹出警告
+        clip.addEventListener("complete", function(client, text) {
+           alert('内容已经复制到粘贴板，你可以使用Ctrl+V 贴到QQ或其它地方去发送给好友，邀请他们哦！')
+        });
+        //绑定触发对象按钮ID
+        if ($("#b_clip_button").length > 0)
+            clip.glue("b_clip_button");
+    }
+
+    $(function() {
+		
+        $(".inv-tog .tog-org").hover(function() {
+            $(this).addClass("tog-whi");
+        }, function() {
+            $(this).removeClass("tog-whi");
+        });
+        $(".inv-tog .tog-red").hover(function() {
+            $(this).addClass("tog-whi");
+        }, function() {
+            $(this).removeClass("tog-whi");
+        });
+        $("embed").hover(function() {
+            $(this).addClass("hover");
+        }, function() {
+            $(this).removeClass("hover");
+        });
+        ZeroClipboard.setMoviePath('http://www.51kongbaoo.com/Public/Home/js/ZeroClipboard10.swf');
+        copyToClipboard();
+    });
+
+    function goHere(url) {
+        window.location.href = url;
+    }
+
+    function goOut(url) {
+        window.open(url);
+    }
+	function a(b){
+		c = document.getElementById(b);
+		c.style.display = "block";
+	}
+	function d(b){
+		c = document.getElementById(b);
+		c.style.display = "none";
+	}
+</script>
+{/block}

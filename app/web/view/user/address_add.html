@@ -1,0 +1,142 @@
+{extend name="layout/userbase" /}
+{block name="title"}添加发货地址{/block}
+
+{block name="load"}
+<script type="text/javascript">
+function save(){
+	var addresser = $('#addresser').val();
+	var phone = $('#phone').val();
+	var province = $('#s_province').val();
+	var city = $('#s_city').val();
+	var county = $('#s_county').val();
+	var address = $('#address').val();
+	var postcode = $('#postcode').val();
+	
+
+	if(addresser==''){
+		alert('请填写发货人姓名');
+		return;
+	}
+	
+	if(phone==''){
+		alert('请填写发货人电话号码');
+		return;
+	}else{
+		
+		var reg = /^(0?1[0-9][0-9]\d{8}|0[1-9][0-9]{1,2}[\-1-9][\d]{6,8}|[\d]{10})$/;
+		if (!reg.test(phone)) {
+			alert("发货人电话号码格式不正确");
+			return;
+		}
+	}
+	
+	if(province=='省份'){
+		alert('请选择发货人省份');
+		return;
+	}
+	
+	if(city=='地级市'){
+		alert('请选择发货人地级市');
+		return;
+	}
+	
+	if(county=='区、县级市'){
+		alert('请选择发货人区、县级市');
+		return;
+	}
+	
+	if(address==''){
+		alert('请填写详细发货地址');
+		return;
+	}
+	
+	if(postcode==''){
+		alert('请填写发货人邮编');
+		return;
+	}
+	
+	
+	$.ajax({
+		url: "{:url()}",
+		type: 'POST',
+		data:{
+			addresser:addresser,
+			phone:phone,
+			province:province,
+			city:city,
+			county:county,
+			address:address,
+			postcode:postcode
+		},
+		dataType: 'json',
+		success: function(data){
+			
+			if(data.code != 0)
+			{
+				return layer.msg(data.msg, {icon:2});
+			}
+			
+			layer.msg(data.msg, {icon:1});
+			setTimeout(function(){
+				window.location = "{:url('user/address')}";
+			}, 500);
+		}
+	});
+}
+
+</script>
+{/block}
+
+
+{block name="main"}
+<div class="user">
+	<div class="user_index">
+    	{include file="layout/top" /}
+		{include file="layout/left" /}
+        <div class="user_right">
+        
+        	<div class="user_title">添加发货地址</div>
+            <div class="user_text">
+            	<dl>
+                	<dt>发货人姓名：</dt>
+                    <dt>发货电话：</dt>
+                    <dt></dt>
+                    <dt>具体地址：</dt>
+                    <dt>邮编：</dt>
+                </dl>
+                
+                <dl>
+                	<dd><input id="addresser" name="addresser" type="text" class="val" value="" /></dd>
+                    <dd>
+						<input id="phone" name="phone" type="text" class="val" value="" />
+						 格式：13866665555 或者 020-8366666
+					</dd>
+
+                    <dd>
+                    <select id="s_province"  class="ec_linkSelect" name="address_province"></select>&nbsp;&nbsp;
+                    <select id="s_city"  class="ec_linkSelect" name="address_city" ></select>&nbsp;&nbsp;
+                    <select id="s_county"  class="ec_linkSelect" name="address_district"></select>&nbsp;&nbsp;
+                    
+                    </dd>
+					<script type="text/javascript" src="/static/web/js/area.js?{:time()}"></script>
+					<script type="text/javascript">_init_area();</script>
+                    
+                    <dd><input id="address" name="address" class="val" type="text" value="" style="width:550px;" /></dd>
+                    <dd><input id="postcode" name="postcode" type="text" class="val" value="" /></dd>
+                    <dd><a class="qr" href="javascript:save()">确认添加</a></dd>
+                </dl>
+                <div class="clear"></div>
+            </div>
+            
+            <div class="user_ts">
+            	<p>温馨提示</p>
+                <p class="red">1、请正确的填写发货信息，因为发货信息错误而导致空包出问题，一概不负责！</p>
+				<p class="red">2、设置发货地时，如出现缺少地区，请及时联系在线客服添加！</p>
+            </div>
+        
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+{/block}

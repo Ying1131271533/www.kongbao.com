@@ -1,0 +1,62 @@
+{extend name="layout/base" /}
+{block name="main"}
+<div class="layui-fluid">
+		<div class="layui-form">
+			<form action="{:url('link_edit')}" method="post" name="example">
+				<table class="layui-table" lay-size="lg" lay-skin="line">
+					<thead>
+					<tr>
+						<th colspan="2">友情链接修改</th>
+					</tr> 
+					</thead>
+					<tbody>
+					<tr>
+							
+						<td width="150" align="right"><strong>网站：</strong></td>
+						<td>
+						<div class="layui-input-inline">
+							<input class="layui-input" type="text" name="title" placeholder="{$list['title']}" value ="{$list['title']}">
+						</div>
+						</td>
+					</tr>
+					<tr>
+						<td align="right"><strong>地址：</strong></td>
+						<td>
+						<div class="layui-input-inline">
+							<input class="layui-input" type="test" name="url" placeholder="{$list['url']}" value ="{$list['url']}">
+						</div>
+						</td>
+					</tr>
+					<tr>
+						<td align="right"><strong>权重：</strong></td>
+						<td>
+						<div class="layui-input-inline">
+							
+							<input class="layui-input" type="test" name="weight" placeholder="{$list['weight']}" value="{$list['weight']}">
+						</div>
+						</td>
+					</tr>
+						</td>
+					</tr>
+					<tr>
+							<input class="layui-input" type="hidden" name="id" placeholder="{$list['id']}" value="{$list['id']}">
+						
+						<td align="right"></td>
+						<td>
+						<div class="layui-input-inline">
+							<input type="submit"class="layui-btn" lay-submit lay-filter="formDemo" value="修改" >
+						</div>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</form>	
+			</div>
+		</div>
+{js href="/static/admin/layuiadmin/layui/layui.js" /} 
+<script>
+layui.use('form', function(){
+  var form = layui.form;
+});
+</script>
+{/block}

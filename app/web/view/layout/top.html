@@ -1,0 +1,30 @@
+<div class="user_top">
+	<div class="user_top_left">
+    	<i><img src="/static/upload//user_photo.jpg" /></i>
+    	<p><font color="#32cb63">{$user.username}</font>，欢迎您！</p>
+        <p>
+			会员等级：
+			{switch name="user.level"}
+			{case value="2"}<span class="level2">黄金会员</span>{/case}
+			{case value="3"}<span class="level3">铂金会员</span>{/case}
+			{case value="4"}<span class="level4">钻石会员</span>{/case}
+			{default /}普通会员
+			{/switch}
+			{if condition="$user.level neq 4 "}
+			<a href="{:url('user/vip')}">升级会员</a>
+			{/if}
+		</p>
+        <p>上次登录时间：{:get_date($user.last_login_time)}</p>
+    </div>
+    <div class="user_top_right">
+    	<p>账户余额：<span>{$user.money}</span> 元 <a href="{:url('mingxi/index')}">资金明细</a></p>
+        <p>冻结金额：{$user.frost_money} 元 <font color="#999999">（提现时金额将被冻结）</font></p>
+        <p>消费金额：{$user.expense_money} 元</p>
+    </div>
+    <div class="user_top_right2">
+    	<p><a class="pay" href="{:url('pay/index')}">充值</a></p>
+    	<p><a class="tix" href="{:url('user/tixian')}">提现</a></p>
+    </div>
+
+</div>
+<div class="clear"></div>

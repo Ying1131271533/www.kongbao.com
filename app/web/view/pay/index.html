@@ -1,0 +1,101 @@
+{extend name="layout/userbase" /}
+{block name="title"}在线充值{/block}
+
+{block name="load"}
+<script type="text/javascript">
+function save()
+{
+	var number = $('#number').val();
+	var money = $('#money').val();
+	
+	if(!number){
+		layer.alert('订单号不能为空', {icon:2});
+		return;	
+	}else{
+		var regs = /^([0-9]{28}|[0-9]{32})$/;
+		if (!regs.test(number)) {
+			layer.alert('订单号必须是28位或者32位。', {icon:2});
+			return;
+		}
+	}
+	
+	if(!money){
+		layer.alert('充值金额不能为空', {icon:2});
+		return;
+	}
+	
+	
+	$.ajax({
+		url: "{:url('')}",
+		type: 'POST',
+		data:{number:number,money:money},
+		dataType: 'json',
+		success: function(data){
+			
+			if(data.code != 0)
+			{
+				layer.alert(data.msg, {icon:2});
+				return false;
+			}
+			layer.msg(data.msg, {icon:1});
+			setTimeout(function(){
+				window.location = "{:url('pay/index')}";
+			},1001);
+		}
+	});
+}
+</script>
+{/block}
+
+
+{block name="main"}
+<div class="user">
+	<div class="user_index">
+    	{include file="layout/top" /}
+		{include file="layout/left" /}
+        <div class="user_right">
+        
+        	<div class="user_title">在线充值</div>
+            
+            	
+                	<p class="alipaytext">官方支付宝打款充值<font color="#FF0000">(免手续费)</font></p>
+                    <p class="alipayimg"><input checked="checked" type="radio" /></p>
+                    
+                    <div class="alipay" style="height:280px">
+                    	<p>1.进入 <font color="#0033FF">支付宝</font> 打款至<font color="#FF0000">（法人个人支付宝 尹倩）</font>支付宝帐号：<font color="#FF0000">mail@51kongbaoo.com</font></p>
+                        <p style="display:none">1.进入 <font color="#0033FF">支付宝</font> 打款至<font color="#FF0000">（空包财务支付宝 姜维）</font>支付宝帐号：<font color="#FF0000">caiwu2@51lingla.com</font></p>
+                        <p>或者使用手机支付宝扫二维码支付</p>
+                        <p><img src="/static/web/images/alipayma.jpg" height="200" /></p>
+                    </div>
+                    
+                    <div class="alipay">
+                    	<p>2.填写您转账的订单号，进行提交，提交正确的订单号系统将自动到账。</p>
+						<p style="display:none">2.填写您转账的订单号，进行提交，等待管理员进行审核。</p>
+                        <p>　订单号 <input id="number" class="alipayinput" style="width:400px" type="text" value="" /> <a href="#ddh">什么是订单号？</a></p>
+                        <p>充值金额 <input id="money" class="alipayinput" type="text" value="" /> 元</p>
+                        <p><a class="qr" href="javascript:save();">确认提交</a> </p>
+                        
+                    </div>
+                    
+                    <div class="alimgp"><a id="ddh"></a>
+                    如何查看订单号：手机进入"支付宝" > 右下角查看"我的" > 账单 > 选择自己支付的那一单 > 点击下方的"创建时间"即可查看到订单号
+                    <img src="/static/web/images/alipay_phone3.jpg" />
+                    </div>
+                    
+                    
+                    <div class="user_ts">
+                        <p>充值须知</p>
+                        <p class="red">支付宝自助打款，填写正确的订单号系统将自动审核到账，如未审核到账请联系客服QQ：99399683。</p>
+                        <p class="red" style="display:none">支付宝自助打款，填写正确的订单号，管理员尽快帮您审核，如未审核到账请联系客服QQ：99399683。</p>
+                        <p class="red">请勿通过其他途径付款，如果您在充值付款中有任何问题请联系网站客服。</p>
+                    </div>
+
+                
+                <div class="clear" style="height:20px;"></div>
+
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+{/block}

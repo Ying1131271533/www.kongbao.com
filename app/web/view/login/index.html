@@ -1,0 +1,117 @@
+{extend name="layout/base" /}
+{block name="title"}会员登录{/block}
+
+{block name="load"}
+{css href="/static/web/css/login.css" /}
+
+<script type="text/javascript">
+function register_submit(){
+	var buy_name = $("#buy_name").val();
+	var buy_pass = $("#buy_pass").val();
+	var code = $("#code").val();
+
+
+	if(!buy_name){
+		layer.tips('用户名未填写', '#buy_name', {
+		  tips: [1, '#f25f55'],
+		  time: 4000
+		});
+		return;
+	}
+
+	if(!buy_pass){
+		
+		layer.tips('登录密码未填写', '#buy_pass', {
+		  tips: [1, '#f25f55'],
+		  time: 4000
+		});
+
+		return;	
+	}
+
+	if(!code){
+		
+		layer.tips('验证码未填写', '#code', {
+		  tips: [1, '#f25f55'],
+		  time: 4000
+		});
+			
+		return;
+	}
+
+	
+	$.ajax({
+		url: "{:url()}",
+		type: 'POST',
+		data:{buy_name:buy_name,buy_pass:buy_pass,code:code},
+		dataType: 'json',
+		success: function(data){
+			//alert(data);
+			if(data.code == 2)
+			{
+				layer.msg(data.msg);
+				var code_url = $('#codes').attr('src');
+				$('#codes').attr('src', code_url + '?1');
+				return false;
+				
+			}else if(data.code == 3)
+			{
+				layer.msg('登录成功', {icon:1});
+				setTimeout(function(){
+					window.location = "{:url('home/index')}";
+				}, 500);
+			}
+			
+		}
+	});
+	
+}
+</script>
+{/block}
+
+
+{block name="main"}
+<div class="reg">
+	<div class="center">
+        <div class="login-l"></div>
+        
+        <div class="login-r">
+            <h3>欢迎回来</h3>
+
+            <p>
+            <i>用户名</i>
+            <input class="text" id="buy_name" name="buy_name" type="text" value="" tabindex="1" size="30" autocomplete="off">
+            </p>
+            
+            <p>
+            <i>密　码</i>
+            <input class="text" id="buy_pass"  name ="buy_pass" type="password" tabindex="2" autocomplete="off">
+            </p>
+
+            <p>
+            <i>验证码</i>
+            <input onKeyDown="javascript:if(event.keyCode==13)register_submit();" id="code" type="text" class="text_code" tabindex="4" autocomplete="off">
+			<a href="javascript:;">
+				<img src="{:captcha_src()}" alt="captcha" class="layadmin-user-login-codeimg" id="codes" onclick="this.src = this.src + '?1'" width="86" height="34">
+			</a>
+            <a href="javascript:;" onClick="document.getElementById('codes').src = document.getElementById('codes').src + '?1'" >换一个</a>
+
+            </p>
+            
+            <h4>还没有账号？<a href="{:url('register/index')}">马上注册</a> <a href="{:url('login/findpass')}" style="color:#ff0000;">忘记密码</a></h4>
+            
+            <p><a href="javascript:register_submit();" class="reg-btn">登 录</a></p>
+
+            <p style="margin-top:30px; color:#999">----------------使用第三方账号快速登录----------------</p>
+            
+			<p><a href="{:url('Oauth/call', ['type'=>'qq'])}"><img src="/static/web/images/login/qq_7.png" /></a></p>
+			
+        </div>
+    
+    
+    </div>
+    <div class="clear"></div>
+    </div>
+</div>
+
+{/block}

@@ -1,0 +1,104 @@
+
+{extend name="layout/userbase" /}
+{block name="title"}已购买的空包{/block}
+
+{block name="load"}
+<script>
+function address(s){
+	alert(s);
+}
+
+$(function() {
+   $("#checkAll").click(function() {
+		$('.checkbox').attr("checked",this.checked); 
+	});
+	var $subBox = $(".checkbox");
+	$subBox.click(function(){
+		$("#checkAll").attr("checked",$subBox.length == $("input[name='subBox']:checked").length ? true : false);
+	});
+});
+</script>
+{/block}
+
+
+{block name="main"}
+<div class="user">
+	<div class="user_index">
+    	{include file="layout/top" /}
+		{include file="layout/left" /}
+        <div class="user_right">
+        
+        	<div class="user_title">已购买的空包</div>
+            
+                <div class="user_search">
+                	<div class="user_kda">
+                    	<span>显示数量：</span>
+                        <a href="{:url('', ['limit' => 20])}" {if condition="$limit eq 20 "}class="user_kda_1"{else/}class="user_kda_2"{/if}>20个</a>
+                        <a href="{:url('', ['limit' => 100])}" {if condition="$limit eq 100 "}class="user_kda_1"{else/}class="user_kda_2"{/if}>100个</a>
+                        <a href="{:url('', ['limit' => 500])}" {if condition="$limit eq 500 "}class="user_kda_1"{else/}class="user_kda_2"{/if}>500个</a>
+                    </div>
+					
+					
+                	<form class="user_search_1" method="get" action="{:url('User/buy_record')}">
+                    	<input type="text" class="user_search_text" name="numbers" value="" placeholder="快递单号" style="width:120px"/>
+                    	<input type="text" class="user_search_text" name="sname" value="" placeholder="收货人姓名" style="width:80px"/>
+                        <input type="text" class="user_search_text" name="saddress" value="" placeholder="收货人详细地址，可模糊查询" style="width:300px"/>
+
+                        <input type="submit" class="user_search_sub" value="查 询" />
+                    </form>
+                    
+                </div>
+                
+                <form action="{:url('bag_export')}" method="post" target="_blank">
+                <div class="user_buy_record">
+                	
+                	<ul class="bz">
+                    	<li class="b0">全选</li>
+                		<li class="b1">快递类型/单号</li>
+                        
+                        <li class="b2">商品名称/重量</li>
+                        <li class="b3">收货人信息/地址</li>
+                        <li class="b4">发货人/地址</li>
+                        <li class="b5">下单时间</li>
+
+                    </ul>
+                    
+                    {volist name="list" id="vo"}
+					
+					<ul>
+						<li class="b0"><input type="checkbox" name="subBox[]" value="{$vo.id}" class="checkbox"/></li>
+						<li class="b1">{$vo.kd_name}<br />{if condition="$vo.number eq ''"}出单失败联系客服{else/}<span>{$vo.number}</span>{/if}</li>
+						<li class="b2">{$vo.goods_name}<br />{$vo.kg}KG</li>
+						<li class="b3"><font color="#cc0000">{$vo.sname}</font> <font color="#CCCCCC">|</font> <font color="#009688">{$vo.sphone}</font><br />{$vo.sprovince} {$vo.scity} {$vo.scounty} {$vo.saddress}</li>
+						<li class="b4">{$vo.addresser}<br /><a href="javascript:address('姓名：{$vo.addresser}\n地址：{$vo.province} {$vo.city} {$vo.county} {$vo.address}\n电话：{$vo.phone}')">查看地址</a></li>
+						<li class="b5">{$vo.time}</li>
+
+					</ul>
+					
+                    {/volist}
+					
+					<ul>
+						<li class="b6"><label><input id="checkAll" type="checkbox"/><br />
+						全选</label></li>
+						<li class="b7"><input type="submit" value="导出已选单号" class="user_search_dc"/></li>
+					</ul>
+                
+                </div>
+                </form>
+                
+                
+                <div class="text-center"><ul class="pagination">{$page|raw}</ul></div>
+
+
+  
+                <div class="clear"></div>
+           
+            
+
+        
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+{/block}

@@ -1,0 +1,129 @@
+---------------------------------------------------------------
+[2021-06-11T14:46:58+08:00] 127.0.0.1 GET admin.tp6.com/login/index.html
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\login\index.html [ array (
+) ]
+---------------------------------------------------------------
+[2021-06-11T14:47:05+08:00] 127.0.0.1 POST admin.tp6.com/login/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.008105s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `admin` [ RunTime:0.007116s ]
+[ sql ] [ SQL ] SELECT * FROM `admin` WHERE  `name` = '神织知更' LIMIT 1 [ RunTime:0.000310s ]
+[ sql ] [ SQL ] UPDATE `admin`  SET `login_num` = 551 , `last_login_time` = 1623394025  WHERE  `id` = 1 [ RunTime:0.001073s ]
+---------------------------------------------------------------
+[2021-06-11T14:47:05+08:00] 127.0.0.1 GET admin.tp6.com/home/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000589s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `node` [ RunTime:0.005333s ]
+[ sql ] [ SQL ] SELECT `id` FROM `node` WHERE  `show` = 1 ORDER BY `sort` ASC [ RunTime:0.000338s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\home\index.html [ array (
+  0 => 'node',
+) ]
+---------------------------------------------------------------
+[2021-06-11T14:47:05+08:00] 127.0.0.1 GET admin.tp6.com/home/info.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000676s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `admin` [ RunTime:0.002123s ]
+[ sql ] [ SQL ] SELECT * FROM `admin` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000529s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `admin_role` [ RunTime:0.002935s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `role` [ RunTime:0.004567s ]
+[ sql ] [ SQL ] SELECT `role`.*,`pivot`.`admin_id` AS `pivot__admin_id`,`pivot`.`role_id` AS `pivot__role_id` FROM `role` INNER JOIN `admin_role` `pivot` ON `pivot`.`role_id`=`role`.`id` WHERE  `pivot`.`admin_id` = 1 [ RunTime:0.003260s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\home\info.html [ array (
+  0 => 'admin',
+  1 => 'adminRole',
+) ]
+---------------------------------------------------------------
+[2021-06-11T14:47:07+08:00] 127.0.0.1 GET admin.tp6.com/admin/role.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000592s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `role` [ RunTime:0.001710s ]
+[ sql ] [ SQL ] SELECT `id` FROM `role` [ RunTime:0.000232s ]
+[ sql ] [ SQL ] SELECT * FROM `role` WHERE  `id` = 9 LIMIT 1 [ RunTime:0.000232s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `admin_role` [ RunTime:0.001571s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `admin` [ RunTime:0.001508s ]
+[ sql ] [ SQL ] SELECT `admin`.*,`pivot`.`admin_id` AS `pivot__admin_id`,`pivot`.`role_id` AS `pivot__role_id` FROM `admin` INNER JOIN `admin_role` `pivot` ON `pivot`.`admin_id`=`admin`.`id` WHERE  `pivot`.`role_id` = 9 [ RunTime:0.002364s ]
+[ sql ] [ SQL ] SELECT * FROM `role` WHERE  `id` = 30 LIMIT 1 [ RunTime:0.000797s ]
+[ sql ] [ SQL ] SELECT `admin`.*,`pivot`.`admin_id` AS `pivot__admin_id`,`pivot`.`role_id` AS `pivot__role_id` FROM `admin` INNER JOIN `admin_role` `pivot` ON `pivot`.`admin_id`=`admin`.`id` WHERE  `pivot`.`role_id` = 30 [ RunTime:0.000430s ]
+[ sql ] [ SQL ] SELECT * FROM `role` WHERE  `id` = 31 LIMIT 1 [ RunTime:0.000231s ]
+[ sql ] [ SQL ] SELECT `admin`.*,`pivot`.`admin_id` AS `pivot__admin_id`,`pivot`.`role_id` AS `pivot__role_id` FROM `admin` INNER JOIN `admin_role` `pivot` ON `pivot`.`admin_id`=`admin`.`id` WHERE  `pivot`.`role_id` = 31 [ RunTime:0.000271s ]
+[ sql ] [ SQL ] SELECT * FROM `role` WHERE  `id` = 32 LIMIT 1 [ RunTime:0.000237s ]
+[ sql ] [ SQL ] SELECT `admin`.*,`pivot`.`admin_id` AS `pivot__admin_id`,`pivot`.`role_id` AS `pivot__role_id` FROM `admin` INNER JOIN `admin_role` `pivot` ON `pivot`.`admin_id`=`admin`.`id` WHERE  `pivot`.`role_id` = 32 [ RunTime:0.000294s ]
+[ sql ] [ SQL ] SELECT * FROM `role` WHERE  `id` = 36 LIMIT 1 [ RunTime:0.000225s ]
+[ sql ] [ SQL ] SELECT `admin`.*,`pivot`.`admin_id` AS `pivot__admin_id`,`pivot`.`role_id` AS `pivot__role_id` FROM `admin` INNER JOIN `admin_role` `pivot` ON `pivot`.`admin_id`=`admin`.`id` WHERE  `pivot`.`role_id` = 36 [ RunTime:0.000268s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\admin\role.html [ array (
+  0 => 'roleList',
+) ]
+---------------------------------------------------------------
+[2021-06-11T14:47:08+08:00] 127.0.0.1 GET admin.tp6.com/admin/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000614s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `admin` [ RunTime:0.001694s ]
+[ sql ] [ SQL ] SELECT `id` FROM `admin` [ RunTime:0.000218s ]
+[ sql ] [ SQL ] SELECT * FROM `admin` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000249s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `admin_role` [ RunTime:0.001749s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `role` [ RunTime:0.004158s ]
+[ sql ] [ SQL ] SELECT `role`.*,`pivot`.`admin_id` AS `pivot__admin_id`,`pivot`.`role_id` AS `pivot__role_id` FROM `role` INNER JOIN `admin_role` `pivot` ON `pivot`.`role_id`=`role`.`id` WHERE  `pivot`.`admin_id` = 1 [ RunTime:0.000413s ]
+[ sql ] [ SQL ] SELECT * FROM `admin` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.000257s ]
+[ sql ] [ SQL ] SELECT `role`.*,`pivot`.`admin_id` AS `pivot__admin_id`,`pivot`.`role_id` AS `pivot__role_id` FROM `role` INNER JOIN `admin_role` `pivot` ON `pivot`.`role_id`=`role`.`id` WHERE  `pivot`.`admin_id` = 3 [ RunTime:0.000285s ]
+[ sql ] [ SQL ] SELECT * FROM `admin` WHERE  `id` = 6 LIMIT 1 [ RunTime:0.000235s ]
+[ sql ] [ SQL ] SELECT `role`.*,`pivot`.`admin_id` AS `pivot__admin_id`,`pivot`.`role_id` AS `pivot__role_id` FROM `role` INNER JOIN `admin_role` `pivot` ON `pivot`.`role_id`=`role`.`id` WHERE  `pivot`.`admin_id` = 6 [ RunTime:0.000265s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\admin\index.html [ array (
+  0 => 'adminList',
+) ]
+---------------------------------------------------------------
+[2021-06-11T14:47:09+08:00] 127.0.0.1 GET admin.tp6.com/user/index.html
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\user\index.html [ array (
+  0 => 'id',
+  1 => 'email',
+  2 => 'username',
+) ]
+---------------------------------------------------------------
+[2021-06-11T14:47:10+08:00] 127.0.0.1 GET admin.tp6.com/user/index_data.html?&page=1&limit=20
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000611s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `user` [ RunTime:0.005056s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `user` [ RunTime:0.000304s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `user` [ RunTime:0.000194s ]
+[ sql ] [ SQL ] SELECT * FROM `user` ORDER BY `id` DESC LIMIT 0,20 [ RunTime:0.000277s ]
+---------------------------------------------------------------
+[2021-06-11T14:47:13+08:00] 127.0.0.1 GET admin.tp6.com/pay/index.html
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\pay\index.html [ array (
+  0 => 'user_id',
+  1 => 'username',
+  2 => 'number',
+  3 => 'status',
+) ]
+---------------------------------------------------------------
+[2021-06-11T14:47:13+08:00] 127.0.0.1 GET admin.tp6.com/pay/index_data.html?status=0&page=1&limit=20
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001159s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `pay` [ RunTime:0.007389s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `pay` `a` INNER JOIN `user` `b` ON `a`.`user_id`=`b`.`id` [ RunTime:0.001356s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `pay` `a` INNER JOIN `user` `b` ON `a`.`user_id`=`b`.`id` [ RunTime:0.000320s ]
+[ sql ] [ SQL ] SELECT `a`.*,`b`.`username` FROM `pay` `a` INNER JOIN `user` `b` ON `a`.`user_id`=`b`.`id` ORDER BY `a`.`id` DESC LIMIT 0,20 [ RunTime:0.000319s ]
+---------------------------------------------------------------
+[2021-06-11T14:47:13+08:00] 127.0.0.1 GET admin.tp6.com/tixian/index.html
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\tixian\index.html [ array (
+  0 => 'user_id',
+  1 => 'username',
+  2 => 'number',
+  3 => 'status',
+) ]
+---------------------------------------------------------------
+[2021-06-11T14:47:13+08:00] 127.0.0.1 GET admin.tp6.com/tixian/index_data.html?status=0&page=1&limit=20
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000557s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `tixian` [ RunTime:0.005416s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tixian` `a` INNER JOIN `user` `b` ON `b`.`id`=`a`.`user_id` [ RunTime:0.001363s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `tixian` `a` INNER JOIN `user` `b` ON `b`.`id`=`a`.`user_id` [ RunTime:0.000229s ]
+[ sql ] [ SQL ] SELECT `a`.*,`b`.`username`,b.id as bid FROM `tixian` `a` INNER JOIN `user` `b` ON `b`.`id`=`a`.`user_id` ORDER BY `a`.`id` DESC LIMIT 0,20 [ RunTime:0.000265s ]
+---------------------------------------------------------------
+[2021-06-11T14:47:17+08:00] 127.0.0.1 GET admin.tp6.com/order/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000540s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `kd` [ RunTime:0.006204s ]
+[ sql ] [ SQL ] SELECT * FROM `kd` WHERE  `status` = 1  AND `type` = 1 ORDER BY `sort_order` [ RunTime:0.000411s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\order\index.html [ array (
+  0 => 'kd_id',
+  1 => 'status',
+  2 => 'kdidStr',
+  3 => 'statusStr',
+  4 => 'kd',
+) ]
+---------------------------------------------------------------
+[2021-06-11T14:47:17+08:00] 127.0.0.1 GET admin.tp6.com/order/index_data.html?kd_id=0&status=0&page=1&limit=20
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000567s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `order` [ RunTime:0.005182s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `order` `a` INNER JOIN `user` `b` ON `a`.`user_id`=`b`.`id` [ RunTime:0.001313s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `order` `a` INNER JOIN `user` `b` ON `a`.`user_id`=`b`.`id` [ RunTime:0.000256s ]
+[ sql ] [ SQL ] SELECT `a`.*,`b`.`username` FROM `order` `a` INNER JOIN `user` `b` ON `a`.`user_id`=`b`.`id` ORDER BY `a`.`id` DESC LIMIT 0,20 [ RunTime:0.000307s ]

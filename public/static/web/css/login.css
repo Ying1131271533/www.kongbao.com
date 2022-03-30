@@ -1,0 +1,61 @@
+@charset "utf-8";
+/* CSS Document */
+
+.reg{ border-top:1px solid #e7e7e7; background:#f5f5f5; width:auto; padding-bottom:20px; font-family:"\5FAE\8F6F\96C5\9ED1"}
+.login-l{background: url(../images/denglu_bannner_tu.png) no-repeat 0 40px; width:600px; height: 520px; float:left;}
+.login-r{ border:1px solid #e5e5e5; width:410px; height:500px; background:#fff; margin-top:20px; float:right;}
+
+.login-r h3{ text-align:center; font-size:24px; font-weight:bold; height:36px; line-height:36px; margin:20px 0;}
+.login-r h5{ text-align:right; font-size:12px; font-weight:100; margin-right:25px; margin-bottom:20px;}
+.login-r h4{ text-align:center; font-size:14px; font-weight:100; margin-bottom:20px;}
+.login-r h4 a{ margin-right:20px;}
+.login-r h5 a{ color:#ff6900}
+
+.login-r p{ height:40px; line-height:40px; margin:10px 0 10px 30px;}
+.login-r p img{ vertical-align:middle;}
+.text{ width:250px; height:30px; padding:0 5px;}
+.text_code{width:110px;height:30px; padding:0 5px;}
+.login-r p i{ margin-right:10px;}
+.login-r p a{ font-size:14px; color:#1398fd;}
+.login-r p a.reg-btn{cursor: pointer;display: inline-block;padding: 0 30px;line-height: 46px;font-size: 14px;color: #fff;background: #ff6600;border-radius: 3px; margin-left:56px; width:202px; text-align:center; font-size:24px;}
+.login-r p label{ margin-left:54px;}
+
+.tishitubiao{ width: auto; height:40px; line-height:40px; color:#ff0000; text-align:center; display:block; margin-left:-20px; margin-top:20px;}
+
+.denglu_part .p3 {
+    width: 313px;
+    height: 46px;
+    margin-bottom: 11px;
+    background: url(../img/cor_web.icons.png) no-repeat;
+}
+
+.layui-layer-btn {
+    text-align: right;
+    padding: 6px 10px 12px;
+}
+
+.layui-layer-dialog .layui-layer-content p b {
+    color: #02a0cd;
+}
+.layui-layer-dialog .layui-layer-content p{ text-indent:24px;}
+
+.reg-l{ border:1px solid #e5e5e5; width:876px; height:500px; margin-top:20px; float:left; background:#fff;}
+.reg-r{ border:1px solid #e5e5e5; width:300px; height:500px; background:#fff; margin-top:20px; float:right;}
+
+.reg-l h3{ text-align:center; font-size:24px; font-weight:bold; height:36px; line-height:36px; margin:20px 0;}
+.reg-l h5{ text-align:right; font-size:12px; font-weight:100; margin-right:25px; margin-bottom:20px;}
+.reg-l h4{ text-align:center; font-size:14px; font-weight:100; margin-right:15px; margin-bottom:20px;}
+.reg-l h5 a{ color:#ff6900}
+.reg-l em{ color:#999;}
+.reg-l p{ height:40px; line-height:40px; margin:10px 0 10px 216px;}
+.reg-l p img{ vertical-align:middle;}
+
+.reg-l p i{ margin-right:10px;}
+.reg-l p a{ font-size:14px; color:#1398fd;}
+.reg-l p a.reg-btn{cursor: pointer;display: inline-block;padding: 0 30px;line-height: 46px;font-size: 14px;color: #fff;background: #ff6600;border-radius: 3px; margin-left:56px; width:202px; text-align:center; font-size:24px;}
+.reg-l p label{ margin-left:54px;}
+
+.reg-r p{ font-size:18px; line-height:30px; height:30px; margin-left:20px; margin-top:10px;}
+.reg-r p.reg-r-2 a{ font-size:18px; background:#02a0cd; color:#fff; padding: 5px 10px; border-radius: 3px;}
+
+.reg-tishitubiao{ width: auto; height:40px; line-height:40px; color:#ff0000; t display:block; margin-left:55px; margin-top:20px;}

@@ -1,0 +1,59 @@
+{extend name="layout/userbase" /}
+{block name="title"}充值记录{/block}
+
+{block name="load"}
+{/block}
+
+{block name="main"}
+<div class="user">
+	<div class="user_index">
+    	{include file="layout/top" /}
+		{include file="layout/left" /}
+        <div class="user_right">
+        
+        	<div class="user_title">充值记录</div>
+
+                <div class="user_pay">
+                	
+                	<ul class="cz">
+                		<li class="c1">充值时间</li>
+                        <li class="c2">交编易号</li>
+                        <li class="c3">订单金额</li>
+                        <li class="c4">订单类型</li>
+                        <li class="c5">订单状态</li>
+                    </ul>
+                    
+                    {volist name="list" id="vo"}
+                        <ul>
+                		<li class="c1">{$vo.create_time}</li>
+                        <li class="c2">{$vo.order}</li>
+                        <li class="c3"><font color="#cc0000">{$vo.money}元</font></li>
+                        <li class="c4">支付宝</li>
+                        <li class="c5">{if condition="$vo.status eq 3 "}
+                                 <font color="#ff0000">充值失败</font>
+                            {elseif condition="$vo.status eq 2 "/}
+                                 <font color="#009933">充值成功</font>
+                            {else/}
+                            <font color="#999999">等待确认中</font>
+                            {/if}
+                        </li>
+                    	</ul>
+                    {/volist}
+                    
+                </div>
+                
+                <div class="text-center"><ul class="pagination">{$page|raw}</ul></div>
+
+
+  
+                <div class="clear"></div>
+           
+            
+
+        
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+{/block}

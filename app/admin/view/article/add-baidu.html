@@ -1,0 +1,127 @@
+{extend name="layout/base" /}
+{block name="main"}
+  <div class="layui-fluid">
+	<div class="layui-form">
+		<form action="" method="post" name="example">
+			<table class="layui-table" lay-size="lg" lay-skin="line">
+			  <thead>
+				<tr>
+					<th colspan="2">文章添加</th>
+				</tr> 
+			  </thead>
+			  <tbody>
+				<tr>
+				  <td width="150" align="right"><strong>文章标题：</strong></td>
+				  <td>
+					<div class="layui-input-inline">
+					  <input class="layui-input" type="text" name="title" placeholder="文章标题">
+					</div>
+				  </td>
+				</tr>
+				
+				<tr>
+				  <td width="150" align="right"><strong>内容：</strong></td>
+				  <td>
+					<div class="layui-input-inline">
+						<!-- <textarea name="content" id="content" class="form-control " style="height:80px;"></textarea> -->
+						<!-- 加载编辑器的容器 -->
+						<script id="container" name="content" type="text/plain" style="height:150px;width:800px;">
+							
+						</script>
+						<!-- 配置文件 -->
+						{js href="/static/admin/ueditor/ueditor.config.js" /}
+						<!-- 编辑器源码文件 -->
+						{js href="/static/admin/ueditor/ueditor.all.js" /}
+						<!-- 实例化编辑器 -->
+						<script type="text/javascript">
+							var ue = UE.getEditor('container');
+						</script>
+					</div>
+				  </td>
+				</tr>
+				
+				<tr>
+				  <td align="right" class="ruiwen"><strong>文章分类：</strong></td>
+				  <td>
+					<div class="akali" style="margin-bottom:10px;">
+						<div class="layui-input-inline">
+						  <select name="type_id">
+							{foreach $type as $value}
+							<option value="{$value.id}">{$value.name}</option>
+							{/foreach}
+						  </select>
+						</div>
+					</div>
+				  </td>
+				</tr>
+				
+				
+				
+				<tr>
+				  <td width="150" align="right"><strong>来源名称：</strong></td>
+				  <td>
+					<div class="layui-input-inline">
+					  <input class="layui-input" type="text" name="sourec_title" value="" placeholder="来源名称" >
+					</div>
+				  </td>
+				</tr>
+				
+				<tr>
+				  <td width="150" align="right"><strong>来源地址：</strong></td>
+				  <td>
+					<div class="layui-input-inline">
+					  <input class="layui-input" type="text" name="sourec_url" value="http://" placeholder="地址" >
+					</div>
+				  </td>
+				</tr>
+				
+				<tr>
+				  <td width="150" align="right"><strong>管理员ID：</strong></td>
+				  <td>
+					<div class="layui-input-inline">{:session('admin.id')}</div>
+				  </td>
+				</tr>
+				
+				
+				<tr>
+				  <td align="right"><strong>审核状态：</strong></td>
+				  <td>
+					<div class="layui-input-inline">
+					  <input type="radio" name="status" value="1" title="正常" checked>
+					  <input type="radio" name="status" value="2" title="禁止">
+					</div>
+				  </td>
+				</tr>
+				
+				<tr>
+				  <td align="right"></td>
+				  <td>
+					<div class="layui-input-inline">
+					  <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+					</div>
+				  </td>
+				</tr>
+			  </tbody>
+			</table>
+		</form>	
+    </div>
+  </div>
+
+  {js href="/static/admin/layuiadmin/layui/layui.js" /} 
+  <script>
+	layui.use(['jquery', 'layer','table','flow','form'], function(){
+		var table = layui.table
+		,$ = layui.$
+		,layer = layui.layer
+		,flow = layui.flow
+		,form = layui.form
+		
+		//监听提交
+		form.on('submit(formdemo)', function(data){
+			layer.msg(json.stringify(data.field));
+			return false;
+		});
+		
+	});
+  </script>
+{/block}

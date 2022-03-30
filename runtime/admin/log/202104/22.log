@@ -1,0 +1,207 @@
+---------------------------------------------------------------
+[2021-04-22T10:54:07+08:00] 127.0.0.1 GET admin.tp6.com/login/index.html
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\login\index.html [ array (
+) ]
+---------------------------------------------------------------
+[2021-04-22T10:54:16+08:00] 127.0.0.1 POST admin.tp6.com/login/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000420s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `admin` [ RunTime:0.001037s ]
+[ sql ] [ SQL ] SELECT * FROM `admin` WHERE  `name` = '神织知更' LIMIT 1 [ RunTime:0.002364s ]
+[ sql ] [ SQL ] UPDATE `admin`  SET `login_num` = 540 , `last_login_time` = 1619060056  WHERE  `id` = 1 [ RunTime:0.000865s ]
+---------------------------------------------------------------
+[2021-04-22T10:54:16+08:00] 127.0.0.1 GET admin.tp6.com/home/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000388s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `node` [ RunTime:0.002092s ]
+[ sql ] [ SQL ] SELECT `id` FROM `node` ORDER BY `sort` ASC [ RunTime:0.000744s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\home\index.html [ array (
+  0 => 'node',
+) ]
+---------------------------------------------------------------
+[2021-04-22T10:54:16+08:00] 127.0.0.1 GET admin.tp6.com/home/info.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000434s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `admin` [ RunTime:0.001065s ]
+[ sql ] [ SQL ] SELECT * FROM `admin` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000225s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `admin_role` [ RunTime:0.002995s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `role` [ RunTime:0.002854s ]
+[ sql ] [ SQL ] SELECT `role`.*,`pivot`.`admin_id` AS `pivot__admin_id`,`pivot`.`role_id` AS `pivot__role_id` FROM `role` INNER JOIN `admin_role` `pivot` ON `pivot`.`role_id`=`role`.`id` WHERE  `pivot`.`admin_id` = 1 [ RunTime:0.001681s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\home\info.html [ array (
+  0 => 'admin',
+  1 => 'adminRole',
+) ]
+---------------------------------------------------------------
+[2021-04-22T10:54:24+08:00] 127.0.0.1 GET admin.tp6.com/article/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000604s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `article_type` [ RunTime:0.002540s ]
+[ sql ] [ SQL ] SELECT * FROM `article_type` [ RunTime:0.000160s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\article\index.html [ array (
+  0 => 'type',
+  1 => 'typeList',
+) ]
+---------------------------------------------------------------
+[2021-04-22T10:54:24+08:00] 127.0.0.1 GET admin.tp6.com/article/index_data.html?type=0&page=1&limit=20
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000421s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `article` [ RunTime:0.002680s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `article` `a` INNER JOIN `article_type` `b` ON `a`.`type_id`=`b`.`id` [ RunTime:0.001509s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `article` `a` INNER JOIN `article_type` `b` ON `a`.`type_id`=`b`.`id` [ RunTime:0.000164s ]
+[ sql ] [ SQL ] SELECT `a`.*,b.name as type FROM `article` `a` INNER JOIN `article_type` `b` ON `a`.`type_id`=`b`.`id` ORDER BY `a`.`id` DESC LIMIT 0,20 [ RunTime:0.000564s ]
+---------------------------------------------------------------
+[2021-04-22T10:54:25+08:00] 127.0.0.1 GET admin.tp6.com/article/edit.html?id=14
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000458s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `article` [ RunTime:0.001090s ]
+[ sql ] [ SQL ] SELECT * FROM `article` WHERE  `id` = 14 LIMIT 1 [ RunTime:0.000250s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `article_type` [ RunTime:0.001022s ]
+[ sql ] [ SQL ] SELECT * FROM `article_type` [ RunTime:0.000140s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\article\edit-layui.html [ array (
+  0 => 'type',
+  1 => 'article',
+) ]
+---------------------------------------------------------------
+[2021-04-22T10:54:32+08:00] 127.0.0.1 GET admin.tp6.com/article/edit.html?id=14
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000775s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `article` [ RunTime:0.001674s ]
+[ sql ] [ SQL ] SELECT * FROM `article` WHERE  `id` = 14 LIMIT 1 [ RunTime:0.001329s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `article_type` [ RunTime:0.001337s ]
+[ sql ] [ SQL ] SELECT * FROM `article_type` [ RunTime:0.000200s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\article\edit-layui.html [ array (
+  0 => 'type',
+  1 => 'article',
+) ]
+---------------------------------------------------------------
+[2021-04-22T10:54:43+08:00] 127.0.0.1 GET admin.tp6.com/article/edit.html?id=5
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000421s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `article` [ RunTime:0.001056s ]
+[ sql ] [ SQL ] SELECT * FROM `article` WHERE  `id` = 5 LIMIT 1 [ RunTime:0.000208s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `article_type` [ RunTime:0.000909s ]
+[ sql ] [ SQL ] SELECT * FROM `article_type` [ RunTime:0.000131s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\article\edit-layui.html [ array (
+  0 => 'type',
+  1 => 'article',
+) ]
+---------------------------------------------------------------
+[2021-04-22T10:54:52+08:00] 127.0.0.1 GET admin.tp6.com/article/edit.html?id=3
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000516s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `article` [ RunTime:0.001385s ]
+[ sql ] [ SQL ] SELECT * FROM `article` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.000278s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `article_type` [ RunTime:0.001227s ]
+[ sql ] [ SQL ] SELECT * FROM `article_type` [ RunTime:0.000182s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\article\edit-layui.html [ array (
+  0 => 'type',
+  1 => 'article',
+) ]
+---------------------------------------------------------------
+[2021-04-22T10:54:59+08:00] 127.0.0.1 GET admin.tp6.com/article/edit.html?id=14
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000450s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `article` [ RunTime:0.001810s ]
+[ sql ] [ SQL ] SELECT * FROM `article` WHERE  `id` = 14 LIMIT 1 [ RunTime:0.000220s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `article_type` [ RunTime:0.000919s ]
+[ sql ] [ SQL ] SELECT * FROM `article_type` [ RunTime:0.000132s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\article\edit-layui.html [ array (
+  0 => 'type',
+  1 => 'article',
+) ]
+---------------------------------------------------------------
+[2021-04-22T10:55:02+08:00] 127.0.0.1 GET admin.tp6.com/article/edit.html?id=14
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000537s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `article` [ RunTime:0.001421s ]
+[ sql ] [ SQL ] SELECT * FROM `article` WHERE  `id` = 14 LIMIT 1 [ RunTime:0.000471s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `article_type` [ RunTime:0.001507s ]
+[ sql ] [ SQL ] SELECT * FROM `article_type` [ RunTime:0.000238s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\article\edit-layui.html [ array (
+  0 => 'type',
+  1 => 'article',
+) ]
+---------------------------------------------------------------
+[2021-04-22T10:55:07+08:00] 127.0.0.1 GET admin.tp6.com/article/edit.html?id=7
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000557s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `article` [ RunTime:0.001609s ]
+[ sql ] [ SQL ] SELECT * FROM `article` WHERE  `id` = 7 LIMIT 1 [ RunTime:0.000425s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `article_type` [ RunTime:0.001374s ]
+[ sql ] [ SQL ] SELECT * FROM `article_type` [ RunTime:0.000214s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\article\edit-layui.html [ array (
+  0 => 'type',
+  1 => 'article',
+) ]
+---------------------------------------------------------------
+[2021-04-22T10:55:09+08:00] 127.0.0.1 GET admin.tp6.com/article/edit.html?id=11
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000424s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `article` [ RunTime:0.001036s ]
+[ sql ] [ SQL ] SELECT * FROM `article` WHERE  `id` = 11 LIMIT 1 [ RunTime:0.000241s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `article_type` [ RunTime:0.000877s ]
+[ sql ] [ SQL ] SELECT * FROM `article_type` [ RunTime:0.000211s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\article\edit-layui.html [ array (
+  0 => 'type',
+  1 => 'article',
+) ]
+---------------------------------------------------------------
+[2021-04-22T10:55:13+08:00] 127.0.0.1 GET admin.tp6.com/article/edit.html?id=11
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000775s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `article` [ RunTime:0.001061s ]
+[ sql ] [ SQL ] SELECT * FROM `article` WHERE  `id` = 11 LIMIT 1 [ RunTime:0.000213s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `article_type` [ RunTime:0.000857s ]
+[ sql ] [ SQL ] SELECT * FROM `article_type` [ RunTime:0.000127s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\article\edit-layui.html [ array (
+  0 => 'type',
+  1 => 'article',
+) ]
+---------------------------------------------------------------
+[2021-04-22T10:55:19+08:00] 127.0.0.1 GET admin.tp6.com/article/type.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000504s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `article_type` [ RunTime:0.001345s ]
+[ sql ] [ SQL ] SELECT * FROM `article_type` [ RunTime:0.000183s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\article\type.html [ array (
+  0 => 'type',
+) ]
+---------------------------------------------------------------
+[2021-04-22T10:55:20+08:00] 127.0.0.1 GET admin.tp6.com/article/type_edit.html?id=1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000502s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `article_type` [ RunTime:0.001653s ]
+[ sql ] [ SQL ] SELECT * FROM `article_type` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000534s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\article\type_edit.html [ array (
+  0 => 'type',
+) ]
+---------------------------------------------------------------
+[2021-04-22T10:55:24+08:00] 127.0.0.1 GET admin.tp6.com/order/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000503s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `kd` [ RunTime:0.003084s ]
+[ sql ] [ SQL ] SELECT * FROM `kd` WHERE  `status` = 1  AND `type` = 1 ORDER BY `sort_order` [ RunTime:0.000622s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\order\index.html [ array (
+  0 => 'kd_id',
+  1 => 'status',
+  2 => 'kdidStr',
+  3 => 'statusStr',
+  4 => 'kd',
+) ]
+---------------------------------------------------------------
+[2021-04-22T10:55:24+08:00] 127.0.0.1 GET admin.tp6.com/order/index_data.html?kd_id=0&status=0&page=1&limit=20
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000511s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `order` [ RunTime:0.002159s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `order` `a` INNER JOIN `user` `b` ON `a`.`user_id`=`b`.`id` [ RunTime:0.001459s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `order` `a` INNER JOIN `user` `b` ON `a`.`user_id`=`b`.`id` [ RunTime:0.000161s ]
+[ sql ] [ SQL ] SELECT `a`.*,`b`.`username` FROM `order` `a` INNER JOIN `user` `b` ON `a`.`user_id`=`b`.`id` ORDER BY `a`.`id` DESC LIMIT 0,20 [ RunTime:0.000253s ]
+---------------------------------------------------------------
+[2021-04-22T10:55:29+08:00] 127.0.0.1 GET admin.tp6.com/order/view/id/8/status/2
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000394s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `order` [ RunTime:0.001102s ]
+[ sql ] [ SQL ] SELECT * FROM `order` WHERE  `id` = 8 LIMIT 1 [ RunTime:0.000230s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\order\view.html [ array (
+  0 => 'order',
+) ]
+---------------------------------------------------------------
+[2021-04-22T10:55:54+08:00] 127.0.0.1 GET admin.tp6.com/order/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000501s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `kd` [ RunTime:0.001453s ]
+[ sql ] [ SQL ] SELECT * FROM `kd` WHERE  `status` = 1  AND `type` = 1 ORDER BY `sort_order` [ RunTime:0.000380s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\order\index.html [ array (
+  0 => 'kd_id',
+  1 => 'status',
+  2 => 'kdidStr',
+  3 => 'statusStr',
+  4 => 'kd',
+) ]
+---------------------------------------------------------------
+[2021-04-22T10:55:54+08:00] 127.0.0.1 GET admin.tp6.com/order/index_data.html?kd_id=0&status=0&page=1&limit=20
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001073s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `order` [ RunTime:0.001281s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `order` `a` INNER JOIN `user` `b` ON `a`.`user_id`=`b`.`id` [ RunTime:0.000732s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `order` `a` INNER JOIN `user` `b` ON `a`.`user_id`=`b`.`id` [ RunTime:0.000149s ]
+[ sql ] [ SQL ] SELECT `a`.*,`b`.`username` FROM `order` `a` INNER JOIN `user` `b` ON `a`.`user_id`=`b`.`id` ORDER BY `a`.`id` DESC LIMIT 0,20 [ RunTime:0.000194s ]

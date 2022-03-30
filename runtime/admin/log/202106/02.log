@@ -1,0 +1,295 @@
+---------------------------------------------------------------
+[2021-06-02T19:03:19+08:00] 127.0.0.1 GET admin.tp6.com/login/index.html
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\login\index.html [ array (
+) ]
+---------------------------------------------------------------
+[2021-06-02T19:03:24+08:00] 127.0.0.1 POST admin.tp6.com/login/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.055582s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `admin` [ RunTime:0.084848s ]
+[ sql ] [ SQL ] SELECT * FROM `admin` WHERE  `name` = '神织知更' LIMIT 1 [ RunTime:0.011607s ]
+[ sql ] [ SQL ] UPDATE `admin`  SET `login_num` = 546 , `last_login_time` = 1622631804  WHERE  `id` = 1 [ RunTime:0.008262s ]
+---------------------------------------------------------------
+[2021-06-02T19:03:25+08:00] 127.0.0.1 GET admin.tp6.com/home/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001027s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `node` [ RunTime:0.002358s ]
+[ sql ] [ SQL ] SELECT `id` FROM `node` ORDER BY `sort` ASC [ RunTime:0.001612s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\home\index.html [ array (
+  0 => 'node',
+) ]
+---------------------------------------------------------------
+[2021-06-02T19:03:25+08:00] 127.0.0.1 GET admin.tp6.com/home/info.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000453s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `admin` [ RunTime:0.002902s ]
+[ sql ] [ SQL ] SELECT * FROM `admin` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000323s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `admin_role` [ RunTime:0.001373s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `role` [ RunTime:0.001161s ]
+[ sql ] [ SQL ] SELECT `role`.*,`pivot`.`admin_id` AS `pivot__admin_id`,`pivot`.`role_id` AS `pivot__role_id` FROM `role` INNER JOIN `admin_role` `pivot` ON `pivot`.`role_id`=`role`.`id` WHERE  `pivot`.`admin_id` = 1 [ RunTime:0.008421s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\home\info.html [ array (
+  0 => 'admin',
+  1 => 'adminRole',
+) ]
+---------------------------------------------------------------
+[2021-06-02T19:03:27+08:00] 127.0.0.1 GET admin.tp6.com/admin/role.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000481s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `role` [ RunTime:0.001056s ]
+[ sql ] [ SQL ] SELECT `id` FROM `role` [ RunTime:0.000200s ]
+[ sql ] [ SQL ] SELECT * FROM `role` WHERE  `id` = 9 LIMIT 1 [ RunTime:0.000159s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `admin_role` [ RunTime:0.000975s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `admin` [ RunTime:0.000921s ]
+[ sql ] [ SQL ] SELECT `admin`.*,`pivot`.`admin_id` AS `pivot__admin_id`,`pivot`.`role_id` AS `pivot__role_id` FROM `admin` INNER JOIN `admin_role` `pivot` ON `pivot`.`admin_id`=`admin`.`id` WHERE  `pivot`.`role_id` = 9 [ RunTime:0.001429s ]
+[ sql ] [ SQL ] SELECT * FROM `role` WHERE  `id` = 30 LIMIT 1 [ RunTime:0.000373s ]
+[ sql ] [ SQL ] SELECT `admin`.*,`pivot`.`admin_id` AS `pivot__admin_id`,`pivot`.`role_id` AS `pivot__role_id` FROM `admin` INNER JOIN `admin_role` `pivot` ON `pivot`.`admin_id`=`admin`.`id` WHERE  `pivot`.`role_id` = 30 [ RunTime:0.000459s ]
+[ sql ] [ SQL ] SELECT * FROM `role` WHERE  `id` = 31 LIMIT 1 [ RunTime:0.000161s ]
+[ sql ] [ SQL ] SELECT `admin`.*,`pivot`.`admin_id` AS `pivot__admin_id`,`pivot`.`role_id` AS `pivot__role_id` FROM `admin` INNER JOIN `admin_role` `pivot` ON `pivot`.`admin_id`=`admin`.`id` WHERE  `pivot`.`role_id` = 31 [ RunTime:0.000209s ]
+[ sql ] [ SQL ] SELECT * FROM `role` WHERE  `id` = 32 LIMIT 1 [ RunTime:0.000137s ]
+[ sql ] [ SQL ] SELECT `admin`.*,`pivot`.`admin_id` AS `pivot__admin_id`,`pivot`.`role_id` AS `pivot__role_id` FROM `admin` INNER JOIN `admin_role` `pivot` ON `pivot`.`admin_id`=`admin`.`id` WHERE  `pivot`.`role_id` = 32 [ RunTime:0.000230s ]
+[ sql ] [ SQL ] SELECT * FROM `role` WHERE  `id` = 33 LIMIT 1 [ RunTime:0.000144s ]
+[ sql ] [ SQL ] SELECT `admin`.*,`pivot`.`admin_id` AS `pivot__admin_id`,`pivot`.`role_id` AS `pivot__role_id` FROM `admin` INNER JOIN `admin_role` `pivot` ON `pivot`.`admin_id`=`admin`.`id` WHERE  `pivot`.`role_id` = 33 [ RunTime:0.000241s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\admin\role.html [ array (
+  0 => 'roleList',
+) ]
+---------------------------------------------------------------
+[2021-06-02T19:03:32+08:00] 127.0.0.1 GET admin.tp6.com/admin/role_edit.html?id=33
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000483s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `role` [ RunTime:0.001141s ]
+[ sql ] [ SQL ] SELECT * FROM `role` WHERE  `id` = 33 LIMIT 1 [ RunTime:0.000193s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\admin\role_edit.html [ array (
+  0 => 'role',
+) ]
+---------------------------------------------------------------
+[2021-06-02T19:03:40+08:00] 127.0.0.1 GET admin.tp6.com/admin/role.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000467s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `role` [ RunTime:0.001214s ]
+[ sql ] [ SQL ] SELECT `id` FROM `role` [ RunTime:0.000145s ]
+[ sql ] [ SQL ] SELECT * FROM `role` WHERE  `id` = 9 LIMIT 1 [ RunTime:0.000154s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `admin_role` [ RunTime:0.001102s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `admin` [ RunTime:0.000898s ]
+[ sql ] [ SQL ] SELECT `admin`.*,`pivot`.`admin_id` AS `pivot__admin_id`,`pivot`.`role_id` AS `pivot__role_id` FROM `admin` INNER JOIN `admin_role` `pivot` ON `pivot`.`admin_id`=`admin`.`id` WHERE  `pivot`.`role_id` = 9 [ RunTime:0.000276s ]
+[ sql ] [ SQL ] SELECT * FROM `role` WHERE  `id` = 30 LIMIT 1 [ RunTime:0.000153s ]
+[ sql ] [ SQL ] SELECT `admin`.*,`pivot`.`admin_id` AS `pivot__admin_id`,`pivot`.`role_id` AS `pivot__role_id` FROM `admin` INNER JOIN `admin_role` `pivot` ON `pivot`.`admin_id`=`admin`.`id` WHERE  `pivot`.`role_id` = 30 [ RunTime:0.000204s ]
+[ sql ] [ SQL ] SELECT * FROM `role` WHERE  `id` = 31 LIMIT 1 [ RunTime:0.000135s ]
+[ sql ] [ SQL ] SELECT `admin`.*,`pivot`.`admin_id` AS `pivot__admin_id`,`pivot`.`role_id` AS `pivot__role_id` FROM `admin` INNER JOIN `admin_role` `pivot` ON `pivot`.`admin_id`=`admin`.`id` WHERE  `pivot`.`role_id` = 31 [ RunTime:0.000185s ]
+[ sql ] [ SQL ] SELECT * FROM `role` WHERE  `id` = 32 LIMIT 1 [ RunTime:0.000131s ]
+[ sql ] [ SQL ] SELECT `admin`.*,`pivot`.`admin_id` AS `pivot__admin_id`,`pivot`.`role_id` AS `pivot__role_id` FROM `admin` INNER JOIN `admin_role` `pivot` ON `pivot`.`admin_id`=`admin`.`id` WHERE  `pivot`.`role_id` = 32 [ RunTime:0.000197s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\admin\role.html [ array (
+  0 => 'roleList',
+) ]
+---------------------------------------------------------------
+[2021-06-02T19:03:42+08:00] 127.0.0.1 GET admin.tp6.com/admin/node.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000656s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `node` [ RunTime:0.002805s ]
+[ sql ] [ SQL ] SELECT * FROM `node` ORDER BY `sort` [ RunTime:0.000834s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\admin\node.html [ array (
+  0 => 'node',
+) ]
+---------------------------------------------------------------
+[2021-06-02T19:03:46+08:00] 127.0.0.1 GET admin.tp6.com/admin/node_add.html?pid=32
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\admin\node_add.html [ array (
+) ]
+---------------------------------------------------------------
+[2021-06-02T19:03:51+08:00] 127.0.0.1 GET admin.tp6.com/admin/node.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000534s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `node` [ RunTime:0.002676s ]
+[ sql ] [ SQL ] SELECT * FROM `node` ORDER BY `sort` [ RunTime:0.000346s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\admin\node.html [ array (
+  0 => 'node',
+) ]
+---------------------------------------------------------------
+[2021-06-02T19:03:58+08:00] 127.0.0.1 GET admin.tp6.com/admin/node_edit.html?id=33&pid=32
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010972s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `node` [ RunTime:0.001283s ]
+[ sql ] [ SQL ] SELECT * FROM `node` WHERE  `id` = 33 LIMIT 1 [ RunTime:0.000215s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\admin\node_edit.html [ array (
+  0 => 'node',
+  1 => 'title',
+) ]
+---------------------------------------------------------------
+[2021-06-02T19:04:06+08:00] 127.0.0.1 GET admin.tp6.com/admin/node_edit.html?id=105&pid=32
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000532s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `node` [ RunTime:0.000796s ]
+[ sql ] [ SQL ] SELECT * FROM `node` WHERE  `id` = 105 LIMIT 1 [ RunTime:0.000220s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\admin\node_edit.html [ array (
+  0 => 'node',
+  1 => 'title',
+) ]
+---------------------------------------------------------------
+[2021-06-02T19:04:09+08:00] 127.0.0.1 GET admin.tp6.com/admin/node_edit.html?id=38&pid=11
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001457s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `node` [ RunTime:0.001575s ]
+[ sql ] [ SQL ] SELECT * FROM `node` WHERE  `id` = 38 LIMIT 1 [ RunTime:0.000568s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\admin\node_edit.html [ array (
+  0 => 'node',
+  1 => 'title',
+) ]
+---------------------------------------------------------------
+[2021-06-02T19:04:13+08:00] 127.0.0.1 GET admin.tp6.com/admin/node_edit.html?id=11&pid=0
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002181s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `node` [ RunTime:0.001171s ]
+[ sql ] [ SQL ] SELECT * FROM `node` WHERE  `id` = 11 LIMIT 1 [ RunTime:0.000185s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\admin\node_edit.html [ array (
+  0 => 'node',
+  1 => 'title',
+) ]
+---------------------------------------------------------------
+[2021-06-02T19:04:20+08:00] 127.0.0.1 GET admin.tp6.com/admin/node_edit.html?id=12&pid=11
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000500s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `node` [ RunTime:0.001320s ]
+[ sql ] [ SQL ] SELECT * FROM `node` WHERE  `id` = 12 LIMIT 1 [ RunTime:0.000259s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\admin\node_edit.html [ array (
+  0 => 'node',
+  1 => 'title',
+) ]
+---------------------------------------------------------------
+[2021-06-02T19:04:23+08:00] 127.0.0.1 GET admin.tp6.com/admin/node_edit.html?id=33&pid=32
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000670s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `node` [ RunTime:0.002897s ]
+[ sql ] [ SQL ] SELECT * FROM `node` WHERE  `id` = 33 LIMIT 1 [ RunTime:0.000264s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\admin\node_edit.html [ array (
+  0 => 'node',
+  1 => 'title',
+) ]
+---------------------------------------------------------------
+[2021-06-02T19:04:28+08:00] 127.0.0.1 GET admin.tp6.com/admin/node_edit.html?id=105&pid=32
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000428s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `node` [ RunTime:0.001113s ]
+[ sql ] [ SQL ] SELECT * FROM `node` WHERE  `id` = 105 LIMIT 1 [ RunTime:0.000187s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\admin\node_edit.html [ array (
+  0 => 'node',
+  1 => 'title',
+) ]
+---------------------------------------------------------------
+[2021-06-02T19:04:32+08:00] 127.0.0.1 GET admin.tp6.com/admin/node_edit.html?id=17&pid=16
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000598s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `node` [ RunTime:0.001749s ]
+[ sql ] [ SQL ] SELECT * FROM `node` WHERE  `id` = 17 LIMIT 1 [ RunTime:0.000268s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\admin\node_edit.html [ array (
+  0 => 'node',
+  1 => 'title',
+) ]
+---------------------------------------------------------------
+[2021-06-02T19:04:36+08:00] 127.0.0.1 GET admin.tp6.com/admin/node_edit.html?id=38&pid=11
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000970s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `node` [ RunTime:0.000767s ]
+[ sql ] [ SQL ] SELECT * FROM `node` WHERE  `id` = 38 LIMIT 1 [ RunTime:0.000313s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\admin\node_edit.html [ array (
+  0 => 'node',
+  1 => 'title',
+) ]
+---------------------------------------------------------------
+[2021-06-02T19:04:41+08:00] 127.0.0.1 GET admin.tp6.com/admin/role.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000728s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `role` [ RunTime:0.000557s ]
+[ sql ] [ SQL ] SELECT `id` FROM `role` [ RunTime:0.000170s ]
+[ sql ] [ SQL ] SELECT * FROM `role` WHERE  `id` = 9 LIMIT 1 [ RunTime:0.000251s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `admin_role` [ RunTime:0.001393s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `admin` [ RunTime:0.000880s ]
+[ sql ] [ SQL ] SELECT `admin`.*,`pivot`.`admin_id` AS `pivot__admin_id`,`pivot`.`role_id` AS `pivot__role_id` FROM `admin` INNER JOIN `admin_role` `pivot` ON `pivot`.`admin_id`=`admin`.`id` WHERE  `pivot`.`role_id` = 9 [ RunTime:0.000297s ]
+[ sql ] [ SQL ] SELECT * FROM `role` WHERE  `id` = 30 LIMIT 1 [ RunTime:0.000165s ]
+[ sql ] [ SQL ] SELECT `admin`.*,`pivot`.`admin_id` AS `pivot__admin_id`,`pivot`.`role_id` AS `pivot__role_id` FROM `admin` INNER JOIN `admin_role` `pivot` ON `pivot`.`admin_id`=`admin`.`id` WHERE  `pivot`.`role_id` = 30 [ RunTime:0.000238s ]
+[ sql ] [ SQL ] SELECT * FROM `role` WHERE  `id` = 31 LIMIT 1 [ RunTime:0.000159s ]
+[ sql ] [ SQL ] SELECT `admin`.*,`pivot`.`admin_id` AS `pivot__admin_id`,`pivot`.`role_id` AS `pivot__role_id` FROM `admin` INNER JOIN `admin_role` `pivot` ON `pivot`.`admin_id`=`admin`.`id` WHERE  `pivot`.`role_id` = 31 [ RunTime:0.000200s ]
+[ sql ] [ SQL ] SELECT * FROM `role` WHERE  `id` = 32 LIMIT 1 [ RunTime:0.000149s ]
+[ sql ] [ SQL ] SELECT `admin`.*,`pivot`.`admin_id` AS `pivot__admin_id`,`pivot`.`role_id` AS `pivot__role_id` FROM `admin` INNER JOIN `admin_role` `pivot` ON `pivot`.`admin_id`=`admin`.`id` WHERE  `pivot`.`role_id` = 32 [ RunTime:0.000201s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\admin\role.html [ array (
+  0 => 'roleList',
+) ]
+---------------------------------------------------------------
+[2021-06-02T19:04:42+08:00] 127.0.0.1 GET admin.tp6.com/admin/node.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.015098s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `node` [ RunTime:0.001215s ]
+[ sql ] [ SQL ] SELECT * FROM `node` ORDER BY `sort` [ RunTime:0.000526s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\admin\node.html [ array (
+  0 => 'node',
+) ]
+---------------------------------------------------------------
+[2021-06-02T19:05:39+08:00] 127.0.0.1 GET admin.tp6.com/admin/node_edit.html?id=32&pid=0
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000554s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `node` [ RunTime:0.001540s ]
+[ sql ] [ SQL ] SELECT * FROM `node` WHERE  `id` = 32 LIMIT 1 [ RunTime:0.000765s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\admin\node_edit.html [ array (
+  0 => 'node',
+  1 => 'title',
+) ]
+---------------------------------------------------------------
+[2021-06-02T19:06:17+08:00] 127.0.0.1 GET admin.tp6.com/admin/node_edit.html?id=11&pid=0
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000926s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `node` [ RunTime:0.001660s ]
+[ sql ] [ SQL ] SELECT * FROM `node` WHERE  `id` = 11 LIMIT 1 [ RunTime:0.000217s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\admin\node_edit.html [ array (
+  0 => 'node',
+  1 => 'title',
+) ]
+---------------------------------------------------------------
+[2021-06-02T19:06:22+08:00] 127.0.0.1 GET admin.tp6.com/admin/node_edit.html?id=33&pid=32
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000541s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `node` [ RunTime:0.001293s ]
+[ sql ] [ SQL ] SELECT * FROM `node` WHERE  `id` = 33 LIMIT 1 [ RunTime:0.000241s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\admin\node_edit.html [ array (
+  0 => 'node',
+  1 => 'title',
+) ]
+---------------------------------------------------------------
+[2021-06-02T19:06:29+08:00] 127.0.0.1 GET admin.tp6.com/admin/node_edit.html?id=105&pid=32
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001844s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `node` [ RunTime:0.000817s ]
+[ sql ] [ SQL ] SELECT * FROM `node` WHERE  `id` = 105 LIMIT 1 [ RunTime:0.000200s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\admin\node_edit.html [ array (
+  0 => 'node',
+  1 => 'title',
+) ]
+---------------------------------------------------------------
+[2021-06-02T19:06:30+08:00] 127.0.0.1 GET admin.tp6.com/admin/node_add.html?pid=32
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\admin\node_add.html [ array (
+) ]
+---------------------------------------------------------------
+[2021-06-02T19:06:44+08:00] 127.0.0.1 GET admin.tp6.com/admin/node_edit.html?id=107
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000388s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `node` [ RunTime:0.000479s ]
+[ sql ] [ SQL ] SELECT * FROM `node` WHERE  `id` = 107 LIMIT 1 [ RunTime:0.000179s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\admin\node_edit.html [ array (
+  0 => 'node',
+  1 => 'title',
+) ]
+---------------------------------------------------------------
+[2021-06-02T19:06:46+08:00] 127.0.0.1 GET admin.tp6.com/admin/node.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000411s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `node` [ RunTime:0.000504s ]
+[ sql ] [ SQL ] SELECT * FROM `node` ORDER BY `sort` [ RunTime:0.000270s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\admin\node.html [ array (
+  0 => 'node',
+) ]
+---------------------------------------------------------------
+[2021-06-02T19:06:52+08:00] 127.0.0.1 GET admin.tp6.com/admin/node_edit.html?id=107&pid=32
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000591s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `node` [ RunTime:0.000737s ]
+[ sql ] [ SQL ] SELECT * FROM `node` WHERE  `id` = 107 LIMIT 1 [ RunTime:0.000295s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\admin\node_edit.html [ array (
+  0 => 'node',
+  1 => 'title',
+) ]
+---------------------------------------------------------------
+[2021-06-02T19:06:58+08:00] 127.0.0.1 GET admin.tp6.com/admin/node.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000475s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `node` [ RunTime:0.000591s ]
+[ sql ] [ SQL ] SELECT * FROM `node` ORDER BY `sort` [ RunTime:0.000268s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\admin\node.html [ array (
+  0 => 'node',
+) ]
+---------------------------------------------------------------
+[2021-06-02T19:07:19+08:00] 127.0.0.1 GET admin.tp6.com/admin/node_edit.html?id=18&pid=16
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001532s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `node` [ RunTime:0.000651s ]
+[ sql ] [ SQL ] SELECT * FROM `node` WHERE  `id` = 18 LIMIT 1 [ RunTime:0.000257s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\admin\node_edit.html [ array (
+  0 => 'node',
+  1 => 'title',
+) ]
+---------------------------------------------------------------
+[2021-06-02T19:07:22+08:00] 127.0.0.1 GET admin.tp6.com/admin/node_edit.html?id=37&pid=11
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000459s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `node` [ RunTime:0.000488s ]
+[ sql ] [ SQL ] SELECT * FROM `node` WHERE  `id` = 37 LIMIT 1 [ RunTime:0.000187s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\admin\view\admin\node_edit.html [ array (
+  0 => 'node',
+  1 => 'title',
+) ]

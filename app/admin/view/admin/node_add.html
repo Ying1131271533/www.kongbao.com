@@ -1,0 +1,88 @@
+{extend name="layout/base" /}
+{block name="main"}
+  <div class="layui-fluid">
+	<div class="layui-form">
+		<form action="{:url('node_add')}" method="post" name="example">
+			<table class="layui-table" lay-size="lg" lay-skin="line">
+			  <thead>
+				<tr>
+				  <th colspan="2">节点添加</th>
+				</tr> 
+			  </thead>
+				<tr>
+				  <td width="150" align="right"><strong>节点名称：</strong></td>
+				  <td>
+					<div class="layui-input-inline">
+					  <input class="layui-input" type="text" name="title" value="{$Request.param.title}" placeholder="节点名称">
+					</div> 例如：管理员列表
+				  </td>
+				</tr>
+			  <tbody>
+				<tr>
+				  <td width="150" align="right"><strong>节点地址：</strong></td>
+				  <td>
+					<div class="layui-input-inline">
+					  <input class="layui-input" type="text" name="name" placeholder="节点地址">
+					</div> 例如：一级 admin 二级 admin/index
+				  </td>
+				</tr>
+				<tr>
+				  <td width="150" align="right"><strong>位置：</strong></td>
+				  <td>
+					<div class="layui-input-inline">
+					  <input class="layui-input" type="text" name="sort" value="0" placeholder="0">
+					</div> 排序：数值越小位置越前
+				  </td>
+				</tr>
+				{if condition="$Request.param.pid eq 0"}
+				<tr>
+				  <td width="150" align="right"><strong>图标名称：</strong></td>
+				  <td>
+					<div class="layui-input-inline">
+					  <input class="layui-input" type="text" name="icon" value="spread-left" placeholder="spread-left">
+					</div> 默认：spread-left
+				  </td>
+				</tr>
+				{/if}
+				<tr>
+				  <td align="right"><strong>显示在导航栏：</strong></td>
+				  <td>
+					<div class="layui-input-inline">
+					  <input type="radio" name="show" value="1" title="是">
+					  <input type="radio" name="show" value="2" title="否" checked>
+					</div>
+				  </td>
+				</tr>
+				<tr>
+				  <td align="right"></td>
+				  <td>
+					<div class="layui-input-inline">
+					  <input name="pid" type="hidden" value="{$Request.param.pid|default=0}">
+					  <input name="level" type="hidden" value="{$Request.param.pid ? 2 : 1}">	
+					  <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+					</div>
+				  </td>
+				</tr>
+			  </tbody>
+			</table>
+		</form>	
+    </div>
+  </div>
+
+  {js href="/static/admin/layuiadmin/layui/layui.js" /} 
+  <script>
+	layui.use(['jquery', 'layer','table','flow','form'], function(){
+		var table = layui.table
+		,$ = layui.$
+		,layer = layui.layer
+		,flow = layui.flow
+		,form = layui.form
+		
+		//监听提交
+		form.on('submit(formdemo)', function(data){
+			layer.msg(json.stringify(data.field));
+			return false;
+		});
+	});
+  </script>
+{/block}

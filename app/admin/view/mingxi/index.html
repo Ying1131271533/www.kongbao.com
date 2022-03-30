@@ -1,0 +1,173 @@
+{extend name="layout/base" /}
+{block name="main"}
+	<div class="layui-fluid">
+
+		
+		<div class="layui-card kbj">
+		  <div class="layui-card-body layui-col-space5">
+			<div class="layui-input-inline">
+				<a class="{$type == '' ?  'layui-btn' : 'layui-btn layui-btn-primary'} layui-btn-sm" href="{:url('', ['uid' => $uid])}">全部<a>
+			</div>
+			<div class="layui-input-inline">
+				<a class="{$type == 1 ?  'layui-btn' : 'layui-btn layui-btn-primary'} layui-btn-sm" href="{:url('', ['type' => '1', 'uid' => $uid])}">购买空包<a>
+			</div>
+			<div class="layui-input-inline">
+				<a class="{$type == 3 ?  'layui-btn' : 'layui-btn layui-btn-primary'} layui-btn-sm" href="{:url('', ['type' => '3', 'uid' => $uid])}">充值成功<a>
+			</div>
+			<div class="layui-input-inline">
+				<a class="{$type == 4 ?  'layui-btn' : 'layui-btn layui-btn-primary'} layui-btn-sm" href="{:url('', ['type' => '4', 'uid' => $uid])}">申请提现<a>
+			</div>
+			<div class="layui-input-inline">
+				<a class="{$type == 5 ?  'layui-btn' : 'layui-btn layui-btn-primary'} layui-btn-sm" href="{:url('', ['type' => '5', 'uid' => $uid])}">提现失败<a>
+			</div>
+			<div class="layui-input-inline">
+				<a class="{$type == 6 ?  'layui-btn' : 'layui-btn layui-btn-primary'} layui-btn-sm" href="{:url('', ['type' => '6', 'uid' => $uid])}">升级黄金会员<a>
+			</div>
+			<div class="layui-input-inline">
+				<a class="{$type == 7 ?  'layui-btn' : 'layui-btn layui-btn-primary'} layui-btn-sm" href="{:url('', ['type' => '7', 'uid' => $uid])}">升级铂金会员<a>
+			</div>
+			<div class="layui-input-inline">
+				<a class="{$type == 8 ?  'layui-btn' : 'layui-btn layui-btn-primary'} layui-btn-sm" href="{:url('', ['type' => '8', 'uid' => $uid])}">升级钻石会员<a>
+			</div>
+			<div class="layui-input-inline">
+				<a class="{$type == 9 ?  'layui-btn' : 'layui-btn layui-btn-primary'} layui-btn-sm" href="{:url('', ['type' => '9', 'uid' => $uid])}">邀请好友奖励<a>
+			</div>
+			<div class="layui-input-inline">
+				<a class="{$type == 10 ?  'layui-btn' : 'layui-btn layui-btn-primary'} layui-btn-sm" href="{:url('', ['type' => '10', 'uid' => $uid])}">退单<a>
+			</div>
+		  </div>
+		</div>
+		
+		
+		<table id="layui_user" lay-filter="user"></table>
+	</div>
+	
+	{js href="/static/admin/layuiadmin/layui/layui.js" /}
+	
+	<script type="text/html" id="usernameTpl">
+		<a href="javascript:;" style="color:#01AAED" lay-event="username">{{ d.username }}</a>[{{ d.user_id }}]
+	</script>
+	
+	<script type="text/html" id="timeTpl">
+		{{ d.create_time || '' }}
+	</script>
+	
+	<script type="text/html" id="moneyTpl">
+		{{# if(d.status == 1){ }}
+		<font style="color:#cc0000">-{{ d.money }}</font>
+		{{# } else { }}
+		<font style="color:#006600">+{{ d.money }}</font>
+		{{# }}}
+	</script>
+	
+	<script type="text/html" id="zmoneyTpl">
+		<font style="color:#006600">{{ d.zmoney }}</font>
+	</script>
+	
+	<script>
+	layui.use(['jquery', 'layer','table','flow','form'], function(){
+		var table = layui.table
+		,$ = layui.$
+		,layer = layui.layer
+		,flow = layui.flow
+		,form = layui.form
+		
+		// 第一个实例
+		table.render({
+			elem: '#layui_user'
+			,url: "{:url('index_data', ['type' => $type, 'uid' => $uid])}" //数据接口
+			,page: true //开启分页
+			,id: 'user' 
+			,limit: 20
+			,limits: [20, 100, 200, 500]
+			,size: 'sm'
+			,cols: [[ //表头
+				{field: 'id', title: 'ID', width:100, sort: true, fixed: 'left'}
+				,{field: 'username', title: '用户名[会员ID]',  templet: '#usernameTpl'} 
+				,{field: 'type', title: '操作类型', width:300} 
+				,{field: 'create_time', title: '操作时间', sort: true, templet: '#timeTpl'} 
+				,{field: 'ip', title: '操作IP'}
+				,{field: 'money', title: '金额', templet: '#moneyTpl'}
+				,{field: 'zmoney', title: '可用余额', width: 130, templet: '#zmoneyTpl'}
+			]]
+		});
+		
+		//监听排序事件 
+		table.on('sort(user)', function(obj){
+			console.log(obj.field);
+			console.log(obj.type);
+			console.log(this);
+			
+			table.reload('user', {
+				initSort: obj
+				,where: {
+					field: obj.field
+					,order: obj.type
+				}
+			});
+			
+		});
+		
+		var $ = layui.$, active = {
+			reload: function(){
+				var idReload = $('#idReload');
+				var usernameReload = $('#usernameReload');
+				
+				//执行重载
+				table.reload('user', {
+					where: {
+						uid:idReload.val(),
+						username:usernameReload.val(),
+					}
+				});
+			}
+		};
+		
+		//点击事件
+		$('.akali').on('click', function(){
+			var type = $(this).data('type');
+			active[type] ? active[type].call(this) : '';
+		});
+		
+		
+		//监听工具条
+		table.on('tool(user)', function(obj){
+			var data = obj.data; //获得当前行数据
+			var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
+
+			if(layEvent === 'username')
+			{ 
+				window.location.href = "{:url('user/index')}?id=" + data.uid;
+			}
+		
+		});
+	});
+	</script>
+{/block}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

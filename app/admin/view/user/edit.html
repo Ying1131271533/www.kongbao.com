@@ -1,0 +1,108 @@
+{extend name="layout/base" /}
+{block name="main"}
+
+<div class="layui-fluid">
+	<div class="layui-form">
+		<form action="{:url()}" method="post" name="example">
+
+			<table class="layui-table" lay-skin="line">
+			  <thead>
+			  <tr>
+				<th colspan="2">修改会员</th>
+			  </tr>
+			  </thead>
+			  <tbody>
+			  
+			  
+			  <tr>
+				<td width="150" align="right"><strong>会员ID：</strong></td>
+				<td>{$list.id}</td>
+			  </tr>
+
+			  <tr>
+				<td align="right"><strong>用户名：</strong></td>
+				<td>
+					{$list.username}
+				</td>
+			  </tr>
+
+			  <tr>
+				<td align="right"><strong>真实姓名：</strong></td>
+				<td><div class="layui-input-inline"><input type="text" name="name" value="{$list.name}" class="layui-input"/></div></td>
+			  </tr>
+
+			  <tr>
+				<td align="right"><strong>登录密码：</strong></td>
+				<td><div class="layui-input-inline"><input type="text" name="password" value="" class="layui-input"/></div> 留空就不修改</td>
+			  </tr>
+
+			  <tr>
+				<td align="right"><strong>邮箱：</strong></td>
+				<td><div class="layui-input-inline"><input type="text" name="email" value="{$list.email}" class="layui-input"/></div></td>
+			  </tr>
+			  
+			  <tr>
+				<td align="right"><strong>QQ：</strong></td>
+				<td><div class="layui-input-inline"><input type="text" name="qq" value="{$list.qq}" class="layui-input"/></div></td>
+			  </tr>
+			  
+			  <tr>
+				<td align="right"><strong>电话：</strong></td>
+				<td><div class="layui-input-inline"><input type="text" name="phone" value="{$list.phone}" class="layui-input"/></div></td>
+			  </tr>
+			  
+			  <tr>
+				<td align="right"><strong>会员等级：</strong></td>
+				<td>
+					<div class="layui-form-item">
+						<div class="layui-input-block" style="margin-left: 0px;">
+							<input name="level" type="radio" value="1" {$list.level == 1 ? 'checked' : ''} title="普通会员 LV1" />
+							<input name="level" type="radio" value="2" {$list.level == 2 ? 'checked' : ''} title="黄金会员 LV2" />
+							<input name="level" type="radio" value="3" {$list.level == 3 ? 'checked' : ''} title="铂金会员 LV3  " />
+							<input name="level" type="radio" value="4" {$list.level == 4 ? 'checked' : ''} title="钻石会员 LV4" />
+						</div>
+					</div>
+				</td>
+			  </tr>
+			  
+			  <tr>
+				<td align="right"><strong>金额：</strong></td>
+				<td>{$list.money}元 
+					<!-- <a href="{:url('mingxi/index', ['uid' => $list.id])}" class="layui-btn layui-btn-sm layui-btn-normal">资金明细</a> -->
+				</td>
+			  </tr>
+			  
+			
+			  
+			  <tr>
+				<td align="right"><strong>登录状态：</strong></td>
+				<td>
+					<div class="layui-form-item">
+						<div class="layui-input-block" style="margin-left: 0px;">
+							<input name="isvalid" type="radio" value="1" {$list.isvalid == 1 ? 'checked' : ''} title="正常" />
+							<input name="isvalid" type="radio" value="2" {$list.isvalid == 2 ? 'checked' : ''} title="禁止" />
+						</div>
+					</div>
+				</td>
+			  </tr>
+
+			  <tr>
+				<td></td>
+				<td>
+					<input type="hidden" name="id" class="layui-btn" value="{$list.id}" />
+					<input type="submit" name="submit" class="layui-btn" value=" 修改员工 " />
+				</td>
+			  </tr>
+			  </tbody>
+			</table>
+		</form>
+
+	</div>
+</div>
+{js href="/static/admin/layuiadmin/layui/layui.js" /} 
+<script>
+layui.use('form', function(){
+  var form = layui.form;
+});
+</script>
+{/block}

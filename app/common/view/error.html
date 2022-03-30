@@ -1,0 +1,48 @@
+<extend name="Public/basenew"/>
+<block name="title">试用专区-免费试用专区-佣金任务专区-试客的首选免费试用平台</block>
+<block name="keywords">免费试用,淘宝免费试用,免费试用品,免费试用装,免费试用中心,免费试用网站</block>
+<block name="description">欢迎来免费51领啦网免费试用网站,51领啦网—是全国领先的免费试用网和试客网,深得试客信赖的免费试用中心网站,是免费试用网和试客网站的首选
+</block>
+
+<block name="load">
+    <link rel="stylesheet" type="text/css" href="__CSS__/Project/css/wechatCommon.css">
+    <link rel="stylesheet" type="text/css" href="__CSS__/Project/css/wechat.css">
+	<style>
+		.ruiwen dd{
+			margin-right:15px;
+			margin-bottom:15px;
+		}
+		.ruiwen ad{
+			margin-right:15px;
+			margin-bottom:15px;
+		}
+		
+	</style>
+</block>
+
+<block name="main">	
+
+<div class="main">
+    <div class="weChat_main" style="padding-bottom: 0px;">
+	
+      <!-- head-search end -->
+       <div class="weChat_content2">
+			<div class="LAB_maincont2 cf LAB_maincontW">
+				<div class="noData cf">
+					<dl>
+						<dt><img src="__CSS__/Project/images/noDataIco.png" alt=""></dt>
+						<dd>
+							<if condition="$msg neq false">
+							<p>{$msg}</p>
+							<else />
+							<p>你操作的页面不存在！</p>
+							</if>
+							<p><a href="{:U(index)}/">返回首页&gt;&gt;</a></p>
+						</dd>
+					</dl>
+				</div>
+			</div>
+       </div>
+    </div>
+</div>
+</block>

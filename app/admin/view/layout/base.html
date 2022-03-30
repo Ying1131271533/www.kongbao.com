@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>{block name="title"}51空包代理{/block}</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	{css href="/static/admin/layuiadmin/layui/css/layui.css" /}
+	{css href="/static/admin/layuiadmin/style/admin.css" /}
+	{css href="/static/admin/css/style.css" /}
+	{js href="/static/admin/js/common.js" /}
+	{block name="load"}{/block}
+</head>
+<body>
+	{block name="main"}主内容{/block}
+	
+	<!-- 打开放大图片窗口 - 容器 -->
+	<div id="akali" class="hide layui-layer-wrap" style="display: none;">
+		<img src="" id=""/>
+	</div>
+	<!-- 打开放大图片窗口 - js -->
+	<script>
+		function open_img(obj)
+		{
+			layui.use(['jquery', 'layer','table','flow','form'], function(){
+				var table = layui.table
+				,$ = layui.$
+				,layer = layui.layer
+				
+				var src = obj.src;
+				$('#akali img').attr('src', src);
+				
+				// 获取图片的真实宽高
+				$('<img/>').attr("src", $('#akali img').attr("src")).load(function() {
+
+					var pic_real_width = this.width > 1280 ? 1280 : this.width;   // Note: $(this).width() will not
+					var pic_real_height = this.height; // work for in memory images.
+					
+					// 设置图片的宽度不能超过1280px
+					$('#akali img').attr('width', pic_real_width);
+					
+					// 页面层-佟丽娅
+					layer.open({
+						type: 1,
+						title: false,
+						closeBtn: 0,
+						area: pic_real_width + 'px',
+						skin: 'layui-layer-nobg', //没有背景色
+						shadeClose: true,
+						content: $('#akali')
+					});
+				});
+			});
+		}
+	</script>
+<body>
+</html>

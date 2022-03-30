@@ -1,0 +1,124 @@
+{extend name="layout/base" /}
+{block name="main"}
+	<div class="layui-fluid">
+		<div class="layui-row layui-col-md-offset0" style="margin-bottom:20px;">
+			<div class="layui-col-md9">
+				<a href="{:url('admin/role_add')}" class="layui-btn layui-btn-danger">添加角色</a>
+			</div>
+		</div>
+		<form class="layui-form" action="" method="post">
+			<table class="layui-table">
+			  <thead>
+				<tr>
+				  <th>ID</th>
+				  <th>角色名称</th>
+				  <th>描述</th>
+				  <th>用户名列表</th>
+				  <th>操作</th>
+				</tr>
+			  </thead>
+			  <tbody>
+				{foreach $roleList as $value}
+				<tr>
+				  <td>{$value.id}</td>
+				  <td>{$value.name}</td>
+				  <td>{$value.explain}</td>
+				  <td>
+					{notempty name="value.admin"}
+					{foreach $value.admin as $val}
+					{$val}、
+					{/foreach}
+					{/notempty}
+				  </td>
+				  <td>
+					<a href="javascript:edit({$value.id});" class="layui-btn">
+					  <i class="layui-icon">&#xe642;</i> 修改
+					</a>
+					<a class="layui-btn layui-bg-black" href="javascript:del({$value.id});">
+					  <i class="layui-icon">&#xe640;</i> 删除
+					</a>
+					<a class="layui-btn layui-bg-blue" href="javascript:;" onclick="auth({$value.id})">
+					  <i class="layui-icon">&#xe66e;</i> 权限
+					</a>
+					<!-- <a class="layui-btn layui-bg-blue" href="{:url('role_auth', ['id' => $value.id])}">
+					  <i class="layui-icon">&#xe66e;</i> 权限
+					</a> -->
+				  </td>
+				</tr>
+				{/foreach}
+			  </tbody>
+			</table>
+		</form>
+	</div>
+
+  {js href="/static/admin/layuiadmin/layui/layui.js" /} 
+  <script>
+	layui.use(['jquery', 'layer', 'table', 'flow', 'form', 'laypage'], function(){
+		var table = layui.table
+		,$ = layui.$
+		,layer = layui.layer
+		,flow = layui.flow
+		,form = layui.form
+		,laypage = layui.laypage
+		
+		
+		//监听提交
+		form.on('submit(formdemo)', function(data){
+			layer.msg(json.stringify(data.field));
+			return false;
+		});
+		
+		
+	});
+
+	function edit(id)
+	{
+		//修改信息
+		layer.open({
+		  id:'1',
+		  type: 2,
+		  title: '角色ID:' + id,
+		  shadeClose: true,
+		  shade: [0.8, '#000000'],
+		  area: ['700px', '500px'],
+		  content: "{:url('role_edit')}?id=" + id,
+		});
+	}
+	
+	function auth(id)
+	{
+		//修改信息
+		layer.open({
+		  id:'1',
+		  type: 2,
+		  title: '角色ID:' + id,
+		  shadeClose: true,
+		  shade: [0.8, '#000000'],
+		  area: ['700px', '500px'],
+		  content: "{:url('admin/role_auth')}?id=" + id,
+		});
+	}
+	
+	function del(id)
+	{
+		layer.confirm('确定要删除此角色吗', function(index){
+			window.location.href = "{:url('admin/role_del')}?id=" + id;
+			layer.close(index);
+		});
+	}
+  </script>
+{/block}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

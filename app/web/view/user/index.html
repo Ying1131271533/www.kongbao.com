@@ -1,0 +1,110 @@
+{extend name="layout/userbase" /}
+{block name="title"}会员中心{/block}
+
+{block name="load"}
+<style>
+	.m6{ text-align:right; width:130px !important;}
+</style>
+{/block}
+
+{block name="main"}
+<div class="user">
+	<div class="user_index">
+    	{include file="layout/top" /}
+		{include file="layout/left"/}
+        <div class="user_right">
+        	<div class="user_title">会员中心</div>
+            
+            {notempty name="user.password_m"}
+            <div class="user_gg_2">
+            	<font color="#FF0000">您使用的第三方帐号登录，还未设置本站登录密码，请尽快去修改一下您的原始密码。</font> <a href="{:url('user/pass')}">修改密码</a>
+            </div>
+            {/notempty}
+            
+            {empty name="user.email"}
+            <div class="user_gg_2">
+            	<font color="#FF0000">您还没有设置邮箱帐号，请尽快去添加一个邮箱帐号。</font> <a href="{:url('user/info')}">添加邮箱</a>
+            </div>
+			{/empty}
+            
+        	<div class="user_gg">
+            	<p>好消息，即日起充值满就送会员活动开始啦：</p>
+            	<p style="color:#f00">
+                    一次性充值188元，送永久<span class="level2">黄金会员</span><br />
+                    一次性充值388元，送永久<span class="level3">铂金会员</span><br />
+                    一次性充值588元，送永久<span class="level4">钻石会员</span>
+                </p>
+                <p>会员等级越高，下单价格越优惠，以及其他各种优惠。 <a href="{:url('user/pay')}">马上去充值</a></p>
+            </div>
+            
+            {empty name="check"}
+            <div>
+            	<a href="http://www.51liuliangshenqi.com/?51kongbaoo" target="_blank" style="margin-right: 5px; margin-left:10px;">
+					<img src="/static/upload//51liuliangshenqi-320.jpg" />
+				</a>
+                <a href="http://www.51liuliangshenqi.com/SQrobot?51kongbaoo" target="_blank" style="margin-right: 5px;">
+					<img src="/static/upload//51liuliangshenqi-sq-320.jpg?20181220" />
+				</a>
+                <a target="_blank" href="http://www.51lingla.com/?51kongbaoo">
+					<img src="/static/upload//51320-1.jpg" />
+				</a>
+            </div>
+
+            {/empty}
+            
+        	<div class="user_kdjg">
+                
+                <ul class="mz">
+                    <li class="m1">快递类型</li>
+                    <li class="m2">{$user.level == 1 ? '<span>普通会员</span>' : '普通会员'}</li>
+                    <li class="m3">{$user.level == 2 ? '<span>黄金会员</span>' : '黄金会员'}</li>
+                    <li class="m4">{$user.level == 3 ? '<span>铂金会员</span>' : '铂金会员'}</li>
+                    <li class="m5">{$user.level == 4 ? '<span>钻石会员</span>' : '钻石会员'}</li>
+                    <li class="m6">下单</li>
+                </ul>
+                
+                {volist name="list" id="vo"}
+                    <ul>
+                    <li class="m1">{$vo.name}</li>
+                    
+                    <li class="m2">{if condition="$user.level eq 1"}<span>{$vo.level1}元</span>{else /}{$vo.level1}元{/if}</li>
+                    <li class="m3">{if condition="$user.level eq 2"}<span>{$vo.level2}元</span>{else /}{$vo.level2}元{/if}</li>
+                    <li class="m4">{if condition="$user.level eq 3"}<span>{$vo.level3}元</span>{else /}{$vo.level3}元{/if}</li>
+                    <li class="m5">{if condition="$user.level eq 4"}<span>{$vo.level4}元</span>{else /}{$vo.level4}元{/if}</li>
+                    <li class="m6"><a href="{:url('bag/buy')}">下单购买</a></li>
+                    </ul>
+                    <ul>
+                    	<li class="m8">{$vo.explain}</li>
+                    </ul>
+                {/volist}
+                
+                	<ul>
+                    <li class="m1"></li>
+                    
+                    <li class="m2">{if condition="$user.level eq 1"}<span>您的价格↑</span>{/if}</li>
+                    <li class="m3">{if condition="$user.level lt 2"}<a href="{:url('User/vip')}">升级黄金</a>{elseif condition="$user.level eq 2" /}<span>您的价格↑</span>{/if}</li>
+                    <li class="m4">{if condition="$user.level lt 3"}<a href="{:url('User/vip')}">升级铂金</a>{elseif condition="$user.level eq 3" /}<span>您的价格↑</span>{/if}</li>
+                    <li class="m5">{if condition="$user.level lt 4"}<a href="{:url('User/vip')}">升级钻石</a>{elseif condition="$user.level eq 4" /}<span>您的价格↑</span>{/if}</li>
+                    <li class="m6"></li>
+                    </ul>
+					
+            </div>
+            
+            <div class="clear"></div>
+
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+{/block}
+
+
+
+
+
+
+
+
+
+

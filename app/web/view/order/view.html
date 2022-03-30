@@ -1,0 +1,39 @@
+{extend name="layout/userbase"/}
+{block name="title"}底单信息{/block}
+{block name="load"}
+{/block}
+{block name="main"}
+<div class="user">
+	<div class="user_index">
+        {include file="layout/top" /}
+		{include file="layout/left" /}
+        <div class="user_right">
+        
+        	<div class="user_title">底单列表</div>
+				
+                <div class="user_order_record">
+					{eq name="$list.status" value="2"}
+                	<p><strong>快递类型：</strong>{$list.kdname}</p>
+                	<p><strong>快递单号：</strong>{$list.number}</p>
+                    <p><strong>发货人信息：</strong>{$list.fname}，{$list.fphone}，{$list.faddress}</p>
+                	<p><strong>收获人信息：</strong>{$list.sname}，{$list.sphone}，{$list.saddress}</p>
+                    <p><strong>物品名称：</strong>{$list.goods_name}</p>
+                    <p><strong>物品重量：</strong>{$list.kg}KG</p>
+                    <p><strong>申请时间：</strong>{$list.create_time}</p>
+                    <p><strong>处理时间：</strong>{$list.dispose_time}</p>
+                    <p><strong>快递底单：</strong>鼠标右键点击下面的底单图片，选择图片另存为，保存到您自己的电脑。</p>
+					{/eq}
+                    <div class="user_order_record_img">{:html_dcode($list.content)}</div>
+                </div>
+				
+                <div class="clear"></div>
+           
+            
+
+        
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+{/block}

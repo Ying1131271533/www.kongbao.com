@@ -1,0 +1,45 @@
+{extend name="layout/base" /}
+{block name="main"}
+
+<div class="layui-fluid">
+	<div class="layui-form">
+		<form action="{:url()}" method="post" name="example">
+
+			<table class="layui-table" lay-skin="line">
+			  <thead>
+			  <tr>
+				<th colspan="2">审核失败原因</th>
+			  </tr>
+			  </thead>
+			  <tbody>
+			  
+
+			  <tr>
+				<td>
+					<div class="layui-input-inline">
+					<textarea rows="2000" cols="2000" name="failure" value="" class="layui-input"></textarea></div>
+				</td>
+			  </tr>
+
+			  <tr>
+				<td>
+					<input type="hidden" name="status" value="3">
+					<input type="hidden" name="id" value="{$list.id}">
+
+					
+					<input type="submit" name="submit" class="layui-btn" value=" 提交" />
+				</td>
+			  </tr>
+			  </tbody>
+			</table>
+		</form>
+
+	</div>
+</div>
+{js href="/static/admin/layuiadmin/layui/layui.js" /} 
+<script>
+layui.use('form', function(){
+  var form = layui.form;
+});
+</script>
+{/block}

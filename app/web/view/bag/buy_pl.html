@@ -1,0 +1,319 @@
+{extend name="layout/userbase" /}
+{block name="title"}批量下单购买空包{/block}
+
+{block name="load"}
+{css href="/static/web/js/layui/css/layui.css" /}
+{js href="/static/web/js/auto-line-number.js" /}
+{js href="/static/web/js/layui/layui.js" /}
+<script>
+layui.use(['upload', 'layer', 'jquery'], function(){
+	var upload = layui.upload
+	,$ = layui.jquery
+	,layer = layui.layer
+	
+	
+	layui.upload({
+		url: "{:url('excel')}"
+		,ext: 'xls|xlsx'
+		,type: 'file'
+		,success: function(res){
+
+			if(res.status == 0){
+				return layer.msg(res.data, {icon: 5});
+				
+			}else if(res.status == 1){
+				
+				$('#content').val(res.data);
+
+				$("#content").setTextareaCount({
+					width: "30px",
+					color: "#000",
+					display: "inline-block",
+				});
+				return false;
+			}else if(res.status == 2){
+				
+				layer.confirm(res.data, {
+					icon: 2,
+					closeBtn: 0,
+					title: '提示',
+					btn: ['确定','取消'] //按钮
+				}, function(){
+					window.location.href = "{:url('login')}";
+				}, function(){
+					layer.closeAll();
+					return false;
+				});
+			}
+		}
+	});
+});
+</script>
+<script type="text/javascript">
+
+var dclick = 1;
+function save(){
+	var kdid = $('#kdid').val();
+	var aid = $('#aid').val();
+	var content = $('#content').val();
+	var goods = $('#goods').val();
+	var kg = $('#kg').val();
+
+
+	if(kdid == ''){
+		alert('请选择您需要的快递');
+		return;
+	}
+	
+	if(!aid){
+		alert('请设置发货地址');
+		return;
+	}
+	
+	if(!content){
+		alert('还没有填写收货人信息');
+		return;
+	}
+
+	if(dclick == 0)
+	{
+		return;
+	}
+	dclick = 0;
+	//加载loading
+	var ii = layer.load(2);
+	
+	$.ajax({
+		url: "{:url()}",
+		type: 'POST',
+		data:{kd_id:kdid,address_id:aid,content:content,goods_name:goods,kg:kg},
+		dataType: 'json',
+		success: function(data){
+			if(data.status == 0){
+				//取消loading
+				layer.close(ii);
+				layer.alert(data.msg, {icon:2});
+				dclick = 1;
+			}else{
+				//取消loading
+				layer.close(ii);
+				alert(data.msg);
+				window.location="{:url('index')}";
+			}
+		}
+	});
+}
+</script>
+
+<script type="text/javascript">
+
+function kd(){
+	var kdid = $('#kdid').val();
+	if(! kdid)
+	{
+		$('#zj').html(0);
+		$('#l1').html(0);
+		$('#l2').html(0);
+		$('#l3').html(0);
+		$('#l4').html(0);
+		$('#comm').html('请选择您需要的快递');
+		return false;
+	}
+	
+	$.ajax({
+		url: "{:url('buy_kd')}",
+		type: 'POST',
+		data:{id:kdid},
+		dataType: 'json',
+		success: function(data){
+			if(data){
+				//alert(data.info);
+				//window.location="{:url('User/buy_record')}";
+				$('#l1').html(data.level1);
+				$('#l2').html(data.level2);
+				$('#l3').html(data.level3);
+				$('#l4').html(data.level4);
+				$('#comm').html(data.explain);
+				var level = "{$user.level}";
+				if(level==4){
+					$('#zj').html(data.level4);
+				}else if(level==3){
+					$('#zj').html(data.level3);
+				}else if(level==2){
+					$('#zj').html(data.level2);
+				}else if(level==1){
+					$('#zj').html(data.level1);
+				}
+			}
+		}
+	});
+}
+
+function xdys(){
+	$("#xdys").toggle();
+}
+
+</script>
+
+{/block}
+
+
+{block name="main"}
+<div class="user">
+	<div class="user_index">
+    	{include file="layout/top" /}
+		{include file="layout/left" /}
+        <div class="user_right">
+        
+        	<div class="user_title">批量下单购买空包</div>
+
+            <div class="user_ts">
+                <p>下单须知</p>
+                <p class="red">在当日18点之前下单的，快递空包将在当日晚上发出，一般第二天就有物流信息。</p>
+                <p class="red">在当日18点之后下单的，快递空包将在第二天晚上发出，一般第三天的才有物流信息。</p>
+                <p class="red">请使用您对应的平台购买单号，您是用在淘宝平台就购买淘宝的单号，请不要跨平台使用单号，拿到单号后请第一时间填到您使用的平台中。</p>
+                <p class="red">快递的物流信息，请在快递官网或者您使用的淘宝天猫、京东、拼多多中查询。</p>
+                <p class="red">快递单号只能用来发货使用，请不要用于发退货单，不支持发退货物流。</p>
+                <p class="red">申通快递(淘宝天猫)请在淘宝后台请选择"申通快递"，不要直接选择申通。</p>
+            </div>
+                    
+            	<div class="user_buy">
+
+					
+                    <div class="clear" style="height:20px;"></div>
+                    
+                    <dl>
+                    	<dt>下单类型：</dt>
+                        <dd><a class="buyon">批量购买</a> <a href="{:url('buy')}" class="buyoff">单个购买</a></dd>
+                    </dl>
+                    
+                    <dl>
+                    	<dt>选择快递：</dt>
+                        <dd>
+							<p class="red" style="background:#FCF8E2;">商家后台需要点发货，否则物流是不会显示的</p>
+                        	<p>
+                            <select id="kdid" class="select" onchange="kd()">
+                            <option value="">请选择您需要的快递</option>
+                            {volist name="kd" id="vo"}
+                            <option value="{$vo.id}">{$vo.name}</option>
+                            {/volist}
+                            </select> <font color="#FF0000">更多快递类型请在<a href="{:url('User/buy')}">单个购买</a>中查找</font> 请使用您对应的平台购买单号，您是用在淘宝平台就购买淘宝的单号。
+                            </p>
+                            
+                            <div class="lm">
+                        		<p>
+                                	<span class="buyvips">您是{$user.level|vip="2"} > 下单价格：<span id="zj">0</span> 元 / 单</span>
+                                	{if condition="$user.level neq 4 "}<a href="{:url('User/vip')}">升级会员</a>{/if}
+                                </p>
+                                {if condition="$user.level neq 4 "}
+                                <p>
+                                    <span class="buyvip">普通会员：<span id="l1">0</span> 元/单</span>
+                                    <span class="buyvip">黄金会员：<span id="l2">0</span> 元/单</span>
+                                    <span class="buyvip">铂金会员：<span id="l3">0</span> 元/单</span>
+                                    <span class="buyvip">钻石会员：<span id="l4">0</span> 元/单</span>
+                                </p>
+                                {/if}
+                                <p><span class="buyvip">温馨提醒：<font id="comm">请选择您需要的快递</font></span></p>
+                            </div>
+                            
+                        </dd>
+                    </dl>
+
+                    
+                    
+                    <dl>
+                        <dt>发货地址：</dt>
+    					<dd>
+                        
+                            <p>
+                            <select id="aid" class="select" style="width:724px;">
+                            {volist name="address" id="vo"}
+                            <option value="{$vo.id}" {eq name="$vo.default" value="1"}selected="selected"{/eq}>{$vo.addresser}，{$vo.phone}，{$vo.province} {$vo.city} {$vo.county} {$vo.address|msubstr=0,13, 'utf-8', true}</option>
+                            {/volist}
+                            </select> <a class="faddress" href="{:url('User/address')}">添加发货地址</a>
+                            </p>
+                            
+    
+                            <div class="lm">
+                                <p>请正确填写收货地址<s onclick="xdys();">下单演示</s></p>
+                                
+                                <div class="geshi" id="xdys" style="display:none;">
+                                    <p>淘宝后台 -> 已卖出宝贝 -> 等待发货 -> 点详情</p>
+                                    <p>如下图所示：</p>
+                                    <p><img src="/static/web/images/dizyanshi.jpg" /></p>
+                                </div>
+                                <div class="geshi">
+                                    <p>收货地址格式如下：</p>
+                                    <p>张三峰，13688888888，广东省 广州市 白云区 岭南大道321号</p>
+                                    <p style="color:#F00;">姓名电话地址邮编都是用"逗号"分割开的，省市区后面是有"空格"的，请注意格式不要填错误了。</p>
+                                    
+                                </div>
+                                
+                            </div> 
+                        
+                        </dd>
+                    </dl>
+
+                    
+
+                    <dl>
+                        <dt>收货地址：</dt>
+                        <dd>
+                        <textarea name="content" id="content" class="address_textarea"></textarea>
+                        <p><i>*</i> <em>请严格按照格式添加收货信息；每一行一个地址，按回车分行，一次最多200个地址。也可单个提交。</em></p>
+                        
+                        
+                        <p>
+                        	<input type="file" name="file" class="layui-upload-file"  lay-title="导入Excel文件" />
+							<em>
+								<a href="/static/upload/Excel导入模版.xlsx" style="color:#39F" target="_blank">下载Excel导入模版</a>
+							</em>
+                        </p>
+                        
+                        </dd>
+                    </dl>
+       				<script>
+					$("#content").setTextareaCount({
+						width: "30px",
+						color: "#000",
+						display: "inline-block",
+
+					});
+					</script>
+                    
+                    
+                    <dl>
+						<dt>商品名称：</dt>
+						<dd><input id="goods" type="text" class="val" value="物品" /> <i>*</i> <em>发货人的真实商品名称 （注：如果不填当前所下订单默认为"物品"）</em></dd>
+                    </dl>
+
+                    
+                    <dl>
+                        <dt>商品重量：</dt>
+                        <dd>
+                        	<p><input id="kg" type="text" class="val" value="1" /> <i>*</i> <em>KG 发货人的真实商品重量，不要超过5KG （注：如果不填当前所下订单默认为"1KG"）</em></p>
+                            <p><a class="qr" href="javascript:save()">立即购买</a>
+								<span class="red" style="background:#FCF8E2;">淘宝发货时，发货方式需要选择“自己联系”！</span>
+								<!-- <span class="red" style="background:#FCF8E2;">单号不支持退货使用，如果您是退货物流的话，请不要下单</span> -->
+                        </dd>
+                    </dl>
+
+
+					<div class="clear"></div>
+
+
+
+            	</div>
+                
+                <div class="clear"></div>
+           
+            
+
+        
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+
+{/block}

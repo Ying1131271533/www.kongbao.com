@@ -1,0 +1,33 @@
+.rbac{
+	border: #dedede solid 1px;
+    margin-bottom: 15px;
+}
+
+.title{
+	background: #f1f1f1;
+    border-bottom: #dedede solid 1px;
+    height: 35px;
+    line-height: 30px;
+    padding-left: 10px;
+}
+
+.rabc-ul{
+	padding-left:40px;
+	overflow: hidden;
+    margin: 10px
+}
+
+.rabc-ul li {
+    list-style: none;
+    float: left;
+    margin-right: 25px;
+    height: 35px;
+    line-height: 35px;
+}
+
+
+.layui-card-body {
+    position: relative;
+    padding: 10px 15px 0px 0px;
+    line-height: 24px;
+}

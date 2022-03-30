@@ -1,0 +1,20 @@
+@charset "utf-8";
+/* CSS Document */
+.help{ border-top:1px solid #e5e5e5; background:#f5f5f5; padding:20px 0;}
+.help-left{ float:left; width:872px; margin-right:24px; background:#fff; border: 1px solid #e5e5e5;}
+.help-right{ float:left; width:300px; background:#fff; border: 1px solid #e5e5e5;}
+
+.help-list{margin:10px;}
+.help-list ul{ }
+.help-list ul li{ height:40px; line-height:40px; text-indent:20px; background: url(../images/newicons.png) no-repeat -11px -244px; border-bottom:1px dashed #e5e5e5;}
+.help-list ul li span{ float:right; color:#999;}
+
+.help-ar{ padding:10px;}
+.help-ar ul{}
+.help-ar ul li{ height:40px; line-height:40px; text-indent:20px; background: url(../images/newicons.png) no-repeat -11px -244px; border-bottom:1px dashed #e5e5e5; overflow:hidden;}
+
+.list-body{ margin:10px; font-family:'\5FAE\8F6F\96C5\9ED1'; min-height: 550px;}
+.list-body h3{ height:60px; line-height:60px; font-size:24px; text-align:center; color:#ff9600}
+.lbody{ height:40px; line-height:40px; background:#f5f5f5; text-align:center;}
+.lbody span{ margin:0 10px;}
+.content{ margin:20px 10px; line-height:26px;}

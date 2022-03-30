@@ -1,0 +1,104 @@
+{extend name="layout/userbase" /}
+{block name="title"}发货地址管理{/block}
+
+{block name="load"}
+{css href="/static/web/css/user.css" /}
+
+{/block}
+
+
+{block name="main"}
+<div class="user">
+	<div class="user_index">
+    	{include file="layout/top" /}
+		{include file="layout/left" /}
+        <div class="user_right">
+        
+        	<div class="user_title">发货地址管理</div>
+				
+				<span class="address_sm">注意：使用的发货地址必须要和你淘宝发货平台上的发货地址一样！</span>
+           		<span class="address_add"><a href="{:url('user/address_add')}">新增发货地址</a></span>
+            	
+                
+                <div class="user_address">
+                	
+                	<ul class="az">
+                		<li class="a1">发货人</li>
+                        <li class="a2">发货人电话</li>
+                        <li class="a3">发货具体地址</li>
+                        <li class="a4">默认</li>
+                        <li class="a5">操作</li>
+                    </ul>
+                    
+                    {volist name="address" id="vo"}
+					<ul>
+						<li class="a1">{$vo.addresser}</li>
+						<li class="a2"><font color="#cc0000">{$vo.phone}</font></li>
+						<li class="a3">
+						{$vo.province} {$vo.city} {$vo.county} {$vo.address}
+						</li>
+						<li class="a4">{if condition="$vo.default eq 1 "}<font color="#CC0000">已默认</font>{else/}<a href="javascript:address_default({$vo.id});">设为默认</a>{/if}</li>
+						<li class="a5"><!--<a href="#">修改</a>--> <a href="javascript:address_del({$vo.id});">删除</a></li>
+					</ul>
+                    {/volist}
+                    
+                </div>
+                
+                <!-- <div class="text-center"><ul class="pagination">{page}</ul></div> -->
+
+
+  
+                <div class="clear"></div>
+           
+            
+
+        
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+
+<script>
+
+function address_default(id)
+{
+	$.post("{:url('address_default')}", {id:id}, function(data){
+		
+		if(data.code != 0)
+		{
+			return layer.msg(data.msg, {icon:2});
+		}
+		
+		layer.msg(data.msg, {icon:1});
+		setTimeout(function(){
+			window.location = "{:url('address')}";
+		}, 500);
+		
+	}, 'json');
+}
+
+function address_del(id)
+{
+	layer.confirm('确定要删除地址吗', function(index){
+	
+		$.post("{:url('address_del')}", {id:id}, function(data){
+		
+			if(data.code != 0)
+			{
+				return layer.msg(data.msg, {icon:2});
+			}
+			
+			layer.msg(data.msg, {icon:1});
+			setTimeout(function(){
+				window.location = "{:url('address')}";
+			}, 500);
+			
+		}, 'json');
+		
+		layer.close(index);
+	});
+	
+}
+</script>
+{/block}

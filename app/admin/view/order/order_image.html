@@ -1,0 +1,66 @@
+{extend name="layout/base" /}
+{block name="title"}底单上传{/block}
+{block name="load"}
+<style>
+.img{
+	margin-top:10px;
+}
+#demo2 img{
+	width:80px;
+	margin-left:5px;
+}
+</style>
+{/block}
+
+{block name="main"}
+	<div class="layui-upload">
+	  <button type="button" class="layui-btn img" id="test2">图片上传</button> 
+	  <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+		预览图：
+		<div class="layui-upload-list" id="demo2"></div>
+	 </blockquote>
+	</div>
+	{js href="/static/admin/layuiadmin/layui/layui.js" /} 
+	<script>
+		layui.use(['upload', 'layer', 'jquery'], function(){
+		  var upload = layui.upload
+		  ,$ = layui.$
+		  ,layer = layui.layer
+		
+		//多图片上传
+		var jinx = upload.render({
+			elem: '#test2'
+			,url: "{:url('order_image')}"
+			,multiple: true
+			,before: function(obj){
+			  //预读本地文件示例，不支持ie8
+			  obj.preview(function(index, file, result){
+				$('#demo2').append('<img src="'+ result +'" alt="'+ file.name +'" class="layui-upload-img">')
+			  });
+			  
+			}
+			,done: function(res){
+			  // 暂停3秒
+			  // sleep(3000);
+			  // 上传完毕
+			  if(res.code != 0)
+			  {
+				return layer.msg(res.msg, {icon:2});
+			  }
+			  //return layer.msg('上传成功', {icon:1});
+			}
+		  });
+		});
+		
+		function sleep(numberMillis)
+		{    
+			var now = new Date();    
+			var exitTime = now.getTime() + numberMillis;   
+			while (true) { 
+			now = new Date();       
+			if (now.getTime() > exitTime) 
+				return;    
+			} 
+		}
+	</script>
+{/block}

@@ -1,0 +1,45 @@
+<extend name="Public/base" />
+<block name="title">{$list.title}</block>
+<block name="keywords"></block>
+<block name="description"></block>
+<block name="load">
+<link href="__CSS__/help.css" rel="stylesheet">
+</block>
+
+<block name="main">
+
+<div class="help">
+	<div class="center">
+    
+        <div class="help-left">
+
+                <div class="list-body">
+                    <h3>{$list.title}</h3>
+                    <div class="lbody">
+                        <span>浏览：{$list.popularity}</span>
+                        <span>日期：{$list.time|date="Y-m-d H:i:s",###}</span>
+                        <span>分类：{$list.fid|type}</span>
+                        <span>来自：{$list.ltitle}</span>
+                    </div>
+                    <div class="content">{$list.content}</div>
+                </div>
+
+        </div>
+    
+    
+    	<div class="help-right">
+            <div class="help-ar">
+            	<div class="index-title">相关推荐</div>
+            	<ul>
+            		<volist name="listr" id="vo">
+                    <li><a href="{:U('Help/view',"id=$vo[id]")}">{$vo.title}</a></li>
+                    </volist>
+            	</ul>
+            </div>
+        </div>
+        
+	</div>
+    <div class="clear"></div>
+</div>
+
+</block>

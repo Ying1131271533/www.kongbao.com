@@ -1,0 +1,59 @@
+{extend name="layout/userbase"/}
+{block name="title"}底单列表{/block}
+{block name="load"}
+{/block}
+
+{block name="main"}
+<div class="user">
+	<div class="user_index">
+        {include file="layout/top" /}
+		{include file="layout/left" /}
+        <div class="user_right">
+        
+        	<div class="user_title">底单列表 (只显示最近30天所申请处理的底单)</div>
+
+                <div class="user_order_record">
+                	
+                	<ul class="cz">
+                		<li class="c1">申请时间</li>
+                        <li class="c2">快递类型</li>
+                        <li class="c3">快递单号</li>
+                        <li class="c4">处理时间</li>
+                        <li class="c5">查看底单</li>
+                    </ul>
+                    
+                    {volist name="list" id="vo"}
+                        <ul>
+                            <li class="c1">{$vo.create_time}</li>
+                            <li class="c2">{$vo.kdname}</li>
+                            <li class="c3"><font color="#cc0000">{$vo.number}</font></li>
+                            <li class="c4">{$vo -> getData('dispose_time') ? $vo.dispose_time : '———'}</li>
+                            <li class="c5">
+								{if condition="$vo.status eq 1 "}
+								<font color="#999999">等待处理中</font>
+								{elseif condition="$vo.status eq 2 "/}
+								<a href="{:url('view', ['id' => $vo.id])}">查看底单</a>
+								{elseif condition="$vo.status eq 3 "/}
+								<a href="{:url('view', ['id' => $vo.id])}" class="jj">拒绝处理，点击查看原因</a>
+								{/if}
+                            </li>
+                    	</ul>
+                    {/volist}
+                    
+                </div>
+                
+                <div class="text-center"><ul class="pagination">{$page|raw}</ul></div>
+
+
+  
+                <div class="clear"></div>
+           
+            
+
+        
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+{/block}

@@ -1,0 +1,26 @@
+---------------------------------------------------------------
+[2022-03-29T16:03:58+08:00] 127.0.0.1 GET www.tp6.com/
+[ error ] [1049]SQLSTATE[HY000] [1049] Unknown database 'www_tp6_com'[D:\Web\www.tp6.com\vendor\topthink\framework\src\think\db\PDOConnection.php:407]
+---------------------------------------------------------------
+[2022-03-29T16:07:35+08:00] 127.0.0.1 GET www.tp6.com/
+[ error ] [1049]SQLSTATE[HY000] [1049] Unknown database 'www_tp6_com'[D:\Web\www.tp6.com\vendor\topthink\framework\src\think\db\PDOConnection.php:407]
+---------------------------------------------------------------
+[2022-03-29T16:07:36+08:00] 127.0.0.1 GET www.tp6.com/
+[ error ] [1049]SQLSTATE[HY000] [1049] Unknown database 'www_tp6_com'[D:\Web\www.tp6.com\vendor\topthink\framework\src\think\db\PDOConnection.php:407]
+---------------------------------------------------------------
+[2022-03-29T16:07:37+08:00] 127.0.0.1 GET www.tp6.com/
+[ error ] [1049]SQLSTATE[HY000] [1049] Unknown database 'www_tp6_com'[D:\Web\www.tp6.com\vendor\topthink\framework\src\think\db\PDOConnection.php:407]
+---------------------------------------------------------------
+[2022-03-29T16:09:42+08:00] 127.0.0.1 GET www.tp6.com/
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000747s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `article` [ RunTime:0.004064s ]
+[ sql ] [ SQL ] SELECT * FROM `article` WHERE  `status` = 1  AND `type_id` = 3 ORDER BY `create_time` DESC LIMIT 6 [ RunTime:0.000917s ]
+[ sql ] [ SQL ] SELECT * FROM `article` WHERE  `status` = 1  AND `type_id` = 1 ORDER BY `create_time` DESC LIMIT 7 [ RunTime:0.000407s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `link` [ RunTime:0.002529s ]
+[ sql ] [ SQL ] SELECT * FROM `link` ORDER BY `weight` DESC [ RunTime:0.000222s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\web\view\home\index.html [ array (
+  0 => 'gd',
+  1 => 'link',
+  2 => 'article',
+  3 => 'gg',
+) ]

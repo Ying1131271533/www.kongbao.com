@@ -1,0 +1,52 @@
+<extend name="Public/base" />
+<block name="title">帮助中心</block>
+<block name="keywords"></block>
+<block name="description"></block>
+<block name="load">
+<link href="__CSS__/help.css" rel="stylesheet">
+</block>
+
+<block name="main">
+
+<div class="help">
+	<div class="center">
+        <!--help-left-->
+        <div class="help-left">
+            <div class="help-list">
+                <div class="index-title">帮助中心</div>
+                <ul>
+                    <volist name="list" id="vo">
+                    <if condition="$vo.fid eq 2 ">
+                    <li><a href="{:U('Help/view',"id=$vo[id]")}" target="_blank">{$vo.title}</a><span>{$vo.time|date="Y-m-d H:i:s",###}</span></li>
+                    <else/>
+                    <li><a href="{:U('Article/view',"id=$vo[id]")}" target="_blank">{$vo.title}</a><span>{$vo.time|date="Y-m-d H:i:s",###}</span></li>
+                    </if>
+                    </volist>
+                </ul>
+            </div>
+            <div class="text-center"><ul class="pagination">{$page}</ul></div>
+            
+        </div>
+        
+        
+        <!--help-right-->
+        <div class="help-right">
+            <div class="help-ar">
+                <div class="index-title">热门推荐</div>
+                <ul>
+                    <volist name="listr" id="vo">
+                    <if condition="$vo.fid eq 2 ">
+                    <li><a href="{:U('Help/view',"id=$vo[id]")}">{$vo.title}</a></li>
+                    <else/>
+                    <li><a href="{:U('Article/view',"id=$vo[id]")}">{$vo.title}</a></li>
+                    </if>
+                    </volist>
+                </ul>
+            </div>
+        </div>
+
+	</div>
+    <div class="clear"></div>
+</div>
+
+</block>

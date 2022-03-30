@@ -1,0 +1,94 @@
+{extend name="layout/base" /}
+{block name="main"}
+	<div class="layui-fluid">
+		<div class="layui-row layui-col-md-offset0" style="margin-bottom:20px;">
+			<div class="layui-col-md9">
+				<a href="{:url('article/type_add')}" class="layui-btn layui-btn-danger">添加分类</a>
+			</div>
+		</div>
+		<form class="layui-form" action="" method="post">
+			<table class="layui-table">
+			  <thead>
+				<tr>
+				  <th>ID</th>
+				  <th>分类名称</th>
+				  <th>创建时间</th>
+				  <th>操作</th>
+				</tr>
+			  </thead>
+			  <tbody>
+				{foreach $type as $value}
+				<tr>
+				  <td>{$value.id}</td>
+				  <td>{$value.name}</td>
+				  <td>{:get_date($value.create_time)}</td>
+				  <td>
+					<a href="javascript:edit({$value.id});" class="layui-btn">
+					  <i class="layui-icon">&#xe642;</i> 修改
+					</a>
+					<a class="layui-btn layui-bg-black" href="javascript:del({$value.id});">
+					  <i class="layui-icon">&#xe640;</i> 删除
+					</a>
+				  </td>
+				</tr>
+				{/foreach}
+			  </tbody>
+			</table>
+		</form>
+	</div>
+
+  {js href="/static/admin/layuiadmin/layui/layui.js" /} 
+  <script>
+	layui.use(['jquery', 'layer', 'table', 'flow', 'form', 'laypage'], function(){
+		var table = layui.table
+		,$ = layui.$
+		,layer = layui.layer
+		,flow = layui.flow
+		,form = layui.form
+		,laypage = layui.laypage
+		
+		
+		//监听提交
+		form.on('submit(formdemo)', function(data){
+			layer.msg(json.stringify(data.field));
+			return false;
+		});
+		
+		
+	});
+	
+	function edit(id)
+	{
+		layer.open({
+			type: 2,
+			title: '分类修改',
+			content: '{:url("type_edit")}?id=' + id,
+			shadeClose: true,
+			shade: [0.8, '#000000'],
+			area: ['800px', '400px'],
+		});
+	}
+	
+	function del(id)
+	{
+		layer.confirm('确定要删除吗', function(index){
+			window.location.href = "{:url('type_del')}?id=" + id;
+			layer.close(index);
+		});
+	}
+  </script>
+{/block}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

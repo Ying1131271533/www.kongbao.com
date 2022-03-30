@@ -1,0 +1,140 @@
+{extend name="layout/base" /}
+{block name="main"}
+  <div class="layui-fluid">
+	<div class="layui-form">
+		<form action="" method="post" name="example">
+			<table class="layui-table" lay-size="lg" lay-skin="line">
+			  <thead>
+				<tr>
+					<th colspan="2">上传底单</th>
+				</tr> 
+			  </thead>
+			  <tbody>
+				
+				<tr>
+				  <td width="150" align="right"><strong>快递公司：</strong></td>
+				  <td>
+					<div class="layui-input-inline">{$order.kdname}</div>
+				  </td>
+				</tr>
+				
+				<tr>
+				  <td width="150" align="right"><strong>快递单号：</strong></td>
+				  <td>
+					<div class="layui-input-inline">{$order.number}</div>
+				  </td>
+				</tr>
+				
+				<tr>
+				  <td width="150" align="right"><strong>申请时间：</strong></td>
+				  <td>
+					<div class="layui-input-inline">{$order.create_time}</div>
+				  </td>
+				</tr>
+				
+				<tr>
+				  <td width="150" align="right"><strong>收货人信息：</strong></td>
+				  <td>
+					<div class="layui-input-inline">{$order.sname} / {$order.sphone} / {$order.saddress}</div>
+				  </td>
+				</tr>
+				
+				<tr>
+				  <td width="150" align="right"><strong>降权截图：</strong></td>
+				  <td>
+					<a href="javascript:;" target=" _blank" style="height:100px;display:inline-block;" >
+						<img src="{$order.image}" width="100" id="feng" style="cursor:pointer;"  onclick="opens(this)" />
+					<a>
+				  </td>
+				</tr>
+				
+				
+				<tr>
+				  <td width="150" align="right"><strong>内容：</strong></td>
+				  <td>
+					<div class="layui-input-inline">
+						<textarea id="demo" style="display: none;" name="content">{:html_dcode($order.content)}</textarea>
+					</div>
+				  </td>
+				</tr>
+				
+				
+				<tr>
+				  <td align="right"></td>
+				  <td>
+					<div class="layui-input-inline">
+					  <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+					</div>
+				  </td>
+				</tr>
+			  </tbody>
+			</table>
+		</form>	
+    </div>
+  </div>
+  
+	<div id="akali" class="hide layui-layer-wrap" style="display: none;">
+		<img src="" id=""/>
+	</div>
+	
+  {js href="/static/admin/layuiadmin/layui/layui.js" /} 
+  <script>
+	layui.use(['jquery', 'layer','table','flow','form'], function(){
+		var table = layui.table
+		,$ = layui.$
+		,layer = layui.layer
+		,flow = layui.flow
+		,form = layui.form
+		
+		//监听提交
+		form.on('submit(formdemo)', function(data){
+			layer.msg(json.stringify(data.field));
+			return false;
+		});
+		
+	});
+	
+	layui.use('layedit', function(){
+	  var layedit = layui.layedit;
+	  
+		layedit.set({
+		  uploadImage: {
+			url: "{:url('upload/upload_layui')}" //接口url
+			,type: 'post' //默认post
+		  }
+		});
+	  
+	  layedit.build('demo'); //建立编辑器
+	});
+	
+	function opens(obj)
+	{
+		layui.use(['jquery', 'layer','table','flow','form'], function(){
+			var table = layui.table
+			,$ = layui.$
+			,layer = layui.layer
+			
+			var src = obj.src;
+			$('#akali img').attr('src', src);
+			
+			// 获取图片的真实宽高
+			$('<img/>').attr("src", $('#akali img').attr("src")).load(function() {
+
+				var pic_real_width = this.width;   // Note: $(this).width() will not
+				var pic_real_height = this.height; // work for in memory images.
+				
+				// 页面层-佟丽娅
+				layer.open({
+					type: 1,
+					title: false,
+					closeBtn: 0,
+					area: pic_real_width + 'px',
+					skin: 'layui-layer-nobg', //没有背景色
+					shadeClose: true,
+					content: $('#akali')
+				});
+			});
+		});
+	}
+  </script>
+{/block}

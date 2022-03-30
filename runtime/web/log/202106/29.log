@@ -1,0 +1,14 @@
+---------------------------------------------------------------
+[2021-06-29T09:14:09+08:00] 127.0.0.1 GET www.tp6.com/
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003721s ] mysql:host=127.0.0.1;port=3306;dbname=www_tp6_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `article` [ RunTime:0.005674s ]
+[ sql ] [ SQL ] SELECT * FROM `article` WHERE  `status` = 1  AND `type_id` = 3 ORDER BY `create_time` DESC LIMIT 6 [ RunTime:0.002093s ]
+[ sql ] [ SQL ] SELECT * FROM `article` WHERE  `status` = 1  AND `type_id` = 1 ORDER BY `create_time` DESC LIMIT 7 [ RunTime:0.000331s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `link` [ RunTime:0.001515s ]
+[ sql ] [ SQL ] SELECT * FROM `link` ORDER BY `weight` DESC [ RunTime:0.000268s ]
+[ info ] [ VIEW ] D:\Web\www.tp6.com\app\web\view\home\index.html [ array (
+  0 => 'gd',
+  1 => 'link',
+  2 => 'article',
+  3 => 'gg',
+) ]

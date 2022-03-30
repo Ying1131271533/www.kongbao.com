@@ -1,0 +1,47 @@
+{extend name="layout/userbase"/}
+{block name="title"}提现记录{/block}
+{block name="load"}
+{/block}
+{block name="main"}
+<div class="user">
+	<div class="user_index">
+        {include file="layout/top" /}
+		{include file="layout/left" /}
+        <div class="user_right">
+        
+        	<div class="user_title">提现记录</div>
+                <div class="user_tixian">
+                	<ul class="tx">
+                		<li class="t1">提现时间</li>
+                        <li class="t2">金额</li>
+                        <li class="t3">账号类型</li>
+                        <li class="t4">账号</li>
+                        <li class="t5">姓名</li>
+                        <li class="t6">状态</li>
+                    </ul>
+                    {volist name="list" id="vo"}
+					 <ul>
+						<li class="t1">{$vo.create_time |date="Y-m-d H:i:s"}</li>
+						<li class="t2"><font color="#cc0000">{$vo.money}元</font></li>
+						<li class="t3">支付宝</li>
+						<li class="t4">{$vo.alipay}</li>
+						<li class="t5">{$vo.name}</li>
+						<li class="t6">
+                                {if condition="$vo.status eq 3"}
+                                <font color="#ff0000">提现失败</font>
+                                {elseif condition="$vo.status eq 2"/}
+                                <font color="#009933">提现成功</font>
+                                {else/}<font color="#999999">等待提现中</font>
+                                {/if}
+                        </li>
+					</ul>
+                    {/volist}
+                </div>
+                <div class="text-center"><ul class="pagination">{$page}</ul></div>
+                <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+{/block}
