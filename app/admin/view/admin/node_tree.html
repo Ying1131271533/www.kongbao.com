@@ -28,38 +28,11 @@
 		});
 		
 		//模拟数据
-		data = [
-			{foreach $node as $value}
-			{
-				label: "{$value.sort} - {$value.title}"
-				,id: {$value.id}
-				,pid:{$value.pid}
-				{notempty name="value.child"}
-				,children: [
-					
-					{foreach $value.child as $val}
-					
-					{
-						label: "{$val.sort} - {$val.title}"
-						,id: {$val.id}
-						,pid:{$val.pid}
-					},
-					
-					{/foreach}
-				]
-				{/notempty}
-			},
-			{/foreach}
-		];
+		data = [{$node_tree}];
 		
-
 		var checkbox = [];
-		{foreach $node as $value}
-		{notempty name="value.child"}
-		{foreach $value.child as $val}
-			checkbox.push({$val.id});
-		{/foreach}
-		{/notempty}
+		{foreach $ids as $value}
+		checkbox.push({$value});
 		{/foreach}
 		
 		// 树形菜单
@@ -103,23 +76,12 @@
 				
 				//增加节点
 				if(type === 'add') {
-					// 返回key值
-					if(data.pid != 0) {
-						alert('不能创建三级目录');
-						window.location = "{:url('admin/node_tree')}";
-					}
-
 					var title = elem.find('.layui-tree-txt').html();
 					add(pid, title);
 
 				} else if(type === 'update') { //修改节点
 					var title = elem.find('.layui-tree-txt').html();
-					
-					if(id == 0) {
-						add(pid, title);
-					}else {
-						edit(id, title);
-					}
+					edit(id, title);
 					
 				} else if(type === 'del') //删除节点
 				{

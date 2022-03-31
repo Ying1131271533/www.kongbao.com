@@ -298,3 +298,29 @@ function fail(string $msg = '失败', int $status = 40000, int $code = 400)
     // echo json_encode($resultData, $code);exit;
     return json($resultData, $code);
 }
+
+/**
+ * layui的节点树数据
+ *
+ * @param  array    $array          数组
+ * @param  int      $parent_id      父级id
+ * @return array                    返回处理后的字符串
+ */
+function get_child_tree_data($data = [], $parent_id = 0)
+{
+    $tmp = '';
+    foreach ($data as $value) {
+        if ($value['pid'] == $parent_id) {
+            $tmp .= "{";
+            $tmp .= "label: '{$value['title']}', id: {$value['id']}, pid: {$parent_id},";
+            $child = get_child_tree_data($data, $value['id']);
+            if($child){
+                $tmp .= 'children:[' . $child . ']';
+            }
+            
+            $tmp .= "},";
+        }
+    }
+    
+    return $tmp;
+}

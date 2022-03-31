@@ -444,11 +444,19 @@ class Admin extends Base
 	// 节点列表 - 树状图
 	public function node_tree()
     {
-		$node = $this -> nodeModel -> order('sort') -> select();
-		$node = get_child($node -> toArray());
-		$this -> assign('node', $node);
+		// 找出所有节点数据
+		$node = $this -> nodeModel -> order('sort') -> select()->toArray();
+
+		// 将节点转换layui树形图字符串
+		$node_tree = get_child_tree_data($node);
+
+		// 获取所有节点的id
+        $ids = array_column($node, 'id');
 		
-		
+		$this -> assign([
+			'node_tree' => $node_tree,
+			'ids' => $ids,
+		]);
 		return $this -> fetch();
     }
 	

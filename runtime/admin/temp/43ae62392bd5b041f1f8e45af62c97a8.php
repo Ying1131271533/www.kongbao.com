@@ -1,4 +1,4 @@
-<?php /*a:2:{s:58:"D:\Web\www.kongbao.com\app\admin\view\admin\node_tree.html";i:1648630823;s:54:"D:\Web\www.kongbao.com\app\admin\view\layout\base.html";i:1624086330;}*/ ?>
+<?php /*a:2:{s:58:"D:\Web\www.kongbao.com\app\admin\view\admin\node_tree.html";i:1648719839;s:54:"D:\Web\www.kongbao.com\app\admin\view\layout\base.html";i:1624086330;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,35 +43,11 @@
 		});
 		
 		//模拟数据
-		data = [
-			<?php foreach($node as $value): ?>
-			{
-				label: "<?php echo htmlentities($value['sort']); ?> - <?php echo htmlentities($value['title']); ?>"
-				,id: <?php echo htmlentities($value['id']); ?>
-				,pid:<?php echo htmlentities($value['pid']); if(!(empty($value['child']) || (($value['child'] instanceof \think\Collection || $value['child'] instanceof \think\Paginator ) && $value['child']->isEmpty()))): ?>
-				,children: [
-					
-					<?php foreach($value['child'] as $val): ?>
-					
-					{
-						label: "<?php echo htmlentities($val['sort']); ?> - <?php echo htmlentities($val['title']); ?>"
-						,id: <?php echo htmlentities($val['id']); ?>
-						,pid:<?php echo htmlentities($val['pid']); ?>
-					},
-					
-					<?php endforeach; ?>
-				]
-				<?php endif; ?>
-			},
-			<?php endforeach; ?>
-		];
+		data = [<?php echo htmlentities($node_tree); ?>];
 		
-
 		var checkbox = [];
-		<?php foreach($node as $value): if(!(empty($value['child']) || (($value['child'] instanceof \think\Collection || $value['child'] instanceof \think\Paginator ) && $value['child']->isEmpty()))): foreach($value['child'] as $val): ?>
-			checkbox.push(<?php echo htmlentities($val['id']); ?>);
-		<?php endforeach; ?>
-		<?php endif; ?>
+		<?php foreach($ids as $value): ?>
+		checkbox.push(<?php echo htmlentities($value); ?>);
 		<?php endforeach; ?>
 		
 		// 树形菜单
@@ -115,23 +91,12 @@
 				
 				//增加节点
 				if(type === 'add') {
-					// 返回key值
-					if(data.pid != 0) {
-						alert('不能创建三级目录');
-						window.location = "<?php echo url('admin/node_tree'); ?>";
-					}
-
 					var title = elem.find('.layui-tree-txt').html();
 					add(pid, title);
 
 				} else if(type === 'update') { //修改节点
 					var title = elem.find('.layui-tree-txt').html();
-					
-					if(id == 0) {
-						add(pid, title);
-					}else {
-						edit(id, title);
-					}
+					edit(id, title);
 					
 				} else if(type === 'del') //删除节点
 				{
