@@ -300,9 +300,13 @@ function fail(string $msg = '失败', int $status = 40000, int $code = 400)
 }
 
 /**
- * layui的节点树数据
+ * @description:  オラ!オラ!オラ!オラ!⎛⎝≥⏝⏝≤⎛⎝
+ * @author: 神织知更
+ * @time: 2022/03/31 21:58
  *
- * @param  array    $array          数组
+ * layui的树形图数据处理
+ *
+ * @param  array    $data		    二维数组
  * @param  int      $parent_id      父级id
  * @param  bool     $spread		    节点是否全部展开
  * @return array                    返回处理后的字符串
