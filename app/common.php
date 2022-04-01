@@ -304,15 +304,17 @@ function fail(string $msg = '失败', int $status = 40000, int $code = 400)
  *
  * @param  array    $array          数组
  * @param  int      $parent_id      父级id
+ * @param  bool     $spread		    节点是否全部展开
  * @return array                    返回处理后的字符串
  */
-function get_child_tree_data($data = [], $parent_id = 0)
+function get_child_tree_data($data = [], $parent_id = 0, $spread = false)
 {
     $tmp = '';
     foreach ($data as $value) {
         if ($value['pid'] == $parent_id) {
             $tmp .= "{";
             $tmp .= "label: '{$value['title']}', id: {$value['id']}, pid: {$parent_id},";
+            if($spread) $tmp .= 'spread: true,';
             $child = get_child_tree_data($data, $value['id']);
             if($child){
                 $tmp .= 'children:[' . $child . ']';
