@@ -1,4 +1,4 @@
-<?php /*a:2:{s:52:"D:\Web\www.kongbao.com\app\admin\view\home\info.html";i:1559379279;s:54:"D:\Web\www.kongbao.com\app\admin\view\layout\base.html";i:1624086330;}*/ ?>
+<?php /*a:2:{s:52:"D:\Web\www.kongbao.com\app\admin\view\home\info.html";i:1648730642;s:54:"D:\Web\www.kongbao.com\app\admin\view\layout\base.html";i:1648730642;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
