@@ -27,7 +27,7 @@ return [
             // 用户名
             'username'        => Env::get('database.username', 'www_kongbao_com'),
             // 密码
-            'password'        => Env::get('database.password', 'cTkZcyDwGYniJtcX'),
+            'password'        => Env::get('database.password', 'CaxEjaY?i4/3@SXYCWCE3Ak-1pj'),
             // 端口
             'hostport'        => Env::get('database.hostport', '3306'),
             // 连接dsn
