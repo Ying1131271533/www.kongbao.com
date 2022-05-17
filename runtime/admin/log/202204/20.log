@@ -1,0 +1,38 @@
+---------------------------------------------------------------
+[2022-04-20T10:22:53+08:00] 127.0.0.1 GET admin.kongbao.com/login/index.html
+[ info ] [ VIEW ] D:\Web\www.kongbao.com\app\admin\view\login\index.html [ array (
+) ]
+---------------------------------------------------------------
+[2022-04-20T10:22:58+08:00] 127.0.0.1 POST admin.kongbao.com/login/index.html
+[ error ] [1045]SQLSTATE[HY000] [1045] Access denied for user 'www_kongbao_com'@'113.67.182.53' (using password: YES)[D:\Web\www.kongbao.com\vendor\topthink\framework\src\think\db\PDOConnection.php:407]
+---------------------------------------------------------------
+[2022-04-20T10:23:19+08:00] 127.0.0.1 GET admin.kongbao.com/login/index.html
+[ info ] [ VIEW ] D:\Web\www.kongbao.com\app\admin\view\login\index.html [ array (
+) ]
+---------------------------------------------------------------
+[2022-04-20T10:23:24+08:00] 127.0.0.1 POST admin.kongbao.com/login/index.html
+[ error ] [1045]SQLSTATE[HY000] [1045] Access denied for user 'www_kongbao_com'@'113.67.182.53' (using password: YES)[D:\Web\www.kongbao.com\vendor\topthink\framework\src\think\db\PDOConnection.php:407]
+---------------------------------------------------------------
+[2022-04-20T10:23:32+08:00] 127.0.0.1 POST admin.kongbao.com/login/index.html
+[ error ] [1045]SQLSTATE[HY000] [1045] Access denied for user 'www_kongbao_com'@'113.67.182.53' (using password: YES)[D:\Web\www.kongbao.com\vendor\topthink\framework\src\think\db\PDOConnection.php:407]
+---------------------------------------------------------------
+[2022-04-20T10:23:43+08:00] 127.0.0.1 GET admin.kongbao.com/login/index.html
+[ info ] [ VIEW ] D:\Web\www.kongbao.com\app\admin\view\login\index.html [ array (
+) ]
+---------------------------------------------------------------
+[2022-04-20T10:23:45+08:00] 127.0.0.1 GET admin.kongbao.com/login/index.html
+[ info ] [ VIEW ] D:\Web\www.kongbao.com\app\admin\view\login\index.html [ array (
+) ]
+---------------------------------------------------------------
+[2022-04-20T10:23:53+08:00] 127.0.0.1 POST admin.kongbao.com/login/index.html
+[ error ] [1045]SQLSTATE[HY000] [1045] Access denied for user 'www_kongbao_com'@'113.67.182.53' (using password: YES)[D:\Web\www.kongbao.com\vendor\topthink\framework\src\think\db\PDOConnection.php:407]
+---------------------------------------------------------------
+[2022-04-20T10:23:58+08:00] 127.0.0.1 GET admin.kongbao.com/login/index.html
+[ info ] [ VIEW ] D:\Web\www.kongbao.com\app\admin\view\login\index.html [ array (
+) ]
+---------------------------------------------------------------
+[2022-04-20T10:24:11+08:00] 127.0.0.1 POST admin.kongbao.com/login/index.html
+[ error ] [1045]SQLSTATE[HY000] [1045] Access denied for user 'www_kongbao_com'@'113.67.182.53' (using password: YES)[D:\Web\www.kongbao.com\vendor\topthink\framework\src\think\db\PDOConnection.php:407]
+---------------------------------------------------------------
+[2022-04-20T10:29:02+08:00] 127.0.0.1 POST admin.kongbao.com/login/index.html
+[ error ] [1045]SQLSTATE[HY000] [1045] Access denied for user 'www_kongbao_com'@'113.67.182.53' (using password: YES)[D:\Web\www.kongbao.com\vendor\topthink\framework\src\think\db\PDOConnection.php:407]

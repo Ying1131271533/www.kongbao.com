@@ -1,0 +1,40 @@
+---------------------------------------------------------------
+[2022-04-06T17:04:24+08:00] 127.0.0.1 GET admin.kongbao.com/login/index.html
+[ info ] [ VIEW ] D:\Web\www.kongbao.com\app\admin\view\login\index.html [ array (
+) ]
+---------------------------------------------------------------
+[2022-04-06T17:04:29+08:00] 127.0.0.1 POST admin.kongbao.com/login/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000911s ] mysql:host=127.0.0.1;port=3306;dbname=www_kongbao_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `admin` [ RunTime:0.009113s ]
+[ sql ] [ SQL ] SELECT * FROM `admin` WHERE  `name` = '神织知更' LIMIT 1 [ RunTime:0.000284s ]
+[ sql ] [ SQL ] UPDATE `admin`  SET `login_num` = 544 , `last_login_time` = 1649235869  WHERE  `id` = 1 [ RunTime:0.002696s ]
+---------------------------------------------------------------
+[2022-04-06T17:04:30+08:00] 127.0.0.1 GET admin.kongbao.com/home/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.023168s ] mysql:host=127.0.0.1;port=3306;dbname=www_kongbao_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `node` [ RunTime:0.011631s ]
+[ sql ] [ SQL ] SELECT `id` FROM `node` WHERE  `show` = 1 ORDER BY `sort` ASC [ RunTime:0.000318s ]
+[ sql ] [ SQL ] SELECT * FROM `node` WHERE  `id` IN (17,23,32,33,35,11,29,37,105,16,25,22,28,31,41,13,106,18,36,70,20,26,77,102) ORDER BY `sort` [ RunTime:0.000344s ]
+[ info ] [ VIEW ] D:\Web\www.kongbao.com\app\admin\view\home\index.html [ array (
+  0 => 'node',
+) ]
+---------------------------------------------------------------
+[2022-04-06T17:04:30+08:00] 127.0.0.1 GET admin.kongbao.com/home/info.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000630s ] mysql:host=127.0.0.1;port=3306;dbname=www_kongbao_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `admin` [ RunTime:0.002792s ]
+[ sql ] [ SQL ] SELECT * FROM `admin` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000360s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `admin_role` [ RunTime:0.009883s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `role` [ RunTime:0.013525s ]
+[ sql ] [ SQL ] SELECT `role`.*,`pivot`.`admin_id` AS `pivot__admin_id`,`pivot`.`role_id` AS `pivot__role_id` FROM `role` INNER JOIN `admin_role` `pivot` ON `pivot`.`role_id`=`role`.`id` WHERE  `pivot`.`admin_id` = 1 [ RunTime:0.001568s ]
+[ info ] [ VIEW ] D:\Web\www.kongbao.com\app\admin\view\home\info.html [ array (
+  0 => 'admin',
+  1 => 'adminRole',
+) ]
+---------------------------------------------------------------
+[2022-04-06T17:04:37+08:00] 127.0.0.1 GET admin.kongbao.com/admin/node_tree.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000565s ] mysql:host=127.0.0.1;port=3306;dbname=www_kongbao_com;charset=utf8
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM `node` [ RunTime:0.002495s ]
+[ sql ] [ SQL ] SELECT * FROM `node` ORDER BY `sort` [ RunTime:0.000610s ]
+[ info ] [ VIEW ] D:\Web\www.kongbao.com\app\admin\view\admin\node_tree.html [ array (
+  0 => 'node_tree',
+  1 => 'ids',
+) ]
