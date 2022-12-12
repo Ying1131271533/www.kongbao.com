@@ -21,13 +21,13 @@ return [
             // 数据库类型
             'type'            => Env::get('database.type', 'mysql'),
             // 服务器地址
-            'hostname'        => Env::get('database.hostname', '124.71.218.160'),
+            'hostname'        => Env::get('database.hostname', '127.0.0.1'),
             // 数据库名
             'database'        => Env::get('database.database', 'www_kongbao_com'),
             // 用户名
-            'username'        => Env::get('database.username', 'www_kongbao_com'),
+            'username'        => Env::get('database.username', 'root'),
             // 密码
-            'password'        => Env::get('database.password', 'CaxEjaY?i4/3@SXYCWCE3Ak-1pj'),
+            'password'        => Env::get('database.password', ''),
             // 端口
             'hostport'        => Env::get('database.hostport', '3306'),
             // 连接dsn
