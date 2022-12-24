@@ -11,8 +11,7 @@ class Home extends Base
 		$Auth = new Auth;
 		$node = $Auth -> getShowNode($admin);
 		$node = get_child($node);
-		// dump($node);
-		// return;
+		// halt($node);
 		$this -> assign('node', $node);
 		return $this -> fetch();
     }
